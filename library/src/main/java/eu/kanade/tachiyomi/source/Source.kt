@@ -43,10 +43,11 @@ interface Source {
      * Get the list of pages a chapter has. Pages should be returned
      * in the expected order; the index is ignored.
      *
+     * @since extensions-lib 1.5
      * @param chapter the chapter.
      * @return the pages for the chapter.
      */
-    fun fetchPageList(chapter: SChapter): Observable<List<Page>>
+    suspend fun getPageList(chapter: SChapter): List<Page> = throw Exception("Stub!")
 
     @Deprecated(
         "Use the non-RxJava API instead",
@@ -59,4 +60,10 @@ interface Source {
         ReplaceWith("getChapterList"),
     )
     fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw Exception("Stub!")
+
+    @Deprecated(
+        "Use the non-RxJava API instead",
+        ReplaceWith("getPageList"),
+    )
+    fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw Exception("Stub!")
 }

@@ -1,11 +1,11 @@
-The extensions library used in Tachiyomi.
+The extensions library used in Mihon.
 
 ```
 ext {
-    libVersion = '1.4'
+    libVersion = '1.4.4'
 }
 
 dependencies {
-    compileOnly "com.github.tachiyomiorg:extensions-lib:$libVersion"
+    compileOnly "com.github.mihonapp:extensions-lib:$libVersion"
 }
 ```

@@ -1,5 +1,7 @@
 package eu.kanade.tachiyomi.source
 
+import eu.kanade.tachiyomi.source.model.FilterList
+import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
@@ -20,6 +22,36 @@ interface Source {
      * Name of the source.
      */
     val name: String
+
+    /**
+     * Represents an IETF BCP 47 compliant language tag.
+     * Special cases include:
+     * - [Language.MULTI]: Indicates multiple languages.
+     * - [Language.OTHER]: Refers to a language not explicitly defined.
+     *
+     * Besides the above two [Language.ALL] (all) is also supported due to legacy reasons.
+     * Usage of it is highly discouraged
+     *
+     * @since extensions-lib 1.5
+     */
+    val language: String
+
+    /**
+     * Returns the list of filters for the source.
+     *
+     * @since extensions-lib 1.5
+     */
+    fun getFilterList(): FilterList
+
+    /**
+     * Get a page with a list of manga.
+     *
+     * @since extensions-lib 1.5
+     * @param query the search query.
+     * @param filters the list of filters to apply.
+     * @param page the page number to retrieve.
+     */
+    suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage = throw Exception("Stub!")
 
     /**
      * Get the updated details for a manga.
@@ -66,4 +98,10 @@ interface Source {
         ReplaceWith("getPageList"),
     )
     fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw Exception("Stub!")
+
+    object Language {
+        const val ALL = "all"
+        const val MULTI = "multi"
+        const val OTHER = "other"
+    }
 }

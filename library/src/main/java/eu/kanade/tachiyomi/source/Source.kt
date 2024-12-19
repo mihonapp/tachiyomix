@@ -29,8 +29,8 @@ interface Source {
      * - [Language.MULTI]: Indicates multiple languages.
      * - [Language.OTHER]: Refers to a language not explicitly defined.
      *
-     * Besides the above two [Language.ALL] (all) is also supported due to legacy reasons.
-     * Usage of it is highly discouraged
+     * Besides the above two 'all' is also supported due to legacy reasons.
+     * Usage of it is highly discouraged for new sources
      *
      * @since extensions-lib 1.5
      */
@@ -100,7 +100,6 @@ interface Source {
     fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw Exception("Stub!")
 
     object Language {
-        const val ALL = "all"
         const val MULTI = "multi"
         const val OTHER = "other"
     }

@@ -28,9 +28,9 @@ interface Source {
      * Special cases include:
      * - [Language.MULTI]: Indicates multiple languages.
      * - [Language.OTHER]: Refers to a language not explicitly defined.
-     *
-     * Besides the above two 'all' is also supported due to legacy reasons.
-     * Usage of it is highly discouraged for new sources
+     * - 'all': Indicates multiple language.
+     * 
+     * Usage of 'all' is highly discouraged and is only supported due to legacy reasons.
      *
      * @since extensions-lib 1.5
      */

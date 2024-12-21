@@ -54,6 +54,15 @@ interface Source {
     suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage = throw Exception("Stub!")
 
     /**
+     * Get the updated details for a manga and its chapters
+     *
+     * @since extensions-lib 1.5
+     * @param manga manga to get details and chapters for
+     * @return the updated manga and its chapters
+     */
+    suspend fun getMangaDetailsAndChapters(manga: SManga): Pair<SManga, List<SChapter>> = throw Exception("Stub!")
+
+    /**
      * Get the updated details for a manga.
      *
      * @since extensions-lib 1.4

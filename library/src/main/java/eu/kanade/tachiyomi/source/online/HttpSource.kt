@@ -54,6 +54,11 @@ abstract class HttpSource : CatalogueSource {
      */
     open val client: OkHttpClient = throw Exception("Stub!")
 
+    override suspend fun getSearchFilters(): FilterList {
+        @Suppress("DEPRECATION")
+        return getFilterList()
+    }
+
     /**
      * Headers builder for requests. Implementations can override this method for custom headers.
      */

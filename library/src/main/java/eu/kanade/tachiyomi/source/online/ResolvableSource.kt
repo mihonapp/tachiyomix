@@ -12,32 +12,17 @@ import eu.kanade.tachiyomi.source.model.SManga
 interface ResolvableSource : Source {
 
     /**
-     * Returns what the given URI may open.
-     * Returns [UriType.Unknown] if the source is not able to resolve the URI.
+     * Whether this source may potentially handle the given URI.
      *
      * @since extensions-lib 1.5
      */
-    fun getUriType(uri: String): UriType
+    fun canResolveUri(uri: String): Boolean
 
     /**
-     * Called if [getUriType] is [UriType.Manga].
-     * Returns the corresponding SManga, if possible.
+     * Called if [getUriType] is true.
+     * Returns the corresponding SManga, and SChapter if possible.
      *
      * @since extensions-lib 1.5
      */
-    suspend fun getManga(uri: String): SManga?
-
-    /**
-     * Called if [getUriType] is [UriType.Chapter].
-     * Returns the corresponding SChapter, if possible.
-     *
-     * @since extensions-lib 1.5
-     */
-    suspend fun getChapter(uri: String): SChapter?
-}
-
-sealed interface UriType {
-    object Manga : UriType
-    object Chapter : UriType
-    object Unknown : UriType
+    suspend fun resolveUrl(url: String): Pair<SManga, SChapter?>
 }

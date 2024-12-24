@@ -11,7 +11,7 @@ interface CatalogueSource : Source {
      * An ISO 639-1 compliant language code (two letters in lower case).
      */
     @Deprecated("Use language instead", ReplaceWith("language"))
-    override val lang: String
+    val lang: String
 
     /**
      * Whether the source has support for latest updates.

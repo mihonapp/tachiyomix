@@ -29,7 +29,7 @@ interface Source {
      * - [Language.MULTI]: Indicates multiple languages.
      * - [Language.OTHER]: Refers to a language not explicitly defined.
      * - 'all': Indicates multiple language.
-     * 
+     *
      * Usage of 'all' is highly discouraged and is only supported due to legacy reasons.
      *
      * @since extensions-lib 1.5

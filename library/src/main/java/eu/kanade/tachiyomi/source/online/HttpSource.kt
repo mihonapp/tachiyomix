@@ -15,6 +15,12 @@ import rx.Observable
 @Suppress("unused", "unused_parameter")
 abstract class HttpSource : CatalogueSource {
 
+    @Suppress("DEPRECATION")
+    override val language: String get() = lang
+
+    @Suppress("DEPRECATION")
+    override val hasSearchFilters: Boolean get() = getFilterList().isNotEmpty()
+
     /**
      * Network service.
      */
@@ -328,6 +334,10 @@ abstract class HttpSource : CatalogueSource {
     /**
      * Returns the list of filters for the source.
      */
+    @Deprecated(
+        "Use the new suspend variant instead",
+        replaceWith = ReplaceWith("getSearchFilters")
+    )
     override fun getFilterList(): FilterList {
         throw Exception("Stub!")
     }

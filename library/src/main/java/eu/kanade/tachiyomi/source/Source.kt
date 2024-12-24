@@ -37,11 +37,16 @@ interface Source {
     val language: String
 
     /**
+     * Indicates if the source supports search filters
+     */
+    val hasSearchFilters: Boolean
+
+    /**
      * Returns the list of filters for the source.
      *
      * @since extensions-lib 1.5
      */
-    fun getFilterList(): FilterList
+    suspend fun getSearchFilters(): FilterList
 
     /**
      * Get a page with a list of manga.

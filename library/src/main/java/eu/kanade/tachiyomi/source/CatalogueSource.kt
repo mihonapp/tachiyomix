@@ -40,4 +40,10 @@ interface CatalogueSource : Source {
      * @param page the page number to retrieve.
      */
     fun fetchLatestUpdates(page: Int): Observable<MangasPage>
+
+    /**
+     * Returns the list of filters for the source.
+     */
+    @Deprecated("Use the new suspend variant instead", ReplaceWith("getSearchFilters"))
+    fun getFilterList(): FilterList
 }

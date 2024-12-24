@@ -19,32 +19,6 @@ interface CatalogueSource : Source {
     val supportsLatest: Boolean
 
     /**
-     * Get a page with a list of manga.
-     *
-     * @since extensions-lib 1.5
-     * @param page the page number to retrieve.
-     */
-    suspend fun getPopularManga(page: Int): MangasPage = throw Exception("Stub!")
-
-    /**
-     * Get a page with a list of manga.
-     *
-     * @since extensions-lib 1.5
-     * @param page the page number to retrieve.
-     * @param query the search query.
-     * @param filters the list of filters to apply.
-     */
-    suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage = throw Exception("Stub!")
-
-    /**
-     * Get a page with a list of latest manga updates.
-     *
-     * @since extensions-lib 1.5
-     * @param page the page number to retrieve.
-     */
-    suspend fun getLatestUpdates(page: Int): MangasPage = throw Exception("Stub!")
-
-    /**
      * Returns an observable containing a page with a list of manga.
      *
      * @param page the page number to retrieve.

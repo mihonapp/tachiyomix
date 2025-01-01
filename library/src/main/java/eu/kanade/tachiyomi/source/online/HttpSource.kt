@@ -15,11 +15,9 @@ import rx.Observable
 @Suppress("unused", "unused_parameter")
 abstract class HttpSource : CatalogueSource {
 
-    @Suppress("DEPRECATION")
-    override val language: String get() = lang
+    override val language: String = throw Exception("Stub!")
 
-    @Suppress("DEPRECATION")
-    override val hasSearchFilters: Boolean get() = getFilterList().isNotEmpty()
+    override val hasSearchFilters: Boolean = throw Exception("Stub!")
 
     /**
      * Network service.
@@ -54,10 +52,7 @@ abstract class HttpSource : CatalogueSource {
      */
     open val client: OkHttpClient = throw Exception("Stub!")
 
-    override suspend fun getSearchFilters(): FilterList {
-        @Suppress("DEPRECATION")
-        return getFilterList()
-    }
+    override suspend fun getSearchFilters(): FilterList = throw Exception("Stub!")
 
     /**
      * Headers builder for requests. Implementations can override this method for custom headers.

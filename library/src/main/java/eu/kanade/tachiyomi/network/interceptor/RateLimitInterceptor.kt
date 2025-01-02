@@ -37,7 +37,7 @@ fun OkHttpClient.Builder.rateLimit(
  * permits = 5,  period = 1.seconds  =>  5 requests per second
  * permits = 10, period = 2.minutes  =>  10 requests per 2 minutes
  *
- * @since extension-lib 1.5
+ * @since extension-lib 1.6
  *
  * @param permits [Int]     Number of requests allowed within a period of units.
  * @param period [Duration] The limiting duration. Defaults to 1.seconds.

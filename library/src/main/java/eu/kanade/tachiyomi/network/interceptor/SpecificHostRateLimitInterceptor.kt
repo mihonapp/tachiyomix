@@ -40,7 +40,7 @@ fun OkHttpClient.Builder.rateLimitHost(
  * httpUrl = "https://api.manga.com".toHttpUrlOrNull(), permits = 5, period = 1.seconds =>  5 requests per second to api.manga.com
  * httpUrl = "https://imagecdn.manga.com".toHttpUrlOrNull(), permits = 10, period = 2.minutes  =>  10 requests per 2 minutes to imagecdn.manga.com
  *
- * @since extension-lib 1.5
+ * @since extension-lib 1.6
  *
  * @param httpUrl [HttpUrl] The url host that this interceptor should handle. Will get url's host by using HttpUrl.host()
  * @param permits [Int]     Number of requests allowed within a period of units.
@@ -60,7 +60,7 @@ fun OkHttpClient.Builder.rateLimitHost(
  * url = "https://api.manga.com", permits = 5, period = 1.seconds =>  5 requests per second to api.manga.com
  * url = "https://imagecdn.manga.com", permits = 10, period = 2.minutes  =>  10 requests per 2 minutes to imagecdn.manga.com
  *
- * @since extension-lib 1.5
+ * @since extension-lib 1.6
  *
  * @param url [String]      The url host that this interceptor should handle. Will get url's host by using HttpUrl.host()
  * @param permits [Int]     Number of requests allowed within a period of units.

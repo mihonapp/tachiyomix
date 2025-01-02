@@ -32,7 +32,7 @@ interface Source {
      *
      * Usage of 'all' is highly discouraged and is only supported due to legacy reasons.
      *
-     * @since extensions-lib 1.5
+     * @since extensions-lib 1.6
      */
     val language: String
 
@@ -44,14 +44,14 @@ interface Source {
     /**
      * Returns the list of filters for the source.
      *
-     * @since extensions-lib 1.5
+     * @since extensions-lib 1.6
      */
     suspend fun getSearchFilters(): FilterList
 
     /**
      * Get a page with a list of manga.
      *
-     * @since extensions-lib 1.5
+     * @since extensions-lib 1.6
      * @param query the search query.
      * @param filters the list of filters to apply.
      * @param page the page number to retrieve.
@@ -61,7 +61,7 @@ interface Source {
     /**
      * Get the updated details for a manga and its chapters
      *
-     * @since extensions-lib 1.5
+     * @since extensions-lib 1.6
      * @param manga manga to get details and chapters for
      * @return the updated manga and its chapters
      */
@@ -89,7 +89,7 @@ interface Source {
      * Get the list of pages a chapter has. Pages should be returned
      * in the expected order; the index is ignored.
      *
-     * @since extensions-lib 1.5
+     * @since extensions-lib 1.6
      * @param chapter the chapter.
      * @return the pages for the chapter.
      */

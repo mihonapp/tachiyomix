@@ -7,5 +7,6 @@ class NetworkHelper(context: Context) {
 
     val client: OkHttpClient = throw Exception("Stub!")
 
+    @Deprecated("Use the regular client")
     val cloudflareClient: OkHttpClient = throw Exception("Stub!")
 }

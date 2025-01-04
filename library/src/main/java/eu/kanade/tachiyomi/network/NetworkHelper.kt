@@ -9,9 +9,4 @@ class NetworkHelper(context: Context) {
 
     @Deprecated("Use the regular client")
     val cloudflareClient: OkHttpClient = throw Exception("Stub!")
-
-    /**
-     * @since extensions-lib 1.6
-     */
-    fun defaultUserAgentProvider(): String = throw Exception("Stub!")
 }

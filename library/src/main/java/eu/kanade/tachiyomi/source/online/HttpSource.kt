@@ -31,6 +31,11 @@ abstract class HttpSource : CatalogueSource {
     protected val network: NetworkHelper = throw Exception("Stub!")
 
     /**
+     * @since extensions-lib 1.6
+     */
+    protected fun getUserAgent(): String = throw Exception("Stub!")
+
+    /**
      * Base url of the website without the trailing slash, like: http://mysite.com
      */
     abstract val baseUrl: String

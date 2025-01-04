@@ -3,6 +3,7 @@ package eu.kanade.tachiyomi.source.online
 import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.model.*
+import mihon.source.model.UserAgentType
 import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -18,6 +19,11 @@ abstract class HttpSource : CatalogueSource {
     override val language: String = throw Exception("Stub!")
 
     override val hasSearchFilters: Boolean = throw Exception("Stub!")
+
+    /**
+     * Type of UserAgent a source needs
+     */
+    protected open val requiredUserAgentType: UserAgentType = UserAgentType.All
 
     /**
      * Network service.

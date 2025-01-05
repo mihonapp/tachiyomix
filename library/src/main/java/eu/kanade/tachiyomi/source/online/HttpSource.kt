@@ -3,6 +3,7 @@ package eu.kanade.tachiyomi.source.online
 import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.model.*
+import mihon.source.model.UserAgentType
 import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -20,9 +21,19 @@ abstract class HttpSource : CatalogueSource {
     override val hasSearchFilters: Boolean = throw Exception("Stub!")
 
     /**
+     * Type of UserAgent a source needs
+     */
+    protected open val supportedUserAgentType: UserAgentType = UserAgentType.Any
+
+    /**
      * Network service.
      */
     protected val network: NetworkHelper = throw Exception("Stub!")
+
+    /**
+     * @since extensions-lib 1.6
+     */
+    protected fun getUserAgent(): String = throw Exception("Stub!")
 
     /**
      * Base url of the website without the trailing slash, like: http://mysite.com

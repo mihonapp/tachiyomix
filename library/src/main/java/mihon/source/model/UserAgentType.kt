@@ -7,7 +7,7 @@ sealed interface UserAgentType {
     /**
      * Supports both Desktop or Mobile UserAgent
      */
-    data object All : UserAgentType
+    data object Any : UserAgentType
 
     /**
      * Requires Desktop UserAgent

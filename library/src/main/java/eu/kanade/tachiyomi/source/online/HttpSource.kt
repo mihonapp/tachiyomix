@@ -23,7 +23,7 @@ abstract class HttpSource : CatalogueSource {
     /**
      * Type of UserAgent a source needs
      */
-    protected open val requiredUserAgentType: UserAgentType = UserAgentType.All
+    protected open val supportedUserAgentType: UserAgentType = UserAgentType.Any
 
     /**
      * Network service.

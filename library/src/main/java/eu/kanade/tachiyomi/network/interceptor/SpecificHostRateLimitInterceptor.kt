@@ -24,6 +24,7 @@ import kotlin.time.Duration.Companion.seconds
  * @param period [Long]     The limiting duration. Defaults to 1.
  * @param unit [TimeUnit]   The unit of time for the period. Defaults to seconds.
  */
+@Suppress("DeprecatedCallableAddReplaceWith")
 @Deprecated("Use the version with kotlin.time [rateLimit] APIs instead.")
 fun OkHttpClient.Builder.rateLimitHost(
     httpUrl: HttpUrl,

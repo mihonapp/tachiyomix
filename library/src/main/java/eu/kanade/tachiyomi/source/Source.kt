@@ -54,7 +54,7 @@ interface Source {
      * @since extensions-lib 1.6
      * @param page the page number to retrieve.
      */
-    suspend fun getPopularMangaList(page: Int): MangasPage = throw Exception("Stub!")
+    suspend fun getDefaultMangaList(page: Int): MangasPage = throw Exception("Stub!")
 
     /**
      * Get a page with a list of latest manga updates.

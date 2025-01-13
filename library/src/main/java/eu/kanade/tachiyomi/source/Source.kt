@@ -48,6 +48,22 @@ interface Source {
      */
     suspend fun getSearchFilters(): FilterList
 
+        /**
+     * Get a page with a list of manga.
+     *
+     * @since extensions-lib 1.5
+     * @param page the page number to retrieve.
+     */
+    suspend fun getPopularMangaList(page: Int): MangasPage = throw Exception("Stub!")
+
+    /**
+     * Get a page with a list of latest manga updates.
+     *
+     * @since extensions-lib 1.5
+     * @param page the page number to retrieve.
+     */
+    suspend fun getLatestMangaList(page: Int): MangasPage = throw Exception("Stub!")
+
     /**
      * Get a page with a list of manga.
      *

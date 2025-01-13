@@ -48,7 +48,7 @@ interface Source {
      */
     suspend fun getSearchFilters(): FilterList
 
-        /**
+    /**
      * Get a page with a list of manga.
      *
      * @since extensions-lib 1.5

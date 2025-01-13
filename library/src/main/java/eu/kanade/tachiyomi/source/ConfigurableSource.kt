@@ -9,7 +9,7 @@ interface ConfigurableSource {
     /**
      * Gets instance of [SharedPreferences] scoped to the specific source.
      *
-     * @since extensions-lib 1.5
+     * @since extensions-lib 1.6
      */
     fun getSourcePreferences(): SharedPreferences = throw Exception("Stub!")
 
@@ -17,9 +17,9 @@ interface ConfigurableSource {
      * Gets instance of [SharedPreferences] corrisponding to the source id
      *
      * @parm id the source id
-     * @since extensions-lib 1.5
+     * @since extensions-lib 1.6
      */
-    fun getPreferences(id: Long): SharedPreferences = throw Exception("Stub!")
+    fun getSourcePreferences(id: Long): SharedPreferences = throw Exception("Stub!")
 
     fun setupPreferenceScreen(screen: PreferenceScreen)
 

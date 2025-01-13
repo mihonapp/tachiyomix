@@ -23,6 +23,7 @@ interface CatalogueSource : Source {
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated("Use the new suspend variant instead", ReplaceWith("getPopularMangaList"))
     fun fetchPopularManga(page: Int): Observable<MangasPage>
 
     /**
@@ -32,6 +33,7 @@ interface CatalogueSource : Source {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
+    @Deprecated("Use the new suspend variant instead", ReplaceWith("getMangaList"))
     fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage>
 
     /**
@@ -39,6 +41,7 @@ interface CatalogueSource : Source {
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated("Use the new suspend variant instead", ReplaceWith("getLatestMangaList"))
     fun fetchLatestUpdates(page: Int): Observable<MangasPage>
 
     /**

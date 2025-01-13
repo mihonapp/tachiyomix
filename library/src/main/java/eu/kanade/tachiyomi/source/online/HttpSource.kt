@@ -130,7 +130,7 @@ abstract class HttpSource : CatalogueSource {
      * @param response the response from the site.
      */
     protected abstract fun searchMangaParse(response: Response): MangasPage
-    
+
     /**
      * Returns an observable containing a page with a list of latest manga updates.
      *

@@ -23,7 +23,7 @@ interface CatalogueSource : Source {
      *
      * @param page the page number to retrieve.
      */
-    @Deprecated("Use the new suspend variant instead", ReplaceWith("getPopularMangaList"))
+    @Deprecated("Use the new suspend variant instead", ReplaceWith("getDefaultMangaList"))
     fun fetchPopularManga(page: Int): Observable<MangasPage>
 
     /**

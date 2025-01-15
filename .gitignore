@@ -1,10 +1,13 @@
+# Build files
 .gradle
-/local.properties
-/.idea/workspace.xml
-.DS_Store
-/build
-.idea/
-*iml
-*.iml
-*/build
 .kotlin
+build
+
+# IDE files
+.idea
+
+# Configuration files
+local.properties
+
+# macOS specific files
+.DS_Store

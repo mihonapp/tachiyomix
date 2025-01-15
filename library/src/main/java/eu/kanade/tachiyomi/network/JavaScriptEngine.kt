@@ -15,5 +15,5 @@ class JavaScriptEngine(context: Context) {
      * @param script JavaScript to execute.
      * @return Result of JavaScript code as a primitive type.
      */
-    suspend fun <T> evaluate(script: String): T = throw Exception("Stub!")
+    suspend fun <T> evaluate(script: String): T = throw RuntimeException("Stub!")
 }

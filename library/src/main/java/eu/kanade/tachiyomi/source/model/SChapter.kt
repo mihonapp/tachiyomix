@@ -15,7 +15,7 @@ interface SChapter {
 
     companion object {
         fun create(): SChapter {
-            throw Exception("Stub!")
+            throw RuntimeException("Stub!")
         }
     }
 }

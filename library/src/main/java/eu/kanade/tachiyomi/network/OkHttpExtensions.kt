@@ -4,16 +4,16 @@ import okhttp3.Call
 import okhttp3.Response
 import rx.Observable
 
-fun Call.asObservable(): Observable<Response> = throw Exception("Stub!")
+fun Call.asObservable(): Observable<Response> = throw RuntimeException("Stub!")
 
-fun Call.asObservableSuccess(): Observable<Response> = throw Exception("Stub!")
+fun Call.asObservableSuccess(): Observable<Response> = throw RuntimeException("Stub!")
 
-suspend fun Call.await(): Response = throw Exception("Stub!")
+suspend fun Call.await(): Response = throw RuntimeException("Stub!")
 
 /**
  * @since extensions-lib 1.6
  */
-suspend fun Call.awaitSuccess(): Response = throw Exception("Stub!")
+suspend fun Call.awaitSuccess(): Response = throw RuntimeException("Stub!")
 
 /**
  * Exception that handles HTTP codes considered not successful by OkHttp.

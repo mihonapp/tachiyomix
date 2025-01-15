@@ -55,7 +55,7 @@ interface Source {
      * @since extensions-lib 1.6
      * @param page the page number to retrieve.
      */
-    suspend fun getDefaultMangaList(page: Int): MangasPage = throw Exception("Stub!")
+    suspend fun getDefaultMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
 
     /**
      * Get a page with a list of latest manga updates.
@@ -63,7 +63,7 @@ interface Source {
      * @since extensions-lib 1.6
      * @param page the page number to retrieve.
      */
-    suspend fun getLatestMangaList(page: Int): MangasPage = throw Exception("Stub!")
+    suspend fun getLatestMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
 
     /**
      * Get a page with a list of manga.
@@ -73,7 +73,7 @@ interface Source {
      * @param filters the list of filters to apply.
      * @param page the page number to retrieve.
      */
-    suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage = throw Exception("Stub!")
+    suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage = throw RuntimeException("Stub!")
 
     /**
      * Get the updated details for a manga and its chapters
@@ -82,7 +82,7 @@ interface Source {
      * @param manga manga to get details and chapters for
      * @return the updated manga and its chapters
      */
-    suspend fun getMangaDetailsAndChapters(manga: SManga): Pair<SManga, List<SChapter>> = throw Exception("Stub!")
+    suspend fun getMangaDetailsAndChapters(manga: SManga): Pair<SManga, List<SChapter>> = throw RuntimeException("Stub!")
 
     /**
      * Get the updated details for a manga.
@@ -91,7 +91,7 @@ interface Source {
      * @param manga the manga to update.
      * @return the updated manga.
      */
-    suspend fun getMangaDetails(manga: SManga): SManga = throw Exception("Stub!")
+    suspend fun getMangaDetails(manga: SManga): SManga = throw RuntimeException("Stub!")
 
     /**
      * Get all the available chapters for a manga.
@@ -100,7 +100,7 @@ interface Source {
      * @param manga the manga to update.
      * @return the chapters for the manga.
      */
-    suspend fun getChapterList(manga: SManga): List<SChapter> = throw Exception("Stub!")
+    suspend fun getChapterList(manga: SManga): List<SChapter> = throw RuntimeException("Stub!")
 
     /**
      * Get the list of pages a chapter has. Pages should be returned
@@ -110,32 +110,32 @@ interface Source {
      * @param chapter the chapter.
      * @return the pages for the chapter.
      */
-    suspend fun getPageList(chapter: SChapter): List<Page> = throw Exception("Stub!")
+    suspend fun getPageList(chapter: SChapter): List<Page> = throw RuntimeException("Stub!")
 
     @Deprecated(
         "Use the non-RxJava API instead",
         ReplaceWith("getMangaDetails"),
     )
-    fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw Exception("Stub!")
+    fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw RuntimeException("Stub!")
 
     @Deprecated(
         "Use the non-RxJava API instead",
         ReplaceWith("getChapterList"),
     )
-    fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw Exception("Stub!")
+    fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw RuntimeException("Stub!")
 
     @Deprecated(
         "Use the non-RxJava API instead",
         ReplaceWith("getPageList"),
     )
-    fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw Exception("Stub!")
+    fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw RuntimeException("Stub!")
 
     /**
      * Gets instance of [SharedPreferences] scoped to the specific source.
      *
      * @since extensions-lib 1.6
      */
-    fun getSourcePreferences(): SharedPreferences = throw Exception("Stub!")
+    fun getSourcePreferences(): SharedPreferences = throw RuntimeException("Stub!")
 
     /**
      * Gets instance of [SharedPreferences] corrisponding to the source id
@@ -143,7 +143,7 @@ interface Source {
      * @parm id the source id
      * @since extensions-lib 1.6
      */
-    fun getSourcePreferences(id: Long): SharedPreferences = throw Exception("Stub!")
+    fun getSourcePreferences(id: Long): SharedPreferences = throw RuntimeException("Stub!")
 
     object Language {
         const val MULTI = "multi"

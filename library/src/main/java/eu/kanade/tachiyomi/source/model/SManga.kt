@@ -33,7 +33,7 @@ interface SManga {
         const val ON_HIATUS = 6
 
         fun create(): SManga {
-            throw Exception("Stub!")
+            throw RuntimeException("Stub!")
         }
     }
 }

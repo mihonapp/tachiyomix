@@ -8,5 +8,5 @@ import org.jsoup.nodes.Document
  * @param html the body of the response. Use only if the body was read before calling this method.
  */
 fun Response.asJsoup(html: String? = null): Document {
-    throw Exception("Stub!")
+    throw RuntimeException("Stub!")
 }

@@ -16,9 +16,9 @@ import rx.Observable
 @Suppress("unused", "unused_parameter")
 abstract class HttpSource : CatalogueSource {
 
-    override val language: String = throw Exception("Stub!")
+    override val language: String = throw RuntimeException("Stub!")
 
-    override val hasSearchFilters: Boolean = throw Exception("Stub!")
+    override val hasSearchFilters: Boolean = throw RuntimeException("Stub!")
 
     /**
      * Type of UserAgent a source needs
@@ -28,12 +28,12 @@ abstract class HttpSource : CatalogueSource {
     /**
      * Network service.
      */
-    protected val network: NetworkHelper = throw Exception("Stub!")
+    protected val network: NetworkHelper = throw RuntimeException("Stub!")
 
     /**
      * @since extensions-lib 1.6
      */
-    protected fun getUserAgent(): String = throw Exception("Stub!")
+    protected fun getUserAgent(): String = throw RuntimeException("Stub!")
 
     /**
      * Base url of the website without the trailing slash, like: http://mysite.com
@@ -44,39 +44,39 @@ abstract class HttpSource : CatalogueSource {
      * Version id used to generate the source id. If the site completely changes and urls are
      * incompatible, you may increase this value and it'll be considered as a new source.
      */
-    open val versionId: Int = throw Exception("Stub!")
+    open val versionId: Int = throw RuntimeException("Stub!")
 
     /**
      * Id of the source. By default it uses a generated id using the first 16 characters (64 bits)
      * of the MD5 of the string: sourcename/language/versionId
      * Note the generated id sets the sign bit to 0.
      */
-    override val id: Long = throw Exception("Stub!")
+    override val id: Long = throw RuntimeException("Stub!")
 
     /**
      * Headers used for requests.
      */
-    val headers: Headers = throw Exception("Stub!")
+    val headers: Headers = throw RuntimeException("Stub!")
 
     /**
      * Default network client for doing requests.
      */
-    open val client: OkHttpClient = throw Exception("Stub!")
+    open val client: OkHttpClient = throw RuntimeException("Stub!")
 
-    override suspend fun getSearchFilters(): FilterList = throw Exception("Stub!")
+    override suspend fun getSearchFilters(): FilterList = throw RuntimeException("Stub!")
 
     /**
      * Headers builder for requests. Implementations can override this method for custom headers.
      */
     open protected fun headersBuilder(): Headers.Builder {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
      * Visible name of the source.
      */
     override fun toString(): String {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -86,7 +86,7 @@ abstract class HttpSource : CatalogueSource {
      * @param page the page number to retrieve.
      */
     override fun fetchPopularManga(page: Int): Observable<MangasPage> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -112,7 +112,7 @@ abstract class HttpSource : CatalogueSource {
      * @param filters the list of filters to apply.
      */
     override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -137,7 +137,7 @@ abstract class HttpSource : CatalogueSource {
      * @param page the page number to retrieve.
      */
     override fun fetchLatestUpdates(page: Int): Observable<MangasPage> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -162,7 +162,7 @@ abstract class HttpSource : CatalogueSource {
      */
     @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getMangaDetails"))
     override fun fetchMangaDetails(manga: SManga): Observable<SManga> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -172,7 +172,7 @@ abstract class HttpSource : CatalogueSource {
      * @param manga the manga to be updated.
      */
     open fun mangaDetailsRequest(manga: SManga): Request {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -190,7 +190,7 @@ abstract class HttpSource : CatalogueSource {
      */
     @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getChapterList"))
     override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -200,7 +200,7 @@ abstract class HttpSource : CatalogueSource {
      * @param manga the manga to look for chapters.
      */
     open protected fun chapterListRequest(manga: SManga): Request {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -216,7 +216,7 @@ abstract class HttpSource : CatalogueSource {
      * @param chapter the chapter whose page list has to be fetched.
      */
     override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -226,7 +226,7 @@ abstract class HttpSource : CatalogueSource {
      * @param chapter the chapter whose page list has to be fetched.
      */
     open protected fun pageListRequest(chapter: SChapter): Request {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -243,7 +243,7 @@ abstract class HttpSource : CatalogueSource {
      * @param page the page whose source image has to be fetched.
      */
     open fun fetchImageUrl(page: Page): Observable<String> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -253,7 +253,7 @@ abstract class HttpSource : CatalogueSource {
      * @param page the chapter whose page list has to be fetched
      */
     open protected fun imageUrlRequest(page: Page): Request {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -269,7 +269,7 @@ abstract class HttpSource : CatalogueSource {
      * @param page the page whose source image has to be downloaded.
      */
     fun fetchImage(page: Page): Observable<Response> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -279,7 +279,7 @@ abstract class HttpSource : CatalogueSource {
      * @param page the chapter whose page list has to be fetched
      */
     open protected fun imageRequest(page: Page): Request {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -289,7 +289,7 @@ abstract class HttpSource : CatalogueSource {
      * @param url the full url to the chapter.
      */
     fun SChapter.setUrlWithoutDomain(url: String) {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -299,7 +299,7 @@ abstract class HttpSource : CatalogueSource {
      * @param url the full url to the manga.
      */
     fun SManga.setUrlWithoutDomain(url: String) {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -308,7 +308,7 @@ abstract class HttpSource : CatalogueSource {
      * @param orig the full url.
      */
     private fun getUrlWithoutDomain(orig: String): String {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
     
     /**
@@ -319,7 +319,7 @@ abstract class HttpSource : CatalogueSource {
      * @return url of the manga
      */
     open fun getMangaUrl(manga: SManga): String {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -330,7 +330,7 @@ abstract class HttpSource : CatalogueSource {
      * @return url of the chapter
      */
     open fun getChapterUrl(chapter: SChapter): String {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -350,6 +350,6 @@ abstract class HttpSource : CatalogueSource {
         replaceWith = ReplaceWith("getSearchFilters")
     )
     override fun getFilterList(): FilterList {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 }

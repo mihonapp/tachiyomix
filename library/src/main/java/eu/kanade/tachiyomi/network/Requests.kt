@@ -6,15 +6,15 @@ import okhttp3.HttpUrl
 import okhttp3.Request
 import okhttp3.RequestBody
 
-private val DEFAULT_CACHE_CONTROL: CacheControl = throw Exception("Stub!")
-private val DEFAULT_HEADERS: Headers = throw Exception("Stub!")
-private val DEFAULT_BODY: RequestBody = throw Exception("Stub!")
+private val DEFAULT_CACHE_CONTROL: CacheControl = throw RuntimeException("Stub!")
+private val DEFAULT_HEADERS: Headers = throw RuntimeException("Stub!")
+private val DEFAULT_BODY: RequestBody = throw RuntimeException("Stub!")
 
 fun GET(url: String,
         headers: Headers = DEFAULT_HEADERS,
         cache: CacheControl = DEFAULT_CACHE_CONTROL): Request {
 
-    throw Exception("Stub!")
+    throw RuntimeException("Stub!")
 }
 
 /**
@@ -24,7 +24,7 @@ fun GET(url: HttpUrl,
         headers: Headers = DEFAULT_HEADERS,
         cache: CacheControl = DEFAULT_CACHE_CONTROL): Request {
 
-    throw Exception("Stub!")
+    throw RuntimeException("Stub!")
 }
 
 fun POST(url: String,
@@ -32,5 +32,5 @@ fun POST(url: String,
          body: RequestBody = DEFAULT_BODY,
          cache: CacheControl = DEFAULT_CACHE_CONTROL): Request {
 
-    throw Exception("Stub!")
+    throw RuntimeException("Stub!")
 }

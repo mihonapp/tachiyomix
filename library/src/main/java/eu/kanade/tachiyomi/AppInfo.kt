@@ -7,7 +7,7 @@ object AppInfo {
      *
      * @since extension-lib 1.3
      */
-    fun getVersionCode(): Int = throw Exception("Stub!")
+    fun getVersionCode(): Int = throw RuntimeException("Stub!")
 
     /**
      * Version name of the host application. May be useful for sharing as User-Agent information.
@@ -15,5 +15,5 @@ object AppInfo {
      *
      * @since extension-lib 1.3
      */
-    fun getVersionName(): String = throw Exception("Stub!")
+    fun getVersionName(): String = throw RuntimeException("Stub!")
 }

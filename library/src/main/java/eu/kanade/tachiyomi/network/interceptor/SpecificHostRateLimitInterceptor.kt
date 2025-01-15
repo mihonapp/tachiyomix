@@ -31,4 +31,4 @@ fun OkHttpClient.Builder.rateLimitHost(
     permits: Int,
     period: Long = 1,
     unit: TimeUnit = TimeUnit.SECONDS,
-): OkHttpClient.Builder = throw Exception("Stub!")
+): OkHttpClient.Builder = throw RuntimeException("Stub!")

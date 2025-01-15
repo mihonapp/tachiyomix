@@ -29,7 +29,7 @@ fun OkHttpClient.Builder.rateLimit(
     permits: Int,
     period: Long = 1,
     unit: TimeUnit = TimeUnit.SECONDS,
-): OkHttpClient.Builder = throw Exception("Stub!")
+): OkHttpClient.Builder = throw RuntimeException("Stub!")
 
 /**
  * An OkHttp interceptor that enforces rate limiting across all requests.
@@ -47,7 +47,7 @@ fun OkHttpClient.Builder.rateLimit(
 fun OkHttpClient.Builder.rateLimit(
     permits: Int,
     period: Duration = 1.seconds
-): OkHttpClient.Builder = throw Exception("Stub!")
+): OkHttpClient.Builder = throw RuntimeException("Stub!")
 
 /**
  * An OkHttp interceptor that handles given url host's rate limiting.
@@ -67,7 +67,7 @@ fun OkHttpClient.Builder.rateLimit(
     url: String,
     permits: Int,
     period: Duration = 1.seconds,
-): OkHttpClient.Builder = throw Exception("Stub!")
+): OkHttpClient.Builder = throw RuntimeException("Stub!")
 
 /**
  * An OkHttp interceptor that handles given url host's rate limiting.
@@ -87,7 +87,7 @@ fun OkHttpClient.Builder.rateLimit(
     httpUrl: HttpUrl,
     permits: Int,
     period: Duration = 1.seconds,
-): OkHttpClient.Builder = throw Exception("Stub!")
+): OkHttpClient.Builder = throw RuntimeException("Stub!")
 
 /**
  * An OkHttp interceptor that enforces conditional rate limiting based on a given condition.
@@ -107,4 +107,4 @@ fun OkHttpClient.Builder.rateLimit(
     permits: Int,
     period: Duration = 1.seconds,
     shouldLimit: (HttpUrl) -> Boolean,
-): OkHttpClient.Builder = throw Exception("Stub!")
+): OkHttpClient.Builder = throw RuntimeException("Stub!")

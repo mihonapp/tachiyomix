@@ -20,7 +20,7 @@ abstract class ParsedHttpSource : HttpSource() {
      * @param response the response from the site.
      */
     override fun popularMangaParse(response: Response): MangasPage {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -48,7 +48,7 @@ abstract class ParsedHttpSource : HttpSource() {
      * @param response the response from the site.
      */
     override fun searchMangaParse(response: Response): MangasPage {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -76,7 +76,7 @@ abstract class ParsedHttpSource : HttpSource() {
      * @param response the response from the site.
      */
     override fun latestUpdatesParse(response: Response): MangasPage {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -104,7 +104,7 @@ abstract class ParsedHttpSource : HttpSource() {
      * @param response the response from the site.
      */
     override fun mangaDetailsParse(response: Response): SManga {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -120,7 +120,7 @@ abstract class ParsedHttpSource : HttpSource() {
      * @param response the response from the site.
      */
     override fun chapterListParse(response: Response): List<SChapter> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -141,7 +141,7 @@ abstract class ParsedHttpSource : HttpSource() {
      * @param response the response from the site.
      */
     override fun pageListParse(response: Response): List<Page> {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -157,7 +157,7 @@ abstract class ParsedHttpSource : HttpSource() {
      * @param response the response from the site.
      */
     override fun imageUrlParse(response: Response): String {
-        throw Exception("Stub!")
+        throw RuntimeException("Stub!")
     }
 
     /**

@@ -3,7 +3,7 @@ package eu.kanade.tachiyomi.source.online
 import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.model.*
-import mihon.source.model.UserAgentType
+import mihonx.source.model.UserAgentType
 import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -16,14 +16,10 @@ import rx.Observable
 @Suppress("unused", "unused_parameter")
 abstract class HttpSource : CatalogueSource {
 
-    override val language: String = throw RuntimeException("Stub!")
-
-    override val hasSearchFilters: Boolean = throw RuntimeException("Stub!")
-
     /**
      * Type of UserAgent a source needs
      */
-    protected open val supportedUserAgentType: UserAgentType = UserAgentType.Any
+    open val supportedUserAgentType: UserAgentType = throw RuntimeException("Stub!")
 
     /**
      * Network service.
@@ -68,7 +64,7 @@ abstract class HttpSource : CatalogueSource {
     /**
      * Headers builder for requests. Implementations can override this method for custom headers.
      */
-    open protected fun headersBuilder(): Headers.Builder {
+    open fun headersBuilder(): Headers.Builder {
         throw RuntimeException("Stub!")
     }
 
@@ -85,6 +81,10 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated(
+        "Use the new suspend variant instead",
+        replaceWith = ReplaceWith("getDefaultMangaList")
+    )
     override fun fetchPopularManga(page: Int): Observable<MangasPage> {
         throw RuntimeException("Stub!")
     }
@@ -94,14 +94,14 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    protected abstract fun popularMangaRequest(page: Int): Request
+    abstract fun popularMangaRequest(page: Int): Request
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
      *
      * @param response the response from the site.
      */
-    protected abstract fun popularMangaParse(response: Response): MangasPage
+    abstract fun popularMangaParse(response: Response): MangasPage
 
     /**
      * Returns an observable containing a page with a list of manga. Normally it's not needed to
@@ -111,6 +111,7 @@ abstract class HttpSource : CatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
+    @Deprecated("Use the new suspend variant instead", replaceWith = ReplaceWith("getMangaList"))
     override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> {
         throw RuntimeException("Stub!")
     }
@@ -122,20 +123,24 @@ abstract class HttpSource : CatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    protected abstract fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
+    abstract fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
      *
      * @param response the response from the site.
      */
-    protected abstract fun searchMangaParse(response: Response): MangasPage
+    abstract fun searchMangaParse(response: Response): MangasPage
 
     /**
      * Returns an observable containing a page with a list of latest manga updates.
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated(
+        "Use the new suspend variant instead",
+        replaceWith = ReplaceWith("getLatestMangaList")
+    )
     override fun fetchLatestUpdates(page: Int): Observable<MangasPage> {
         throw RuntimeException("Stub!")
     }
@@ -145,14 +150,14 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    protected abstract fun latestUpdatesRequest(page: Int): Request
+    abstract fun latestUpdatesRequest(page: Int): Request
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
      *
      * @param response the response from the site.
      */
-    protected abstract fun latestUpdatesParse(response: Response): MangasPage
+    abstract fun latestUpdatesParse(response: Response): MangasPage
 
     /**
      * Returns an observable with the updated details for a manga. Normally it's not needed to
@@ -180,7 +185,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun mangaDetailsParse(response: Response): SManga
+    abstract fun mangaDetailsParse(response: Response): SManga
 
     /**
      * Returns an observable with the updated chapter list for a manga. Normally it's not needed to
@@ -199,7 +204,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to look for chapters.
      */
-    open protected fun chapterListRequest(manga: SManga): Request {
+    open fun chapterListRequest(manga: SManga): Request {
         throw RuntimeException("Stub!")
     }
 
@@ -208,13 +213,14 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun chapterListParse(response: Response): List<SChapter>
+    abstract fun chapterListParse(response: Response): List<SChapter>
 
     /**
      * Returns an observable with the page list for a chapter.
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
+    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getPageList"))
     override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
         throw RuntimeException("Stub!")
     }
@@ -225,7 +231,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
-    open protected fun pageListRequest(chapter: SChapter): Request {
+    open fun pageListRequest(chapter: SChapter): Request {
         throw RuntimeException("Stub!")
     }
 
@@ -234,7 +240,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun pageListParse(response: Response): List<Page>
+    abstract fun pageListParse(response: Response): List<Page>
 
     /**
      * Returns an observable with the page containing the source url of the image. If there's any
@@ -252,7 +258,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the chapter whose page list has to be fetched
      */
-    open protected fun imageUrlRequest(page: Page): Request {
+    open fun imageUrlRequest(page: Page): Request {
         throw RuntimeException("Stub!")
     }
 
@@ -261,7 +267,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun imageUrlParse(response: Response): String
+    abstract fun imageUrlParse(response: Response): String
 
     /**
      * Returns an observable with the response of the source image.
@@ -278,7 +284,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the chapter whose page list has to be fetched
      */
-    open protected fun imageRequest(page: Page): Request {
+    open fun imageRequest(page: Page): Request {
         throw RuntimeException("Stub!")
     }
 
@@ -288,6 +294,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param url the full url to the chapter.
      */
+    @Suppress("UnusedReceiverParameter")
     fun SChapter.setUrlWithoutDomain(url: String) {
         throw RuntimeException("Stub!")
     }
@@ -298,6 +305,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param url the full url to the manga.
      */
+    @Suppress("UnusedReceiverParameter")
     fun SManga.setUrlWithoutDomain(url: String) {
         throw RuntimeException("Stub!")
     }

@@ -26,7 +26,7 @@ abstract class ParsedHttpSource : HttpSource() {
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each manga.
      */
-    protected abstract fun popularMangaSelector(): String
+    abstract fun popularMangaSelector(): String
 
     /**
      * Returns a manga from the given [element]. Most sites only show the title and the url, it's
@@ -34,13 +34,13 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param element an element obtained from [popularMangaSelector].
      */
-    protected abstract fun popularMangaFromElement(element: Element): SManga
+    abstract fun popularMangaFromElement(element: Element): SManga
 
     /**
      * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
      * there's no next page.
      */
-    protected abstract fun popularMangaNextPageSelector(): String?
+    abstract fun popularMangaNextPageSelector(): String?
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
@@ -54,7 +54,7 @@ abstract class ParsedHttpSource : HttpSource() {
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each manga.
      */
-    protected abstract fun searchMangaSelector(): String
+    abstract fun searchMangaSelector(): String
 
     /**
      * Returns a manga from the given [element]. Most sites only show the title and the url, it's
@@ -62,13 +62,13 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param element an element obtained from [searchMangaSelector].
      */
-    protected abstract fun searchMangaFromElement(element: Element): SManga
+    abstract fun searchMangaFromElement(element: Element): SManga
 
     /**
      * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
      * there's no next page.
      */
-    protected abstract fun searchMangaNextPageSelector(): String?
+    abstract fun searchMangaNextPageSelector(): String?
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
@@ -82,7 +82,7 @@ abstract class ParsedHttpSource : HttpSource() {
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each manga.
      */
-    protected abstract fun latestUpdatesSelector(): String
+    abstract fun latestUpdatesSelector(): String
 
     /**
      * Returns a manga from the given [element]. Most sites only show the title and the url, it's
@@ -90,13 +90,13 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param element an element obtained from [latestUpdatesSelector].
      */
-    protected abstract fun latestUpdatesFromElement(element: Element): SManga
+    abstract fun latestUpdatesFromElement(element: Element): SManga
 
     /**
      * Returns the Jsoup selector that returns the <a> tag linking to the next page, or null if
      * there's no next page.
      */
-    protected abstract fun latestUpdatesNextPageSelector(): String?
+    abstract fun latestUpdatesNextPageSelector(): String?
 
     /**
      * Parses the response from the site and returns the details of a manga.
@@ -112,7 +112,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param document the parsed document.
      */
-    protected abstract fun mangaDetailsParse(document: Document): SManga
+    abstract fun mangaDetailsParse(document: Document): SManga
 
     /**
      * Parses the response from the site and returns a list of chapters.
@@ -126,14 +126,14 @@ abstract class ParsedHttpSource : HttpSource() {
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each chapter.
      */
-    protected abstract fun chapterListSelector(): String
+    abstract fun chapterListSelector(): String
 
     /**
      * Returns a chapter from the given element.
      *
      * @param element an element obtained from [chapterListSelector].
      */
-    protected abstract fun chapterFromElement(element: Element): SChapter
+    abstract fun chapterFromElement(element: Element): SChapter
 
     /**
      * Parses the response from the site and returns the page list.
@@ -149,7 +149,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param document the parsed document.
      */
-    protected abstract fun pageListParse(document: Document): List<Page>
+    abstract fun pageListParse(document: Document): List<Page>
 
     /**
      * Parse the response from the site and returns the absolute url to the source image.
@@ -165,5 +165,5 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param document the parsed document.
      */
-    protected abstract fun imageUrlParse(document: Document): String
+    abstract fun imageUrlParse(document: Document): String
 }

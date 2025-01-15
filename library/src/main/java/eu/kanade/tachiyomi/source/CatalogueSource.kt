@@ -11,12 +11,21 @@ interface CatalogueSource : Source {
      * An ISO 639-1 compliant language code (two letters in lower case).
      */
     @Deprecated("Use language instead", ReplaceWith("language"))
-    val lang: String
+    val lang: String get() = throw RuntimeException("Stub!")
+
+    override val language: String get() = throw RuntimeException("Stub!")
 
     /**
      * Whether the source has support for latest updates.
      */
-    val supportsLatest: Boolean
+    @Deprecated("Use hasLatestListing instead", ReplaceWith("hasLatestListing"))
+    val supportsLatest: Boolean get() = throw RuntimeException("Stub!")
+
+    override val hasLatestListing: Boolean get() = throw RuntimeException("Stub!")
+
+    override val hasSearchFilters: Boolean get() = throw RuntimeException("Stub!")
+
+    override suspend fun getSearchFilters(): FilterList = throw RuntimeException("Stub!")
 
     /**
      * Returns an observable containing a page with a list of manga.

@@ -1,4 +1,4 @@
-package mihon.source.model
+package mihonx.source.model
 
 /**
  * Type of UserAgent a source needs

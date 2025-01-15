@@ -43,6 +43,11 @@ interface Source {
     val hasSearchFilters: Boolean
 
     /**
+     * Whether the source has a list for latest updates
+     */
+    val hasLatestListing: Boolean
+
+    /**
      * Returns the list of filters for the source.
      *
      * @since extensions-lib 1.6
@@ -55,7 +60,7 @@ interface Source {
      * @since extensions-lib 1.6
      * @param page the page number to retrieve.
      */
-    suspend fun getDefaultMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
+    suspend fun getDefaultMangaList(page: Int): MangasPage
 
     /**
      * Get a page with a list of latest manga updates.
@@ -73,7 +78,7 @@ interface Source {
      * @param filters the list of filters to apply.
      * @param page the page number to retrieve.
      */
-    suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage = throw RuntimeException("Stub!")
+    suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage
 
     /**
      * Get the updated details for a manga and its chapters
@@ -91,7 +96,7 @@ interface Source {
      * @param manga the manga to update.
      * @return the updated manga.
      */
-    suspend fun getMangaDetails(manga: SManga): SManga = throw RuntimeException("Stub!")
+    suspend fun getMangaDetails(manga: SManga): SManga
 
     /**
      * Get all the available chapters for a manga.
@@ -100,7 +105,7 @@ interface Source {
      * @param manga the manga to update.
      * @return the chapters for the manga.
      */
-    suspend fun getChapterList(manga: SManga): List<SChapter> = throw RuntimeException("Stub!")
+    suspend fun getChapterList(manga: SManga): List<SChapter>
 
     /**
      * Get the list of pages a chapter has. Pages should be returned
@@ -110,25 +115,7 @@ interface Source {
      * @param chapter the chapter.
      * @return the pages for the chapter.
      */
-    suspend fun getPageList(chapter: SChapter): List<Page> = throw RuntimeException("Stub!")
-
-    @Deprecated(
-        "Use the non-RxJava API instead",
-        ReplaceWith("getMangaDetails"),
-    )
-    fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw RuntimeException("Stub!")
-
-    @Deprecated(
-        "Use the non-RxJava API instead",
-        ReplaceWith("getChapterList"),
-    )
-    fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw RuntimeException("Stub!")
-
-    @Deprecated(
-        "Use the non-RxJava API instead",
-        ReplaceWith("getPageList"),
-    )
-    fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw RuntimeException("Stub!")
+    suspend fun getPageList(chapter: SChapter): List<Page>
 
     /**
      * Gets instance of [SharedPreferences] scoped to the specific source.
@@ -138,7 +125,7 @@ interface Source {
     fun getSourcePreferences(): SharedPreferences = throw RuntimeException("Stub!")
 
     /**
-     * Gets instance of [SharedPreferences] corrisponding to the source id
+     * Gets instance of [SharedPreferences] corresponding to the source id
      *
      * @parm id the source id
      * @since extensions-lib 1.6
@@ -149,4 +136,22 @@ interface Source {
         const val MULTI = "multi"
         const val OTHER = "other"
     }
+
+    @Deprecated(
+        "Use the non-RxJava API instead",
+        ReplaceWith("getMangaDetails"),
+    )
+    fun fetchMangaDetails(manga: SManga): Observable<SManga>
+
+    @Deprecated(
+        "Use the non-RxJava API instead",
+        ReplaceWith("getChapterList"),
+    )
+    fun fetchChapterList(manga: SManga): Observable<List<SChapter>>
+
+    @Deprecated(
+        "Use the non-RxJava API instead",
+        ReplaceWith("getPageList"),
+    )
+    fun fetchPageList(chapter: SChapter): Observable<List<Page>>
 }

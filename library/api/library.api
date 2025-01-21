@@ -1,0 +1,545 @@
+public class android/content/Context {
+	public fun <init> ()V
+}
+
+public class androidx/preference/CheckBoxPreference : androidx/preference/TwoStatePreference {
+	public fun <init> (Landroid/content/Context;)V
+}
+
+public abstract class androidx/preference/DialogPreference : androidx/preference/Preference {
+	public fun <init> ()V
+	public fun getDialogMessage ()Ljava/lang/CharSequence;
+	public fun getDialogTitle ()Ljava/lang/CharSequence;
+	public fun setDialogMessage (Ljava/lang/CharSequence;)V
+	public fun setDialogTitle (Ljava/lang/CharSequence;)V
+}
+
+public class androidx/preference/EditTextPreference : androidx/preference/DialogPreference {
+	public fun <init> (Landroid/content/Context;)V
+	public fun getText ()Ljava/lang/String;
+	public fun setOnBindEditTextListener (Landroidx/preference/EditTextPreference$OnBindEditTextListener;)V
+	public fun setText (Ljava/lang/String;)V
+}
+
+public abstract interface class androidx/preference/EditTextPreference$OnBindEditTextListener {
+	public abstract fun onBindEditText (Landroid/widget/EditText;)V
+}
+
+public class androidx/preference/ListPreference : androidx/preference/Preference {
+	public fun <init> (Landroid/content/Context;)V
+	public fun findIndexOfValue (Ljava/lang/String;)I
+	public fun getEntries ()[Ljava/lang/CharSequence;
+	public fun getEntryValues ()[Ljava/lang/CharSequence;
+	public fun getValue ()Ljava/lang/String;
+	public fun setEntries ([Ljava/lang/CharSequence;)V
+	public fun setEntryValues ([Ljava/lang/CharSequence;)V
+	public fun setValue (Ljava/lang/String;)V
+	public fun setValueIndex (I)V
+}
+
+public class androidx/preference/MultiSelectListPreference : androidx/preference/DialogPreference {
+	public fun <init> (Landroid/content/Context;)V
+	public fun findIndexOfValue (Ljava/lang/String;)I
+	public fun getEntries ()[Ljava/lang/CharSequence;
+	public fun getEntryValues ()[Ljava/lang/CharSequence;
+	public fun getValues ()Ljava/util/Set;
+	public fun setEntries ([Ljava/lang/CharSequence;)V
+	public fun setEntryValues ([Ljava/lang/CharSequence;)V
+	public fun setValues (Ljava/util/Set;)V
+}
+
+public class androidx/preference/Preference {
+	public fun <init> ()V
+	public fun getKey ()Ljava/lang/String;
+	public fun getSummary ()Ljava/lang/CharSequence;
+	public fun getTitle ()Ljava/lang/CharSequence;
+	public fun setDefaultValue (Ljava/lang/Object;)V
+	public fun setEnabled (Z)V
+	public fun setKey (Ljava/lang/String;)V
+	public fun setOnPreferenceChangeListener (Landroidx/preference/Preference$OnPreferenceChangeListener;)V
+	public fun setOnPreferenceClickListener (Landroidx/preference/Preference$OnPreferenceClickListener;)V
+	public fun setSummary (Ljava/lang/CharSequence;)V
+	public fun setTitle (Ljava/lang/CharSequence;)V
+	public fun setVisible (Z)V
+}
+
+public abstract interface class androidx/preference/Preference$OnPreferenceChangeListener {
+	public abstract fun onPreferenceChange (Landroidx/preference/Preference;Ljava/lang/Object;)Z
+}
+
+public abstract interface class androidx/preference/Preference$OnPreferenceClickListener {
+	public abstract fun onPreferenceClick (Landroidx/preference/Preference;)Z
+}
+
+public class androidx/preference/PreferenceScreen {
+	public fun <init> ()V
+	public fun addPreference (Landroidx/preference/Preference;)Z
+	public fun getContext ()Landroid/content/Context;
+}
+
+public class androidx/preference/SwitchPreferenceCompat : androidx/preference/TwoStatePreference {
+	public fun <init> (Landroid/content/Context;)V
+}
+
+public class androidx/preference/TwoStatePreference : androidx/preference/Preference {
+	public fun <init> (Landroid/content/Context;)V
+	public fun getDisableDependentsState ()Z
+	public fun getSummaryOff ()Ljava/lang/CharSequence;
+	public fun getSummaryOn ()Ljava/lang/CharSequence;
+	public fun isChecked ()Z
+	public fun setChecked (Z)V
+	public fun setDisableDependentsState (Z)V
+	public fun setSummaryOff (Ljava/lang/CharSequence;)V
+	public fun setSummaryOn (Ljava/lang/CharSequence;)V
+}
+
+public final class eu/kanade/tachiyomi/AppInfo {
+	public static final field INSTANCE Leu/kanade/tachiyomi/AppInfo;
+	public final fun getVersionCode ()I
+	public final fun getVersionName ()Ljava/lang/String;
+}
+
+public final class eu/kanade/tachiyomi/network/HttpException : java/lang/IllegalStateException {
+	public fun <init> (I)V
+	public final fun getCode ()I
+}
+
+public final class eu/kanade/tachiyomi/network/JavaScriptEngine {
+	public fun <init> (Landroid/content/Context;)V
+	public final fun evaluate (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class eu/kanade/tachiyomi/network/NetworkHelper {
+	public fun <init> (Landroid/content/Context;)V
+	public final fun getClient ()Lokhttp3/OkHttpClient;
+	public final fun getCloudflareClient ()Lokhttp3/OkHttpClient;
+}
+
+public final class eu/kanade/tachiyomi/network/OkHttpExtensionsKt {
+	public static final fun asObservable (Lokhttp3/Call;)Lrx/Observable;
+	public static final fun asObservableSuccess (Lokhttp3/Call;)Lrx/Observable;
+	public static final fun await (Lokhttp3/Call;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun awaitSuccess (Lokhttp3/Call;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class eu/kanade/tachiyomi/network/RequestsKt {
+	public static final fun GET (Ljava/lang/String;Lokhttp3/Headers;Lokhttp3/CacheControl;)Lokhttp3/Request;
+	public static final fun GET (Lokhttp3/HttpUrl;Lokhttp3/Headers;Lokhttp3/CacheControl;)Lokhttp3/Request;
+	public static synthetic fun GET$default (Ljava/lang/String;Lokhttp3/Headers;Lokhttp3/CacheControl;ILjava/lang/Object;)Lokhttp3/Request;
+	public static synthetic fun GET$default (Lokhttp3/HttpUrl;Lokhttp3/Headers;Lokhttp3/CacheControl;ILjava/lang/Object;)Lokhttp3/Request;
+	public static final fun POST (Ljava/lang/String;Lokhttp3/Headers;Lokhttp3/RequestBody;Lokhttp3/CacheControl;)Lokhttp3/Request;
+	public static synthetic fun POST$default (Ljava/lang/String;Lokhttp3/Headers;Lokhttp3/RequestBody;Lokhttp3/CacheControl;ILjava/lang/Object;)Lokhttp3/Request;
+}
+
+public final class eu/kanade/tachiyomi/network/interceptor/RateLimitInterceptorKt {
+	public static final fun rateLimit (Lokhttp3/OkHttpClient$Builder;IJLjava/util/concurrent/TimeUnit;)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimit$default (Lokhttp3/OkHttpClient$Builder;IJLjava/util/concurrent/TimeUnit;ILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
+	public static final fun rateLimit-SxA4cEA (Lokhttp3/OkHttpClient$Builder;IJ)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimit-SxA4cEA$default (Lokhttp3/OkHttpClient$Builder;IJILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
+	public static final fun rateLimit-Wn2Vu4Y (Lokhttp3/OkHttpClient$Builder;Ljava/lang/String;IJ)Lokhttp3/OkHttpClient$Builder;
+	public static final fun rateLimit-Wn2Vu4Y (Lokhttp3/OkHttpClient$Builder;Lokhttp3/HttpUrl;IJ)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimit-Wn2Vu4Y$default (Lokhttp3/OkHttpClient$Builder;Ljava/lang/String;IJILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimit-Wn2Vu4Y$default (Lokhttp3/OkHttpClient$Builder;Lokhttp3/HttpUrl;IJILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
+	public static final fun rateLimit-exY8QGI (Lokhttp3/OkHttpClient$Builder;IJLkotlin/jvm/functions/Function1;)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimit-exY8QGI$default (Lokhttp3/OkHttpClient$Builder;IJLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
+}
+
+public final class eu/kanade/tachiyomi/network/interceptor/SpecificHostRateLimitInterceptorKt {
+	public static final fun rateLimitHost (Lokhttp3/OkHttpClient$Builder;Lokhttp3/HttpUrl;IJLjava/util/concurrent/TimeUnit;)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimitHost$default (Lokhttp3/OkHttpClient$Builder;Lokhttp3/HttpUrl;IJLjava/util/concurrent/TimeUnit;ILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
+}
+
+public abstract interface class eu/kanade/tachiyomi/source/CatalogueSource : eu/kanade/tachiyomi/source/Source {
+	public abstract fun fetchLatestUpdates (I)Lrx/Observable;
+	public abstract fun fetchPopularManga (I)Lrx/Observable;
+	public abstract fun fetchSearchManga (ILjava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;)Lrx/Observable;
+	public abstract fun getFilterList ()Leu/kanade/tachiyomi/source/model/FilterList;
+	public abstract fun getHasLatestListing ()Z
+	public abstract fun getHasSearchFilters ()Z
+	public abstract fun getLang ()Ljava/lang/String;
+	public abstract fun getLanguage ()Ljava/lang/String;
+	public abstract fun getSearchFilters (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getSupportsLatest ()Z
+}
+
+public final class eu/kanade/tachiyomi/source/CatalogueSource$DefaultImpls {
+	public static fun getHasLatestListing (Leu/kanade/tachiyomi/source/CatalogueSource;)Z
+	public static fun getHasSearchFilters (Leu/kanade/tachiyomi/source/CatalogueSource;)Z
+	public static fun getLang (Leu/kanade/tachiyomi/source/CatalogueSource;)Ljava/lang/String;
+	public static fun getLanguage (Leu/kanade/tachiyomi/source/CatalogueSource;)Ljava/lang/String;
+	public static fun getLatestMangaList (Leu/kanade/tachiyomi/source/CatalogueSource;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun getMangaDetailsAndChapters (Leu/kanade/tachiyomi/source/CatalogueSource;Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun getSearchFilters (Leu/kanade/tachiyomi/source/CatalogueSource;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun getSourcePreferences (Leu/kanade/tachiyomi/source/CatalogueSource;)Landroid/content/SharedPreferences;
+	public static fun getSourcePreferences (Leu/kanade/tachiyomi/source/CatalogueSource;J)Landroid/content/SharedPreferences;
+	public static fun getSupportsLatest (Leu/kanade/tachiyomi/source/CatalogueSource;)Z
+}
+
+public abstract interface class eu/kanade/tachiyomi/source/ConfigurableSource {
+	public abstract fun setupPreferenceScreen (Landroidx/preference/PreferenceScreen;)V
+}
+
+public abstract interface class eu/kanade/tachiyomi/source/Source {
+	public abstract fun fetchChapterList (Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
+	public abstract fun fetchMangaDetails (Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
+	public abstract fun fetchPageList (Leu/kanade/tachiyomi/source/model/SChapter;)Lrx/Observable;
+	public abstract fun getChapterList (Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getDefaultMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getHasLatestListing ()Z
+	public abstract fun getHasSearchFilters ()Z
+	public abstract fun getId ()J
+	public abstract fun getLanguage ()Ljava/lang/String;
+	public abstract fun getLatestMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getMangaDetails (Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getMangaDetailsAndChapters (Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getMangaList (Ljava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getPageList (Leu/kanade/tachiyomi/source/model/SChapter;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getSearchFilters (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getSourcePreferences ()Landroid/content/SharedPreferences;
+	public abstract fun getSourcePreferences (J)Landroid/content/SharedPreferences;
+}
+
+public final class eu/kanade/tachiyomi/source/Source$DefaultImpls {
+	public static fun getLatestMangaList (Leu/kanade/tachiyomi/source/Source;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun getMangaDetailsAndChapters (Leu/kanade/tachiyomi/source/Source;Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun getSourcePreferences (Leu/kanade/tachiyomi/source/Source;)Landroid/content/SharedPreferences;
+	public static fun getSourcePreferences (Leu/kanade/tachiyomi/source/Source;J)Landroid/content/SharedPreferences;
+}
+
+public final class eu/kanade/tachiyomi/source/Source$Language {
+	public static final field INSTANCE Leu/kanade/tachiyomi/source/Source$Language;
+	public static final field MULTI Ljava/lang/String;
+	public static final field OTHER Ljava/lang/String;
+}
+
+public abstract interface class eu/kanade/tachiyomi/source/SourceFactory {
+	public abstract fun createSources ()Ljava/util/List;
+}
+
+public abstract interface class eu/kanade/tachiyomi/source/UnmeteredSource {
+}
+
+public abstract class eu/kanade/tachiyomi/source/model/Filter {
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Object;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getName ()Ljava/lang/String;
+	public final fun getState ()Ljava/lang/Object;
+	public final fun setState (Ljava/lang/Object;)V
+}
+
+public abstract class eu/kanade/tachiyomi/source/model/Filter$CheckBox : eu/kanade/tachiyomi/source/model/Filter {
+	public fun <init> (Ljava/lang/String;Z)V
+	public synthetic fun <init> (Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public abstract class eu/kanade/tachiyomi/source/model/Filter$Group : eu/kanade/tachiyomi/source/model/Filter {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+}
+
+public class eu/kanade/tachiyomi/source/model/Filter$Header : eu/kanade/tachiyomi/source/model/Filter {
+	public fun <init> (Ljava/lang/String;)V
+}
+
+public abstract class eu/kanade/tachiyomi/source/model/Filter$Select : eu/kanade/tachiyomi/source/model/Filter {
+	public fun <init> (Ljava/lang/String;[Ljava/lang/Object;I)V
+	public synthetic fun <init> (Ljava/lang/String;[Ljava/lang/Object;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getValues ()[Ljava/lang/Object;
+}
+
+public class eu/kanade/tachiyomi/source/model/Filter$Separator : eu/kanade/tachiyomi/source/model/Filter {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public abstract class eu/kanade/tachiyomi/source/model/Filter$Sort : eu/kanade/tachiyomi/source/model/Filter {
+	public fun <init> (Ljava/lang/String;[Ljava/lang/String;Leu/kanade/tachiyomi/source/model/Filter$Sort$Selection;)V
+	public synthetic fun <init> (Ljava/lang/String;[Ljava/lang/String;Leu/kanade/tachiyomi/source/model/Filter$Sort$Selection;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getValues ()[Ljava/lang/String;
+}
+
+public final class eu/kanade/tachiyomi/source/model/Filter$Sort$Selection {
+	public fun <init> (IZ)V
+	public final fun component1 ()I
+	public final fun component2 ()Z
+	public final fun copy (IZ)Leu/kanade/tachiyomi/source/model/Filter$Sort$Selection;
+	public static synthetic fun copy$default (Leu/kanade/tachiyomi/source/model/Filter$Sort$Selection;IZILjava/lang/Object;)Leu/kanade/tachiyomi/source/model/Filter$Sort$Selection;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAscending ()Z
+	public final fun getIndex ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class eu/kanade/tachiyomi/source/model/Filter$Text : eu/kanade/tachiyomi/source/model/Filter {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public abstract class eu/kanade/tachiyomi/source/model/Filter$TriState : eu/kanade/tachiyomi/source/model/Filter {
+	public static final field Companion Leu/kanade/tachiyomi/source/model/Filter$TriState$Companion;
+	public static final field STATE_EXCLUDE I
+	public static final field STATE_IGNORE I
+	public static final field STATE_INCLUDE I
+	public fun <init> (Ljava/lang/String;I)V
+	public synthetic fun <init> (Ljava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun isExcluded ()Z
+	public final fun isIgnored ()Z
+	public final fun isIncluded ()Z
+}
+
+public final class eu/kanade/tachiyomi/source/model/Filter$TriState$Companion {
+}
+
+public final class eu/kanade/tachiyomi/source/model/FilterList : java/util/List, kotlin/jvm/internal/markers/KMappedMarker {
+	public fun <init> (Ljava/util/List;)V
+	public fun <init> ([Leu/kanade/tachiyomi/source/model/Filter;)V
+	public fun add (ILeu/kanade/tachiyomi/source/model/Filter;)V
+	public synthetic fun add (ILjava/lang/Object;)V
+	public fun add (Leu/kanade/tachiyomi/source/model/Filter;)Z
+	public synthetic fun add (Ljava/lang/Object;)Z
+	public fun addAll (ILjava/util/Collection;)Z
+	public fun addAll (Ljava/util/Collection;)Z
+	public fun clear ()V
+	public final fun component1 ()Ljava/util/List;
+	public fun contains (Leu/kanade/tachiyomi/source/model/Filter;)Z
+	public final fun contains (Ljava/lang/Object;)Z
+	public fun containsAll (Ljava/util/Collection;)Z
+	public final fun copy (Ljava/util/List;)Leu/kanade/tachiyomi/source/model/FilterList;
+	public static synthetic fun copy$default (Leu/kanade/tachiyomi/source/model/FilterList;Ljava/util/List;ILjava/lang/Object;)Leu/kanade/tachiyomi/source/model/FilterList;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun get (I)Leu/kanade/tachiyomi/source/model/Filter;
+	public synthetic fun get (I)Ljava/lang/Object;
+	public final fun getList ()Ljava/util/List;
+	public fun getSize ()I
+	public fun hashCode ()I
+	public fun indexOf (Leu/kanade/tachiyomi/source/model/Filter;)I
+	public final fun indexOf (Ljava/lang/Object;)I
+	public fun isEmpty ()Z
+	public fun iterator ()Ljava/util/Iterator;
+	public fun lastIndexOf (Leu/kanade/tachiyomi/source/model/Filter;)I
+	public final fun lastIndexOf (Ljava/lang/Object;)I
+	public fun listIterator ()Ljava/util/ListIterator;
+	public fun listIterator (I)Ljava/util/ListIterator;
+	public fun remove (I)Leu/kanade/tachiyomi/source/model/Filter;
+	public synthetic fun remove (I)Ljava/lang/Object;
+	public fun remove (Ljava/lang/Object;)Z
+	public fun removeAll (Ljava/util/Collection;)Z
+	public fun replaceAll (Ljava/util/function/UnaryOperator;)V
+	public fun retainAll (Ljava/util/Collection;)Z
+	public fun set (ILeu/kanade/tachiyomi/source/model/Filter;)Leu/kanade/tachiyomi/source/model/Filter;
+	public synthetic fun set (ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun size ()I
+	public fun sort (Ljava/util/Comparator;)V
+	public fun subList (II)Ljava/util/List;
+	public fun toArray ()[Ljava/lang/Object;
+	public fun toArray ([Ljava/lang/Object;)[Ljava/lang/Object;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class eu/kanade/tachiyomi/source/model/MangasPage {
+	public fun <init> (Ljava/util/List;Z)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/util/List;Z)Leu/kanade/tachiyomi/source/model/MangasPage;
+	public static synthetic fun copy$default (Leu/kanade/tachiyomi/source/model/MangasPage;Ljava/util/List;ZILjava/lang/Object;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasNextPage ()Z
+	public final fun getMangas ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class eu/kanade/tachiyomi/source/model/Page {
+	public fun <init> (ILjava/lang/String;Ljava/lang/String;Landroid/net/Uri;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Landroid/net/Uri;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getImageUrl ()Ljava/lang/String;
+	public final fun getIndex ()I
+	public final fun getUri ()Landroid/net/Uri;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun setImageUrl (Ljava/lang/String;)V
+	public final fun setUri (Landroid/net/Uri;)V
+}
+
+public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
+	public static final field Companion Leu/kanade/tachiyomi/source/model/SChapter$Companion;
+	public abstract fun getChapter_number ()F
+	public abstract fun getDate_upload ()J
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getScanlator ()Ljava/lang/String;
+	public abstract fun getUrl ()Ljava/lang/String;
+	public abstract fun setChapter_number (F)V
+	public abstract fun setDate_upload (J)V
+	public abstract fun setName (Ljava/lang/String;)V
+	public abstract fun setScanlator (Ljava/lang/String;)V
+	public abstract fun setUrl (Ljava/lang/String;)V
+}
+
+public final class eu/kanade/tachiyomi/source/model/SChapter$Companion {
+	public final fun create ()Leu/kanade/tachiyomi/source/model/SChapter;
+}
+
+public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
+	public static final field CANCELLED I
+	public static final field COMPLETED I
+	public static final field Companion Leu/kanade/tachiyomi/source/model/SManga$Companion;
+	public static final field LICENSED I
+	public static final field ONGOING I
+	public static final field ON_HIATUS I
+	public static final field PUBLISHING_FINISHED I
+	public static final field UNKNOWN I
+	public abstract fun getArtist ()Ljava/lang/String;
+	public abstract fun getAuthor ()Ljava/lang/String;
+	public abstract fun getDescription ()Ljava/lang/String;
+	public abstract fun getGenre ()Ljava/lang/String;
+	public abstract fun getInitialized ()Z
+	public abstract fun getStatus ()I
+	public abstract fun getThumbnail_url ()Ljava/lang/String;
+	public abstract fun getTitle ()Ljava/lang/String;
+	public abstract fun getUpdate_strategy ()Leu/kanade/tachiyomi/source/model/UpdateStrategy;
+	public abstract fun getUrl ()Ljava/lang/String;
+	public abstract fun setArtist (Ljava/lang/String;)V
+	public abstract fun setAuthor (Ljava/lang/String;)V
+	public abstract fun setDescription (Ljava/lang/String;)V
+	public abstract fun setGenre (Ljava/lang/String;)V
+	public abstract fun setInitialized (Z)V
+	public abstract fun setStatus (I)V
+	public abstract fun setThumbnail_url (Ljava/lang/String;)V
+	public abstract fun setTitle (Ljava/lang/String;)V
+	public abstract fun setUpdate_strategy (Leu/kanade/tachiyomi/source/model/UpdateStrategy;)V
+	public abstract fun setUrl (Ljava/lang/String;)V
+}
+
+public final class eu/kanade/tachiyomi/source/model/SManga$Companion {
+	public static final field CANCELLED I
+	public static final field COMPLETED I
+	public static final field LICENSED I
+	public static final field ONGOING I
+	public static final field ON_HIATUS I
+	public static final field PUBLISHING_FINISHED I
+	public static final field UNKNOWN I
+	public final fun create ()Leu/kanade/tachiyomi/source/model/SManga;
+}
+
+public final class eu/kanade/tachiyomi/source/model/UpdateStrategy : java/lang/Enum {
+	public static final field ALWAYS_UPDATE Leu/kanade/tachiyomi/source/model/UpdateStrategy;
+	public static final field ONLY_FETCH_ONCE Leu/kanade/tachiyomi/source/model/UpdateStrategy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Leu/kanade/tachiyomi/source/model/UpdateStrategy;
+	public static fun values ()[Leu/kanade/tachiyomi/source/model/UpdateStrategy;
+}
+
+public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/tachiyomi/source/CatalogueSource {
+	public fun <init> ()V
+	protected abstract fun chapterListParse (Lokhttp3/Response;)Ljava/util/List;
+	protected fun chapterListRequest (Leu/kanade/tachiyomi/source/model/SManga;)Lokhttp3/Request;
+	public fun fetchChapterList (Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
+	public final fun fetchImage (Leu/kanade/tachiyomi/source/model/Page;)Lrx/Observable;
+	public fun fetchImageUrl (Leu/kanade/tachiyomi/source/model/Page;)Lrx/Observable;
+	public fun fetchLatestUpdates (I)Lrx/Observable;
+	public fun fetchMangaDetails (Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
+	public fun fetchPageList (Leu/kanade/tachiyomi/source/model/SChapter;)Lrx/Observable;
+	public fun fetchPopularManga (I)Lrx/Observable;
+	public fun fetchSearchManga (ILjava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;)Lrx/Observable;
+	public abstract fun getBaseUrl ()Ljava/lang/String;
+	public fun getChapterUrl (Leu/kanade/tachiyomi/source/model/SChapter;)Ljava/lang/String;
+	public fun getClient ()Lokhttp3/OkHttpClient;
+	public fun getFilterList ()Leu/kanade/tachiyomi/source/model/FilterList;
+	public fun getHasLatestListing ()Z
+	public fun getHasSearchFilters ()Z
+	public final fun getHeaders ()Lokhttp3/Headers;
+	public fun getId ()J
+	public fun getLang ()Ljava/lang/String;
+	public fun getLanguage ()Ljava/lang/String;
+	public fun getLatestMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getMangaDetailsAndChapters (Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getMangaUrl (Leu/kanade/tachiyomi/source/model/SManga;)Ljava/lang/String;
+	protected final fun getNetwork ()Leu/kanade/tachiyomi/network/NetworkHelper;
+	public fun getSearchFilters (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getSourcePreferences ()Landroid/content/SharedPreferences;
+	public fun getSourcePreferences (J)Landroid/content/SharedPreferences;
+	protected fun getSupportedUserAgentType ()Lmihonx/source/model/UserAgentType;
+	public fun getSupportsLatest ()Z
+	protected final fun getUserAgent ()Ljava/lang/String;
+	public fun getVersionId ()I
+	protected fun headersBuilder ()Lokhttp3/Headers$Builder;
+	protected fun imageRequest (Leu/kanade/tachiyomi/source/model/Page;)Lokhttp3/Request;
+	protected abstract fun imageUrlParse (Lokhttp3/Response;)Ljava/lang/String;
+	protected fun imageUrlRequest (Leu/kanade/tachiyomi/source/model/Page;)Lokhttp3/Request;
+	protected abstract fun latestUpdatesParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	protected abstract fun latestUpdatesRequest (I)Lokhttp3/Request;
+	protected abstract fun mangaDetailsParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/SManga;
+	public fun mangaDetailsRequest (Leu/kanade/tachiyomi/source/model/SManga;)Lokhttp3/Request;
+	protected abstract fun pageListParse (Lokhttp3/Response;)Ljava/util/List;
+	protected fun pageListRequest (Leu/kanade/tachiyomi/source/model/SChapter;)Lokhttp3/Request;
+	protected abstract fun popularMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	protected abstract fun popularMangaRequest (I)Lokhttp3/Request;
+	public fun prepareNewChapter (Leu/kanade/tachiyomi/source/model/SChapter;Leu/kanade/tachiyomi/source/model/SManga;)V
+	protected abstract fun searchMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	protected abstract fun searchMangaRequest (ILjava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;)Lokhttp3/Request;
+	public final fun setUrlWithoutDomain (Leu/kanade/tachiyomi/source/model/SChapter;Ljava/lang/String;)V
+	public final fun setUrlWithoutDomain (Leu/kanade/tachiyomi/source/model/SManga;Ljava/lang/String;)V
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class eu/kanade/tachiyomi/source/online/ParsedHttpSource : eu/kanade/tachiyomi/source/online/HttpSource {
+	public fun <init> ()V
+	protected abstract fun chapterFromElement (Lorg/jsoup/nodes/Element;)Leu/kanade/tachiyomi/source/model/SChapter;
+	protected fun chapterListParse (Lokhttp3/Response;)Ljava/util/List;
+	protected abstract fun chapterListSelector ()Ljava/lang/String;
+	protected fun imageUrlParse (Lokhttp3/Response;)Ljava/lang/String;
+	protected abstract fun imageUrlParse (Lorg/jsoup/nodes/Document;)Ljava/lang/String;
+	protected abstract fun latestUpdatesFromElement (Lorg/jsoup/nodes/Element;)Leu/kanade/tachiyomi/source/model/SManga;
+	protected abstract fun latestUpdatesNextPageSelector ()Ljava/lang/String;
+	protected fun latestUpdatesParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	protected abstract fun latestUpdatesSelector ()Ljava/lang/String;
+	protected fun mangaDetailsParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/SManga;
+	protected abstract fun mangaDetailsParse (Lorg/jsoup/nodes/Document;)Leu/kanade/tachiyomi/source/model/SManga;
+	protected fun pageListParse (Lokhttp3/Response;)Ljava/util/List;
+	protected abstract fun pageListParse (Lorg/jsoup/nodes/Document;)Ljava/util/List;
+	protected abstract fun popularMangaFromElement (Lorg/jsoup/nodes/Element;)Leu/kanade/tachiyomi/source/model/SManga;
+	protected abstract fun popularMangaNextPageSelector ()Ljava/lang/String;
+	protected fun popularMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	protected abstract fun popularMangaSelector ()Ljava/lang/String;
+	protected abstract fun searchMangaFromElement (Lorg/jsoup/nodes/Element;)Leu/kanade/tachiyomi/source/model/SManga;
+	protected abstract fun searchMangaNextPageSelector ()Ljava/lang/String;
+	protected fun searchMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	protected abstract fun searchMangaSelector ()Ljava/lang/String;
+}
+
+public final class eu/kanade/tachiyomi/util/JsoupExtensionsKt {
+	public static final fun asJsoup (Lokhttp3/Response;Ljava/lang/String;)Lorg/jsoup/nodes/Document;
+	public static synthetic fun asJsoup$default (Lokhttp3/Response;Ljava/lang/String;ILjava/lang/Object;)Lorg/jsoup/nodes/Document;
+}
+
+public abstract interface class mihonx/source/model/UserAgentType {
+}
+
+public final class mihonx/source/model/UserAgentType$Any : mihonx/source/model/UserAgentType {
+	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Any;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class mihonx/source/model/UserAgentType$Desktop : mihonx/source/model/UserAgentType {
+	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Desktop;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class mihonx/source/model/UserAgentType$Mobile : mihonx/source/model/UserAgentType {
+	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Mobile;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class mihonx/source/model/UserAgentType$Unmanaged : mihonx/source/model/UserAgentType {
+	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Unmanaged;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

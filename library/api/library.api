@@ -543,3 +543,8 @@ public final class mihonx/source/model/UserAgentType$Unmanaged : mihonx/source/m
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class mihonx/utils/KsoupKt {
+	public static final fun parseAsDocument (Ljava/lang/String;Ljava/lang/String;)Lcom/fleeksoft/ksoup/nodes/Document;
+	public static final fun parseAsDocument (Lokhttp3/Response;)Lcom/fleeksoft/ksoup/nodes/Document;
+}
+

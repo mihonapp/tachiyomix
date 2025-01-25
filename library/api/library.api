@@ -134,14 +134,6 @@ public final class eu/kanade/tachiyomi/network/RequestsKt {
 public final class eu/kanade/tachiyomi/network/interceptor/RateLimitInterceptorKt {
 	public static final fun rateLimit (Lokhttp3/OkHttpClient$Builder;IJLjava/util/concurrent/TimeUnit;)Lokhttp3/OkHttpClient$Builder;
 	public static synthetic fun rateLimit$default (Lokhttp3/OkHttpClient$Builder;IJLjava/util/concurrent/TimeUnit;ILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
-	public static final fun rateLimit-SxA4cEA (Lokhttp3/OkHttpClient$Builder;IJ)Lokhttp3/OkHttpClient$Builder;
-	public static synthetic fun rateLimit-SxA4cEA$default (Lokhttp3/OkHttpClient$Builder;IJILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
-	public static final fun rateLimit-Wn2Vu4Y (Lokhttp3/OkHttpClient$Builder;Ljava/lang/String;IJ)Lokhttp3/OkHttpClient$Builder;
-	public static final fun rateLimit-Wn2Vu4Y (Lokhttp3/OkHttpClient$Builder;Lokhttp3/HttpUrl;IJ)Lokhttp3/OkHttpClient$Builder;
-	public static synthetic fun rateLimit-Wn2Vu4Y$default (Lokhttp3/OkHttpClient$Builder;Ljava/lang/String;IJILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
-	public static synthetic fun rateLimit-Wn2Vu4Y$default (Lokhttp3/OkHttpClient$Builder;Lokhttp3/HttpUrl;IJILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
-	public static final fun rateLimit-exY8QGI (Lokhttp3/OkHttpClient$Builder;IJLkotlin/jvm/functions/Function1;)Lokhttp3/OkHttpClient$Builder;
-	public static synthetic fun rateLimit-exY8QGI$default (Lokhttp3/OkHttpClient$Builder;IJLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
 }
 
 public final class eu/kanade/tachiyomi/network/interceptor/SpecificHostRateLimitInterceptorKt {
@@ -510,6 +502,17 @@ public abstract class eu/kanade/tachiyomi/source/online/ParsedHttpSource : eu/ka
 public final class eu/kanade/tachiyomi/util/JsoupExtensionsKt {
 	public static final fun asJsoup (Lokhttp3/Response;Ljava/lang/String;)Lorg/jsoup/nodes/Document;
 	public static synthetic fun asJsoup$default (Lokhttp3/Response;Ljava/lang/String;ILjava/lang/Object;)Lorg/jsoup/nodes/Document;
+}
+
+public final class mihonx/network/RateLimitKt {
+	public static final fun rateLimit-SxA4cEA (Lokhttp3/OkHttpClient$Builder;IJ)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimit-SxA4cEA$default (Lokhttp3/OkHttpClient$Builder;IJILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
+	public static final fun rateLimit-Wn2Vu4Y (Lokhttp3/OkHttpClient$Builder;Ljava/lang/String;IJ)Lokhttp3/OkHttpClient$Builder;
+	public static final fun rateLimit-Wn2Vu4Y (Lokhttp3/OkHttpClient$Builder;Lokhttp3/HttpUrl;IJ)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimit-Wn2Vu4Y$default (Lokhttp3/OkHttpClient$Builder;Ljava/lang/String;IJILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimit-Wn2Vu4Y$default (Lokhttp3/OkHttpClient$Builder;Lokhttp3/HttpUrl;IJILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
+	public static final fun rateLimit-exY8QGI (Lokhttp3/OkHttpClient$Builder;IJLkotlin/jvm/functions/Function1;)Lokhttp3/OkHttpClient$Builder;
+	public static synthetic fun rateLimit-exY8QGI$default (Lokhttp3/OkHttpClient$Builder;IJLkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lokhttp3/OkHttpClient$Builder;
 }
 
 public abstract interface class mihonx/source/model/UserAgentType {

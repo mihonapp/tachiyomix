@@ -64,7 +64,7 @@ abstract class HttpSource : CatalogueSource {
     /**
      * Headers builder for requests. Implementations can override this method for custom headers.
      */
-    open protected fun headersBuilder(): Headers.Builder {
+    protected open fun headersBuilder(): Headers.Builder {
         throw RuntimeException("Stub!")
     }
 
@@ -81,6 +81,10 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated(
+        "Use the new suspend variant instead",
+        replaceWith = ReplaceWith("getDefaultMangaList")
+    )
     override fun fetchPopularManga(page: Int): Observable<MangasPage> {
         throw RuntimeException("Stub!")
     }
@@ -107,6 +111,7 @@ abstract class HttpSource : CatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
+    @Deprecated("Use the new suspend variant instead", replaceWith = ReplaceWith("getMangaList"))
     override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> {
         throw RuntimeException("Stub!")
     }
@@ -132,6 +137,10 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated(
+        "Use the new suspend variant instead",
+        replaceWith = ReplaceWith("getLatestMangaList")
+    )
     override fun fetchLatestUpdates(page: Int): Observable<MangasPage> {
         throw RuntimeException("Stub!")
     }
@@ -195,7 +204,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to look for chapters.
      */
-    open protected fun chapterListRequest(manga: SManga): Request {
+    protected open fun chapterListRequest(manga: SManga): Request {
         throw RuntimeException("Stub!")
     }
 
@@ -211,6 +220,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
+    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getPageList"))
     override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
         throw RuntimeException("Stub!")
     }
@@ -221,7 +231,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
-    open protected fun pageListRequest(chapter: SChapter): Request {
+    protected open fun pageListRequest(chapter: SChapter): Request {
         throw RuntimeException("Stub!")
     }
 
@@ -248,7 +258,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the chapter whose page list has to be fetched
      */
-    open protected fun imageUrlRequest(page: Page): Request {
+    protected open fun imageUrlRequest(page: Page): Request {
         throw RuntimeException("Stub!")
     }
 
@@ -274,7 +284,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the chapter whose page list has to be fetched
      */
-    open protected fun imageRequest(page: Page): Request {
+    protected open fun imageRequest(page: Page): Request {
         throw RuntimeException("Stub!")
     }
 

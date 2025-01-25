@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED")
+
 package mihonx.source.model
 
 /**
@@ -7,7 +9,7 @@ sealed interface UserAgentType {
     /**
      * Supports both Desktop or Mobile UserAgent
      */
-    data object Any : UserAgentType
+    data object Universal : UserAgentType
 
     /**
      * Requires Desktop UserAgent
@@ -20,8 +22,7 @@ sealed interface UserAgentType {
     data object Mobile : UserAgentType
 
     /**
-     * Extension sets it's own UserAgent
-     * so it is not managed by the app
+     * Extension manages its own UserAgent
      */
-    data object Unmanaged : UserAgentType
+    data object Managed : UserAgentType
 }

@@ -510,15 +510,15 @@ public final class mihonx/network/RateLimitKt {
 public abstract interface class mihonx/source/model/UserAgentType {
 }
 
-public final class mihonx/source/model/UserAgentType$Any : mihonx/source/model/UserAgentType {
-	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Any;
+public final class mihonx/source/model/UserAgentType$Desktop : mihonx/source/model/UserAgentType {
+	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Desktop;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class mihonx/source/model/UserAgentType$Desktop : mihonx/source/model/UserAgentType {
-	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Desktop;
+public final class mihonx/source/model/UserAgentType$Managed : mihonx/source/model/UserAgentType {
+	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Managed;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
@@ -531,8 +531,8 @@ public final class mihonx/source/model/UserAgentType$Mobile : mihonx/source/mode
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class mihonx/source/model/UserAgentType$Unmanaged : mihonx/source/model/UserAgentType {
-	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Unmanaged;
+public final class mihonx/source/model/UserAgentType$Universal : mihonx/source/model/UserAgentType {
+	public static final field INSTANCE Lmihonx/source/model/UserAgentType$Universal;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;

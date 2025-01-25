@@ -117,21 +117,6 @@ interface Source {
      */
     suspend fun getPageList(chapter: SChapter): List<Page>
 
-    /**
-     * Gets instance of [SharedPreferences] scoped to the specific source.
-     *
-     * @since extensions-lib 1.6
-     */
-    fun getSourcePreferences(): SharedPreferences = throw RuntimeException("Stub!")
-
-    /**
-     * Gets instance of [SharedPreferences] corresponding to the source id
-     *
-     * @parm id the source id
-     * @since extensions-lib 1.6
-     */
-    fun getSourcePreferences(id: Long): SharedPreferences = throw RuntimeException("Stub!")
-
     object Language {
         const val MULTI = "multi"
         const val OTHER = "other"

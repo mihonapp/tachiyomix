@@ -162,8 +162,6 @@ public final class eu/kanade/tachiyomi/source/CatalogueSource$DefaultImpls {
 	public static fun getLatestMangaList (Leu/kanade/tachiyomi/source/CatalogueSource;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun getMangaDetailsAndChapters (Leu/kanade/tachiyomi/source/CatalogueSource;Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun getSearchFilters (Leu/kanade/tachiyomi/source/CatalogueSource;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun getSourcePreferences (Leu/kanade/tachiyomi/source/CatalogueSource;)Landroid/content/SharedPreferences;
-	public static fun getSourcePreferences (Leu/kanade/tachiyomi/source/CatalogueSource;J)Landroid/content/SharedPreferences;
 	public static fun getSupportsLatest (Leu/kanade/tachiyomi/source/CatalogueSource;)Z
 }
 
@@ -188,15 +186,11 @@ public abstract interface class eu/kanade/tachiyomi/source/Source {
 	public abstract fun getName ()Ljava/lang/String;
 	public abstract fun getPageList (Leu/kanade/tachiyomi/source/model/SChapter;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getSearchFilters (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public abstract fun getSourcePreferences ()Landroid/content/SharedPreferences;
-	public abstract fun getSourcePreferences (J)Landroid/content/SharedPreferences;
 }
 
 public final class eu/kanade/tachiyomi/source/Source$DefaultImpls {
 	public static fun getLatestMangaList (Leu/kanade/tachiyomi/source/Source;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun getMangaDetailsAndChapters (Leu/kanade/tachiyomi/source/Source;Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static fun getSourcePreferences (Leu/kanade/tachiyomi/source/Source;)Landroid/content/SharedPreferences;
-	public static fun getSourcePreferences (Leu/kanade/tachiyomi/source/Source;J)Landroid/content/SharedPreferences;
 }
 
 public final class eu/kanade/tachiyomi/source/Source$Language {
@@ -448,8 +442,6 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public fun getMangaUrl (Leu/kanade/tachiyomi/source/model/SManga;)Ljava/lang/String;
 	protected final fun getNetwork ()Leu/kanade/tachiyomi/network/NetworkHelper;
 	public fun getSearchFilters (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun getSourcePreferences ()Landroid/content/SharedPreferences;
-	public fun getSourcePreferences (J)Landroid/content/SharedPreferences;
 	protected fun getSupportedUserAgentType ()Lmihonx/source/model/UserAgentType;
 	public fun getSupportsLatest ()Z
 	protected final fun getUserAgent ()Ljava/lang/String;
@@ -544,6 +536,11 @@ public final class mihonx/source/model/UserAgentType$Unmanaged : mihonx/source/m
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public final class mihonx/source/utils/PreferencesKt {
+	public static final fun sourcePreferences (J)Landroid/content/SharedPreferences;
+	public static final fun sourcePreferences (Leu/kanade/tachiyomi/source/Source;)Landroid/content/SharedPreferences;
 }
 
 public final class mihonx/utils/JsonKt {

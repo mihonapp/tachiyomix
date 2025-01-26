@@ -92,27 +92,15 @@ interface Source {
      *
      * @since extensions-lib 1.6
      *
-     * @param manga manga to get details and chapters for
+     * @param manga         manga to get details and chapters for.
+     * @param updateManga   whether to update the manga details or not
+     * @param fetchChapters whether to fetch chapters or not.
      */
-    suspend fun getMangaDetailsAndChapters(manga: SManga): Pair<SManga, List<SChapter>> = throw RuntimeException("Stub!")
-
-    /**
-     * Get the updated details for a manga.
-     *
-     * @since extensions-lib 1.4
-     *
-     * @param manga the manga to update.
-     */
-    suspend fun getMangaDetails(manga: SManga): SManga
-
-    /**
-     * Get all the available chapters for a manga.
-     *
-     * @since extensions-lib 1.4
-     *
-     * @param manga the manga to update.
-     */
-    suspend fun getChapterList(manga: SManga): List<SChapter>
+    suspend fun getMangaDetails(
+        manga: SManga,
+        updateManga: Boolean,
+        fetchChapters: Boolean,
+    ): Pair<SManga, List<SChapter>> = throw RuntimeException("Stub!")
 
     /**
      * Get the list of pages a chapter has. Pages should be returned
@@ -145,10 +133,10 @@ interface Source {
         const val OTHER = "other"
     }
 
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaDetails"))
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaDetails(manga, true, false)"))
     fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw RuntimeException("Stub!")
 
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getChapterList"))
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaDetails(manga, false, true)"))
     fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw RuntimeException("Stub!")
 
     @Deprecated("Use the new suspend API instead", ReplaceWith("getPageList"))

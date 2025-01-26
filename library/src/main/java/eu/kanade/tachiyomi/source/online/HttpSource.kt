@@ -176,12 +176,11 @@ abstract class HttpSource : CatalogueSource {
     protected abstract fun pageListParse(response: Response): List<Page>
 
     /**
-     * Returns an observable with the page containing the source url of the image. If there's any
-     * error, it will return null instead of throwing an exception.
+     * Returns the image url for the provided [page]. The function is only called if [Page.imageUrl] is null.
      *
      * @param page the page whose source image has to be fetched.
      */
-    open fun fetchImageUrl(page: Page): Observable<String> {
+    open suspend fun getImageUrl(page: Page): String {
         throw RuntimeException("Stub!")
     }
 
@@ -201,15 +200,6 @@ abstract class HttpSource : CatalogueSource {
      * @param response the response from the site.
      */
     protected abstract fun imageUrlParse(response: Response): String
-
-    /**
-     * Returns an observable with the response of the source image.
-     *
-     * @param page the page whose source image has to be downloaded.
-     */
-    fun fetchImage(page: Page): Observable<Response> {
-        throw RuntimeException("Stub!")
-    }
 
     /**
      * Returns the request for getting the source image. Override only if it's needed to override
@@ -334,6 +324,17 @@ abstract class HttpSource : CatalogueSource {
      */
     @Deprecated("Use the new suspend API instead", ReplaceWith("getPageList"))
     override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
+        throw RuntimeException("Stub!")
+    }
+
+    /**
+     * Returns an observable with the page containing the source url of the image. If there's any
+     * error, it will return null instead of throwing an exception.
+     *
+     * @param page the page whose source image has to be fetched.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getImageUrl"))
+    open fun fetchImageUrl(page: Page): Observable<String> {
         throw RuntimeException("Stub!")
     }
 

@@ -1,6 +1,7 @@
+@file:Suppress("UNUSED")
+
 package eu.kanade.tachiyomi.source
 
-import android.content.SharedPreferences
 import eu.kanade.tachiyomi.source.model.FilterList
 import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
@@ -11,7 +12,6 @@ import rx.Observable
 /**
  * A basic interface for creating a source. It could be an online source, a local source, etc...
  */
-@Suppress("unused")
 interface Source {
 
     /**
@@ -28,7 +28,7 @@ interface Source {
      * Represents an IETF BCP 47 compliant language tag.
      * Special cases include:
      * - [Language.MULTI]: Indicates multiple languages.
-     * - [Language.OTHER]: Refers to a language not explicitly defined.
+     * - [Language.OTHER]: Refers to a language not explicitly defined by the source (e.g. text less, unofficially supported language).
      * - 'all': Indicates multiple language.
      *
      * Usage of 'all' is highly discouraged and is only supported due to legacy reasons.
@@ -39,11 +39,15 @@ interface Source {
 
     /**
      * Indicates if the source supports search filters
+     *
+     * @since extensions-lib 1.6
      */
     val hasSearchFilters: Boolean
 
     /**
      * Whether the source has a list for latest updates
+     *
+     * @since extensions-lib 1.6
      */
     val hasLatestListing: Boolean
 
@@ -58,6 +62,7 @@ interface Source {
      * Get a page with a list of manga.
      *
      * @since extensions-lib 1.6
+     *
      * @param page the page number to retrieve.
      */
     suspend fun getDefaultMangaList(page: Int): MangasPage
@@ -66,6 +71,7 @@ interface Source {
      * Get a page with a list of latest manga updates.
      *
      * @since extensions-lib 1.6
+     *
      * @param page the page number to retrieve.
      */
     suspend fun getLatestMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
@@ -74,9 +80,10 @@ interface Source {
      * Get a page with a list of manga.
      *
      * @since extensions-lib 1.6
-     * @param query the search query.
-     * @param filters the list of filters to apply.
-     * @param page the page number to retrieve.
+     *
+     * @param query     the search query.
+     * @param filters   the list of filters to apply.
+     * @param page      the page number to retrieve.
      */
     suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage
 
@@ -84,8 +91,8 @@ interface Source {
      * Get the updated details for a manga and its chapters
      *
      * @since extensions-lib 1.6
+     *
      * @param manga manga to get details and chapters for
-     * @return the updated manga and its chapters
      */
     suspend fun getMangaDetailsAndChapters(manga: SManga): Pair<SManga, List<SChapter>> = throw RuntimeException("Stub!")
 
@@ -93,8 +100,8 @@ interface Source {
      * Get the updated details for a manga.
      *
      * @since extensions-lib 1.4
+     *
      * @param manga the manga to update.
-     * @return the updated manga.
      */
     suspend fun getMangaDetails(manga: SManga): SManga
 
@@ -102,8 +109,8 @@ interface Source {
      * Get all the available chapters for a manga.
      *
      * @since extensions-lib 1.4
+     *
      * @param manga the manga to update.
-     * @return the chapters for the manga.
      */
     suspend fun getChapterList(manga: SManga): List<SChapter>
 
@@ -112,31 +119,38 @@ interface Source {
      * in the expected order; the index is ignored.
      *
      * @since extensions-lib 1.6
+     *
      * @param chapter the chapter.
-     * @return the pages for the chapter.
      */
     suspend fun getPageList(chapter: SChapter): List<Page>
 
+    /**
+     * Object for holding the special cases supported by [Source.language].
+     *
+     * @since extensions-lib 1.6
+     */
     object Language {
+        /**
+         * Indicates multiple languages.
+         *
+         * @since extensions-lib 1.6
+         */
         const val MULTI = "multi"
+
+        /**
+         * Refers to a language not explicitly defined by the source (e.g. text less, unofficially supported language)
+         *
+         * @since extensions-lib 1.6
+         */
         const val OTHER = "other"
     }
 
-    @Deprecated(
-        "Use the non-RxJava API instead",
-        ReplaceWith("getMangaDetails"),
-    )
-    fun fetchMangaDetails(manga: SManga): Observable<SManga>
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaDetails"))
+    fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw RuntimeException("Stub!")
 
-    @Deprecated(
-        "Use the non-RxJava API instead",
-        ReplaceWith("getChapterList"),
-    )
-    fun fetchChapterList(manga: SManga): Observable<List<SChapter>>
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getChapterList"))
+    fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw RuntimeException("Stub!")
 
-    @Deprecated(
-        "Use the non-RxJava API instead",
-        ReplaceWith("getPageList"),
-    )
-    fun fetchPageList(chapter: SChapter): Observable<List<Page>>
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getPageList"))
+    fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw RuntimeException("Stub!")
 }

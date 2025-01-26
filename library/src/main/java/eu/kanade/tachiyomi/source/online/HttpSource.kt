@@ -1,8 +1,14 @@
+@file:Suppress("UNUSED", "UNUSED_PARAMETER", "UnusedReceiverParameter")
+
 package eu.kanade.tachiyomi.source.online
 
 import eu.kanade.tachiyomi.network.NetworkHelper
 import eu.kanade.tachiyomi.source.CatalogueSource
-import eu.kanade.tachiyomi.source.model.*
+import eu.kanade.tachiyomi.source.model.FilterList
+import eu.kanade.tachiyomi.source.model.MangasPage
+import eu.kanade.tachiyomi.source.model.Page
+import eu.kanade.tachiyomi.source.model.SChapter
+import eu.kanade.tachiyomi.source.model.SManga
 import mihonx.source.model.UserAgentType
 import okhttp3.Headers
 import okhttp3.OkHttpClient
@@ -13,7 +19,6 @@ import rx.Observable
 /**
  * A simple implementation for sources from a website.
  */
-@Suppress("unused", "unused_parameter")
 abstract class HttpSource : CatalogueSource {
 
     /**
@@ -76,20 +81,6 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
-     * Returns an observable containing a page with a list of manga. Normally it's not needed to
-     * override this method.
-     *
-     * @param page the page number to retrieve.
-     */
-    @Deprecated(
-        "Use the new suspend variant instead",
-        replaceWith = ReplaceWith("getDefaultMangaList")
-    )
-    override fun fetchPopularManga(page: Int): Observable<MangasPage> {
-        throw RuntimeException("Stub!")
-    }
-
-    /**
      * Returns the request for the popular manga given the page.
      *
      * @param page the page number to retrieve.
@@ -102,48 +93,6 @@ abstract class HttpSource : CatalogueSource {
      * @param response the response from the site.
      */
     protected abstract fun popularMangaParse(response: Response): MangasPage
-
-    /**
-     * Returns an observable containing a page with a list of manga. Normally it's not needed to
-     * override this method.
-     *
-     * @param page the page number to retrieve.
-     * @param query the search query.
-     * @param filters the list of filters to apply.
-     */
-    @Deprecated("Use the new suspend variant instead", replaceWith = ReplaceWith("getMangaList"))
-    override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> {
-        throw RuntimeException("Stub!")
-    }
-
-    /**
-     * Returns the request for the search manga given the page.
-     *
-     * @param page the page number to retrieve.
-     * @param query the search query.
-     * @param filters the list of filters to apply.
-     */
-    protected abstract fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
-
-    /**
-     * Parses the response from the site and returns a [MangasPage] object.
-     *
-     * @param response the response from the site.
-     */
-    protected abstract fun searchMangaParse(response: Response): MangasPage
-
-    /**
-     * Returns an observable containing a page with a list of latest manga updates.
-     *
-     * @param page the page number to retrieve.
-     */
-    @Deprecated(
-        "Use the new suspend variant instead",
-        replaceWith = ReplaceWith("getLatestMangaList")
-    )
-    override fun fetchLatestUpdates(page: Int): Observable<MangasPage> {
-        throw RuntimeException("Stub!")
-    }
 
     /**
      * Returns the request for latest manga given the page.
@@ -160,15 +109,20 @@ abstract class HttpSource : CatalogueSource {
     protected abstract fun latestUpdatesParse(response: Response): MangasPage
 
     /**
-     * Returns an observable with the updated details for a manga. Normally it's not needed to
-     * override this method.
+     * Returns the request for the search manga given the page.
      *
-     * @param manga the manga to be updated.
+     * @param page the page number to retrieve.
+     * @param query the search query.
+     * @param filters the list of filters to apply.
      */
-    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getMangaDetails"))
-    override fun fetchMangaDetails(manga: SManga): Observable<SManga> {
-        throw RuntimeException("Stub!")
-    }
+    protected abstract fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
+
+    /**
+     * Parses the response from the site and returns a [MangasPage] object.
+     *
+     * @param response the response from the site.
+     */
+    protected abstract fun searchMangaParse(response: Response): MangasPage
 
     /**
      * Returns the request for the details of a manga. Override only if it's needed to change the
@@ -188,17 +142,6 @@ abstract class HttpSource : CatalogueSource {
     protected abstract fun mangaDetailsParse(response: Response): SManga
 
     /**
-     * Returns an observable with the updated chapter list for a manga. Normally it's not needed to
-     * override this method.
-     *
-     * @param manga the manga to look for chapters.
-     */
-    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getChapterList"))
-    override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> {
-        throw RuntimeException("Stub!")
-    }
-
-    /**
      * Returns the request for updating the chapter list. Override only if it's needed to override
      * the url, send different headers or request method like POST.
      *
@@ -214,16 +157,6 @@ abstract class HttpSource : CatalogueSource {
      * @param response the response from the site.
      */
     protected abstract fun chapterListParse(response: Response): List<SChapter>
-
-    /**
-     * Returns an observable with the page list for a chapter.
-     *
-     * @param chapter the chapter whose page list has to be fetched.
-     */
-    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getPageList"))
-    override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
-        throw RuntimeException("Stub!")
-    }
 
     /**
      * Returns the request for getting the page list. Override only if it's needed to override the
@@ -309,15 +242,6 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
-     * Returns the url of the given string without the scheme and domain.
-     *
-     * @param orig the full url.
-     */
-    private fun getUrlWithoutDomain(orig: String): String {
-        throw RuntimeException("Stub!")
-    }
-    
-    /**
      * Returns the url of the provided manga
      *
      * @since extensions-lib 1.4
@@ -340,22 +264,86 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
+     * Returns the list of filters for the source.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getSearchFilters"))
+    override fun getFilterList(): FilterList {
+        throw RuntimeException("Stub!")
+    }
+
+    /**
+     * Returns an observable containing a page with a list of manga. Normally it's not needed to
+     * override this method.
+     *
+     * @param page the page number to retrieve.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getDefaultMangaList"))
+    override fun fetchPopularManga(page: Int): Observable<MangasPage> {
+        throw RuntimeException("Stub!")
+    }
+
+    /**
+     * Returns an observable containing a page with a list of latest manga updates.
+     *
+     * @param page the page number to retrieve.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getLatestMangaList"))
+    override fun fetchLatestUpdates(page: Int): Observable<MangasPage> {
+        throw RuntimeException("Stub!")
+    }
+
+    /**
+     * Returns an observable containing a page with a list of manga. Normally it's not needed to
+     * override this method.
+     *
+     * @param page the page number to retrieve.
+     * @param query the search query.
+     * @param filters the list of filters to apply.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaList"))
+    override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> {
+        throw RuntimeException("Stub!")
+    }
+
+    /**
+     * Returns an observable with the updated details for a manga. Normally it's not needed to
+     * override this method.
+     *
+     * @param manga the manga to be updated.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaDetails"))
+    override fun fetchMangaDetails(manga: SManga): Observable<SManga> {
+        throw RuntimeException("Stub!")
+    }
+
+    /**
+     * Returns an observable with the updated chapter list for a manga. Normally it's not needed to
+     * override this method.
+     *
+     * @param manga the manga to look for chapters.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getChapterList"))
+    override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> {
+        throw RuntimeException("Stub!")
+    }
+
+    /**
+     * Returns an observable with the page list for a chapter.
+     *
+     * @param chapter the chapter whose page list has to be fetched.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getPageList"))
+    override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
+        throw RuntimeException("Stub!")
+    }
+
+    /**
      * Called before inserting a new chapter into database. Use it if you need to override chapter
      * fields, like the title or the chapter number. Do not change anything to [manga].
      *
      * @param chapter the chapter to be added.
      * @param manga the manga of the chapter.
      */
+    @Deprecated("All these modification should be done when constructing the chapter")
     open fun prepareNewChapter(chapter: SChapter, manga: SManga) {}
-
-    /**
-     * Returns the list of filters for the source.
-     */
-    @Deprecated(
-        "Use the new suspend variant instead",
-        replaceWith = ReplaceWith("getSearchFilters")
-    )
-    override fun getFilterList(): FilterList {
-        throw RuntimeException("Stub!")
-    }
 }

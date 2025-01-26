@@ -145,25 +145,35 @@ public abstract interface class eu/kanade/tachiyomi/source/CatalogueSource : eu/
 	public abstract fun fetchLatestUpdates (I)Lrx/Observable;
 	public abstract fun fetchPopularManga (I)Lrx/Observable;
 	public abstract fun fetchSearchManga (ILjava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;)Lrx/Observable;
+	public abstract fun getDefaultMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getFilterList ()Leu/kanade/tachiyomi/source/model/FilterList;
 	public abstract fun getHasLatestListing ()Z
 	public abstract fun getHasSearchFilters ()Z
 	public abstract fun getLang ()Ljava/lang/String;
 	public abstract fun getLanguage ()Ljava/lang/String;
+	public abstract fun getLatestMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getMangaList (Ljava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getSearchFilters (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getSupportsLatest ()Z
 }
 
 public final class eu/kanade/tachiyomi/source/CatalogueSource$DefaultImpls {
 	public static fun fetchChapterList (Leu/kanade/tachiyomi/source/CatalogueSource;Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
+	public static fun fetchLatestUpdates (Leu/kanade/tachiyomi/source/CatalogueSource;I)Lrx/Observable;
 	public static fun fetchMangaDetails (Leu/kanade/tachiyomi/source/CatalogueSource;Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
 	public static fun fetchPageList (Leu/kanade/tachiyomi/source/CatalogueSource;Leu/kanade/tachiyomi/source/model/SChapter;)Lrx/Observable;
+	public static fun fetchPopularManga (Leu/kanade/tachiyomi/source/CatalogueSource;I)Lrx/Observable;
+	public static fun fetchSearchManga (Leu/kanade/tachiyomi/source/CatalogueSource;ILjava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;)Lrx/Observable;
+	public static fun getDefaultMangaList (Leu/kanade/tachiyomi/source/CatalogueSource;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun getFilterList (Leu/kanade/tachiyomi/source/CatalogueSource;)Leu/kanade/tachiyomi/source/model/FilterList;
 	public static fun getHasLatestListing (Leu/kanade/tachiyomi/source/CatalogueSource;)Z
 	public static fun getHasSearchFilters (Leu/kanade/tachiyomi/source/CatalogueSource;)Z
 	public static fun getLang (Leu/kanade/tachiyomi/source/CatalogueSource;)Ljava/lang/String;
 	public static fun getLanguage (Leu/kanade/tachiyomi/source/CatalogueSource;)Ljava/lang/String;
 	public static fun getLatestMangaList (Leu/kanade/tachiyomi/source/CatalogueSource;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun getMangaDetails (Leu/kanade/tachiyomi/source/CatalogueSource;Leu/kanade/tachiyomi/source/model/SManga;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun getMangaList (Leu/kanade/tachiyomi/source/CatalogueSource;Ljava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun getPageList (Leu/kanade/tachiyomi/source/CatalogueSource;Leu/kanade/tachiyomi/source/model/SChapter;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun getSearchFilters (Leu/kanade/tachiyomi/source/CatalogueSource;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun getSupportsLatest (Leu/kanade/tachiyomi/source/CatalogueSource;)Z
 }
@@ -187,6 +197,7 @@ public abstract interface class eu/kanade/tachiyomi/source/Source {
 	public abstract fun getName ()Ljava/lang/String;
 	public abstract fun getPageList (Leu/kanade/tachiyomi/source/model/SChapter;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getSearchFilters (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun toString ()Ljava/lang/String;
 }
 
 public final class eu/kanade/tachiyomi/source/Source$DefaultImpls {
@@ -195,6 +206,7 @@ public final class eu/kanade/tachiyomi/source/Source$DefaultImpls {
 	public static fun fetchPageList (Leu/kanade/tachiyomi/source/Source;Leu/kanade/tachiyomi/source/model/SChapter;)Lrx/Observable;
 	public static fun getLatestMangaList (Leu/kanade/tachiyomi/source/Source;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun getMangaDetails (Leu/kanade/tachiyomi/source/Source;Leu/kanade/tachiyomi/source/model/SManga;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun getPageList (Leu/kanade/tachiyomi/source/Source;Leu/kanade/tachiyomi/source/model/SChapter;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class eu/kanade/tachiyomi/source/Source$Language {
@@ -421,8 +433,8 @@ public final class eu/kanade/tachiyomi/source/model/UpdateStrategy : java/lang/E
 
 public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/tachiyomi/source/CatalogueSource {
 	public fun <init> ()V
-	protected abstract fun chapterListParse (Lokhttp3/Response;)Ljava/util/List;
-	protected fun chapterListRequest (Leu/kanade/tachiyomi/source/model/SManga;)Lokhttp3/Request;
+	public fun chapterListParse (Lokhttp3/Response;)Ljava/util/List;
+	public fun chapterListRequest (Leu/kanade/tachiyomi/source/model/SManga;)Lokhttp3/Request;
 	public fun fetchChapterList (Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
 	public fun fetchImageUrl (Leu/kanade/tachiyomi/source/model/Page;)Lrx/Observable;
 	public fun fetchLatestUpdates (I)Lrx/Observable;
@@ -433,6 +445,7 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public abstract fun getBaseUrl ()Ljava/lang/String;
 	public fun getChapterUrl (Leu/kanade/tachiyomi/source/model/SChapter;)Ljava/lang/String;
 	public fun getClient ()Lokhttp3/OkHttpClient;
+	public fun getDefaultMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getFilterList ()Leu/kanade/tachiyomi/source/model/FilterList;
 	public fun getHasLatestListing ()Z
 	public fun getHasSearchFilters ()Z
@@ -443,28 +456,30 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public fun getLanguage ()Ljava/lang/String;
 	public fun getLatestMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getMangaDetails (Leu/kanade/tachiyomi/source/model/SManga;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getMangaList (Ljava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getMangaUrl (Leu/kanade/tachiyomi/source/model/SManga;)Ljava/lang/String;
 	protected final fun getNetwork ()Leu/kanade/tachiyomi/network/NetworkHelper;
+	public fun getPageList (Leu/kanade/tachiyomi/source/model/SChapter;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getSearchFilters (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	protected fun getSupportedUserAgentType ()Lmihonx/source/model/UserAgentType;
 	public fun getSupportsLatest ()Z
 	protected final fun getUserAgent ()Ljava/lang/String;
 	public fun getVersionId ()I
 	protected fun headersBuilder ()Lokhttp3/Headers$Builder;
-	protected fun imageRequest (Leu/kanade/tachiyomi/source/model/Page;)Lokhttp3/Request;
-	protected abstract fun imageUrlParse (Lokhttp3/Response;)Ljava/lang/String;
+	public fun imageRequest (Leu/kanade/tachiyomi/source/model/Page;)Lokhttp3/Request;
+	protected fun imageUrlParse (Lokhttp3/Response;)Ljava/lang/String;
 	protected fun imageUrlRequest (Leu/kanade/tachiyomi/source/model/Page;)Lokhttp3/Request;
-	protected abstract fun latestUpdatesParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
-	protected abstract fun latestUpdatesRequest (I)Lokhttp3/Request;
-	protected abstract fun mangaDetailsParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/SManga;
+	public fun latestUpdatesParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	public fun latestUpdatesRequest (I)Lokhttp3/Request;
+	public fun mangaDetailsParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/SManga;
 	public fun mangaDetailsRequest (Leu/kanade/tachiyomi/source/model/SManga;)Lokhttp3/Request;
-	protected abstract fun pageListParse (Lokhttp3/Response;)Ljava/util/List;
+	protected fun pageListParse (Lokhttp3/Response;)Ljava/util/List;
 	protected fun pageListRequest (Leu/kanade/tachiyomi/source/model/SChapter;)Lokhttp3/Request;
-	protected abstract fun popularMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
-	protected abstract fun popularMangaRequest (I)Lokhttp3/Request;
+	public fun popularMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	public fun popularMangaRequest (I)Lokhttp3/Request;
 	public fun prepareNewChapter (Leu/kanade/tachiyomi/source/model/SChapter;Leu/kanade/tachiyomi/source/model/SManga;)V
-	protected abstract fun searchMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
-	protected abstract fun searchMangaRequest (ILjava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;)Lokhttp3/Request;
+	public fun searchMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	public fun searchMangaRequest (ILjava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;)Lokhttp3/Request;
 	public final fun setUrlWithoutDomain (Leu/kanade/tachiyomi/source/model/SChapter;Ljava/lang/String;)V
 	public final fun setUrlWithoutDomain (Leu/kanade/tachiyomi/source/model/SManga;Ljava/lang/String;)V
 	public fun toString ()Ljava/lang/String;
@@ -473,25 +488,25 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 public abstract class eu/kanade/tachiyomi/source/online/ParsedHttpSource : eu/kanade/tachiyomi/source/online/HttpSource {
 	public fun <init> ()V
 	protected abstract fun chapterFromElement (Lorg/jsoup/nodes/Element;)Leu/kanade/tachiyomi/source/model/SChapter;
-	protected fun chapterListParse (Lokhttp3/Response;)Ljava/util/List;
+	public fun chapterListParse (Lokhttp3/Response;)Ljava/util/List;
 	protected abstract fun chapterListSelector ()Ljava/lang/String;
 	protected fun imageUrlParse (Lokhttp3/Response;)Ljava/lang/String;
 	protected abstract fun imageUrlParse (Lorg/jsoup/nodes/Document;)Ljava/lang/String;
 	protected abstract fun latestUpdatesFromElement (Lorg/jsoup/nodes/Element;)Leu/kanade/tachiyomi/source/model/SManga;
 	protected abstract fun latestUpdatesNextPageSelector ()Ljava/lang/String;
-	protected fun latestUpdatesParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	public fun latestUpdatesParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
 	protected abstract fun latestUpdatesSelector ()Ljava/lang/String;
-	protected fun mangaDetailsParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/SManga;
+	public fun mangaDetailsParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/SManga;
 	protected abstract fun mangaDetailsParse (Lorg/jsoup/nodes/Document;)Leu/kanade/tachiyomi/source/model/SManga;
 	protected fun pageListParse (Lokhttp3/Response;)Ljava/util/List;
 	protected abstract fun pageListParse (Lorg/jsoup/nodes/Document;)Ljava/util/List;
 	protected abstract fun popularMangaFromElement (Lorg/jsoup/nodes/Element;)Leu/kanade/tachiyomi/source/model/SManga;
 	protected abstract fun popularMangaNextPageSelector ()Ljava/lang/String;
-	protected fun popularMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	public fun popularMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
 	protected abstract fun popularMangaSelector ()Ljava/lang/String;
 	protected abstract fun searchMangaFromElement (Lorg/jsoup/nodes/Element;)Leu/kanade/tachiyomi/source/model/SManga;
 	protected abstract fun searchMangaNextPageSelector ()Ljava/lang/String;
-	protected fun searchMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
+	public fun searchMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;
 	protected abstract fun searchMangaSelector ()Ljava/lang/String;
 }
 

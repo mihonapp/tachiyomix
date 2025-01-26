@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED", "UNUSED_PARAMETER", "UnusedReceiverParameter")
+@file:Suppress("UNUSED", "UNUSED_PARAMETER", "UnusedReceiverParameter", "DEPRECATION")
 
 package eu.kanade.tachiyomi.source.online
 
@@ -22,21 +22,6 @@ import rx.Observable
 abstract class HttpSource : CatalogueSource {
 
     /**
-     * Type of UserAgent a source needs
-     */
-    protected open val supportedUserAgentType: UserAgentType = UserAgentType.Universal
-
-    /**
-     * Network service.
-     */
-    protected val network: NetworkHelper = throw RuntimeException("Stub!")
-
-    /**
-     * @since extensions-lib 1.6
-     */
-    protected fun getUserAgent(): String = throw RuntimeException("Stub!")
-
-    /**
      * Base url of the website without the trailing slash, like: http://mysite.com
      */
     abstract val baseUrl: String
@@ -55,6 +40,12 @@ abstract class HttpSource : CatalogueSource {
     override val id: Long = throw RuntimeException("Stub!")
 
     /**
+     * Network service.
+     */
+    protected val network: NetworkHelper = throw RuntimeException("Stub!")
+
+
+    /**
      * Headers used for requests.
      */
     val headers: Headers = throw RuntimeException("Stub!")
@@ -64,7 +55,15 @@ abstract class HttpSource : CatalogueSource {
      */
     open val client: OkHttpClient = throw RuntimeException("Stub!")
 
-    override suspend fun getSearchFilters(): FilterList = throw RuntimeException("Stub!")
+    /**
+     * Type of UserAgent a source needs
+     */
+    protected open val supportedUserAgentType: UserAgentType = UserAgentType.Universal
+
+    /**
+     * @since extensions-lib 1.6
+     */
+    protected fun getUserAgent(): String = throw RuntimeException("Stub!")
 
     /**
      * Headers builder for requests. Implementations can override this method for custom headers.
@@ -73,107 +72,19 @@ abstract class HttpSource : CatalogueSource {
         throw RuntimeException("Stub!")
     }
 
-    /**
-     * Visible name of the source.
-     */
-    override fun toString(): String {
-        throw RuntimeException("Stub!")
-    }
+    override suspend fun getDefaultMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
 
-    /**
-     * Returns the request for the popular manga given the page.
-     *
-     * @param page the page number to retrieve.
-     */
-    protected abstract fun popularMangaRequest(page: Int): Request
+    override suspend fun getLatestMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
 
-    /**
-     * Parses the response from the site and returns a [MangasPage] object.
-     *
-     * @param response the response from the site.
-     */
-    protected abstract fun popularMangaParse(response: Response): MangasPage
+    override suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage = throw RuntimeException("Stub!")
 
-    /**
-     * Returns the request for latest manga given the page.
-     *
-     * @param page the page number to retrieve.
-     */
-    protected abstract fun latestUpdatesRequest(page: Int): Request
-
-    /**
-     * Parses the response from the site and returns a [MangasPage] object.
-     *
-     * @param response the response from the site.
-     */
-    protected abstract fun latestUpdatesParse(response: Response): MangasPage
-
-    /**
-     * Returns the request for the search manga given the page.
-     *
-     * @param page the page number to retrieve.
-     * @param query the search query.
-     * @param filters the list of filters to apply.
-     */
-    protected abstract fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
-
-    /**
-     * Parses the response from the site and returns a [MangasPage] object.
-     *
-     * @param response the response from the site.
-     */
-    protected abstract fun searchMangaParse(response: Response): MangasPage
-
-    /**
-     * Returns the request for the details of a manga. Override only if it's needed to change the
-     * url, send different headers or request method like POST.
-     *
-     * @param manga the manga to be updated.
-     */
-    open fun mangaDetailsRequest(manga: SManga): Request {
-        throw RuntimeException("Stub!")
-    }
-
-    /**
-     * Parses the response from the site and returns the details of a manga.
-     *
-     * @param response the response from the site.
-     */
-    protected abstract fun mangaDetailsParse(response: Response): SManga
-
-    /**
-     * Returns the request for updating the chapter list. Override only if it's needed to override
-     * the url, send different headers or request method like POST.
-     *
-     * @param manga the manga to look for chapters.
-     */
-    protected open fun chapterListRequest(manga: SManga): Request {
-        throw RuntimeException("Stub!")
-    }
-
-    /**
-     * Parses the response from the site and returns a list of chapters.
-     *
-     * @param response the response from the site.
-     */
-    protected abstract fun chapterListParse(response: Response): List<SChapter>
-
-    /**
-     * Returns the request for getting the page list. Override only if it's needed to override the
-     * url, send different headers or request method like POST.
-     *
-     * @param chapter the chapter whose page list has to be fetched.
-     */
-    protected open fun pageListRequest(chapter: SChapter): Request {
-        throw RuntimeException("Stub!")
-    }
-
-    /**
-     * Parses the response from the site and returns a list of pages.
-     *
-     * @param response the response from the site.
-     */
-    protected abstract fun pageListParse(response: Response): List<Page>
+    override suspend fun getMangaDetails(
+        manga: SManga,
+        updateManga: Boolean,
+        fetchChapters: Boolean
+    ): Pair<SManga, List<SChapter>> = throw RuntimeException("Stub!")
+    
+    override suspend fun getPageList(chapter: SChapter): List<Page> = throw RuntimeException("Stub!")
 
     /**
      * Returns the image url for the provided [page]. The function is only called if [Page.imageUrl] is null.
@@ -185,29 +96,12 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
-     * Returns the request for getting the url to the source image. Override only if it's needed to
-     * override the url, send different headers or request method like POST.
-     *
-     * @param page the chapter whose page list has to be fetched
-     */
-    protected open fun imageUrlRequest(page: Page): Request {
-        throw RuntimeException("Stub!")
-    }
-
-    /**
-     * Parses the response from the site and returns the absolute url to the source image.
-     *
-     * @param response the response from the site.
-     */
-    protected abstract fun imageUrlParse(response: Response): String
-
-    /**
      * Returns the request for getting the source image. Override only if it's needed to override
      * the url, send different headers or request method like POST.
      *
      * @param page the chapter whose page list has to be fetched
      */
-    protected open fun imageRequest(page: Page): Request {
+    open fun imageRequest(page: Page): Request {
         throw RuntimeException("Stub!")
     }
 
@@ -253,79 +147,135 @@ abstract class HttpSource : CatalogueSource {
         throw RuntimeException("Stub!")
     }
 
-    /**
-     * Returns the list of filters for the source.
-     */
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getSearchFilters"))
-    override fun getFilterList(): FilterList {
+    override fun toString(): String {
         throw RuntimeException("Stub!")
     }
 
+    @Deprecated("Use the new suspend API instead", replaceWith = ReplaceWith("getDefaultMangaList"))
+    override fun fetchPopularManga(page: Int): Observable<MangasPage> = throw RuntimeException("Stub!")
+
     /**
-     * Returns an observable containing a page with a list of manga. Normally it's not needed to
-     * override this method.
+     * Returns the request for the popular manga given the page.
      *
      * @param page the page number to retrieve.
      */
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getDefaultMangaList"))
-    override fun fetchPopularManga(page: Int): Observable<MangasPage> {
-        throw RuntimeException("Stub!")
-    }
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getDefaultMangaList]")
+    open fun popularMangaRequest(page: Int): Request = throw RuntimeException("Stub!")
 
     /**
-     * Returns an observable containing a page with a list of latest manga updates.
+     * Parses the response from the site and returns a [MangasPage] object.
+     *
+     * @param response the response from the site.
+     */
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getDefaultMangaList]")
+    open fun popularMangaParse(response: Response): MangasPage = throw RuntimeException("Stub!")
+
+    @Deprecated("Use the new suspend API instead", replaceWith = ReplaceWith("getLatestMangaList"))
+    override fun fetchLatestUpdates(page: Int): Observable<MangasPage> = throw RuntimeException("Stub!")
+
+    /**
+     * Returns the request for latest manga given the page.
      *
      * @param page the page number to retrieve.
      */
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getLatestMangaList"))
-    override fun fetchLatestUpdates(page: Int): Observable<MangasPage> {
-        throw RuntimeException("Stub!")
-    }
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getLatestMangaList]")
+    open fun latestUpdatesRequest(page: Int): Request = throw RuntimeException("Stub!")
 
     /**
-     * Returns an observable containing a page with a list of manga. Normally it's not needed to
-     * override this method.
+     * Parses the response from the site and returns a [MangasPage] object.
+     *
+     * @param response the response from the site.
+     */
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getLatestMangaList]")
+    open fun latestUpdatesParse(response: Response): MangasPage = throw RuntimeException("Stub!")
+
+    @Deprecated("Use the new suspend API instead", replaceWith = ReplaceWith("getMangaList"))
+    override fun fetchSearchManga(
+        page: Int,
+        query: String,
+        filters: FilterList
+    ): Observable<MangasPage> = throw RuntimeException("Stub!")
+
+    /**
+     * Returns the request for the search manga given the page.
      *
      * @param page the page number to retrieve.
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaList"))
-    override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> {
-        throw RuntimeException("Stub!")
-    }
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getMangaList]")
+    open fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request = throw RuntimeException("Stub!")
 
     /**
-     * Returns an observable with the updated details for a manga. Normally it's not needed to
-     * override this method.
+     * Parses the response from the site and returns a [MangasPage] object.
+     *
+     * @param response the response from the site.
+     */
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getMangaList]")
+    open fun searchMangaParse(response: Response): MangasPage = throw RuntimeException("Stub!")
+
+    /**
+     * Returns the request for the details of a manga. Override only if it's needed to change the
+     * url, send different headers or request method like POST.
      *
      * @param manga the manga to be updated.
      */
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaDetails"))
-    override fun fetchMangaDetails(manga: SManga): Observable<SManga> {
-        throw RuntimeException("Stub!")
-    }
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getMangaDetails]")
+    open fun mangaDetailsRequest(manga: SManga): Request = throw RuntimeException("Stub!")
 
     /**
-     * Returns an observable with the updated chapter list for a manga. Normally it's not needed to
-     * override this method.
+     * Parses the response from the site and returns the details of a manga.
+     *
+     * @param response the response from the site.
+     */
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getMangaDetails]")
+    open fun mangaDetailsParse(response: Response): SManga = throw RuntimeException("Stub!")
+
+    /**
+     * Returns the request for updating the chapter list. Override only if it's needed to override
+     * the url, send different headers or request method like POST.
      *
      * @param manga the manga to look for chapters.
      */
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getChapterList"))
-    override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> {
-        throw RuntimeException("Stub!")
-    }
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getMangaDetails]")
+    open fun chapterListRequest(manga: SManga): Request = throw RuntimeException("Stub!")
 
     /**
-     * Returns an observable with the page list for a chapter.
+     * Parses the response from the site and returns a list of chapters.
+     *
+     * @param response the response from the site.
+     */
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getMangaDetails]")
+    open fun chapterListParse(response: Response): List<SChapter> = throw RuntimeException("Stub!")
+
+    /**
+     * Returns the request for getting the page list. Override only if it's needed to override the
+     * url, send different headers or request method like POST.
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getPageList"))
-    override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
-        throw RuntimeException("Stub!")
-    }
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getPageList]")
+    protected open fun pageListRequest(chapter: SChapter): Request = throw RuntimeException("Stub!")
+
+    /**
+     * Parses the response from the site and returns a list of pages.
+     *
+     * @param response the response from the site.
+     */
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getPageList]")
+    protected open fun pageListParse(response: Response): List<Page> = throw RuntimeException("Stub!")
 
     /**
      * Returns an observable with the page containing the source url of the image. If there's any
@@ -334,9 +284,26 @@ abstract class HttpSource : CatalogueSource {
      * @param page the page whose source image has to be fetched.
      */
     @Deprecated("Use the new suspend API instead", ReplaceWith("getImageUrl"))
-    open fun fetchImageUrl(page: Page): Observable<String> {
-        throw RuntimeException("Stub!")
-    }
+    open fun fetchImageUrl(page: Page): Observable<String> = throw RuntimeException("Stub!")
+
+    /**
+     * Returns the request for getting the url to the source image. Override only if it's needed to
+     * override the url, send different headers or request method like POST.
+     *
+     * @param page the chapter whose page list has to be fetched
+     */
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getImageUrl]")
+    protected open fun imageUrlRequest(page: Page): Request = throw RuntimeException("Stub!")
+
+    /**
+     * Parses the response from the site and returns the absolute url to the source image.
+     *
+     * @param response the response from the site.
+     */
+    @Suppress("DeprecatedCallableAddReplaceWith")
+    @Deprecated("Directly implement inside [getImageUrl]")
+    protected open fun imageUrlParse(response: Response): String = throw RuntimeException("Stub!")
 
     /**
      * Called before inserting a new chapter into database. Use it if you need to override chapter

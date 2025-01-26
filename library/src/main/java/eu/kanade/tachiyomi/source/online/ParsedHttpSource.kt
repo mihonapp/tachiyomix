@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED")
+
 package eu.kanade.tachiyomi.source.online
 
 import eu.kanade.tachiyomi.source.model.MangasPage
@@ -11,7 +13,7 @@ import org.jsoup.nodes.Element
 /**
  * A simple implementation for sources from a website using Jsoup, an HTML parser.
  */
-@Suppress("unused")
+@Deprecated("Use your own implementation made with Ksoup")
 abstract class ParsedHttpSource : HttpSource() {
 
     /**

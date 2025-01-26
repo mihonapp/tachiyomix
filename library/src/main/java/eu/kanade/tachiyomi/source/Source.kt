@@ -110,7 +110,9 @@ interface Source {
      *
      * @param chapter the chapter.
      */
-    suspend fun getPageList(chapter: SChapter): List<Page>
+    suspend fun getPageList(chapter: SChapter): List<Page> = throw RuntimeException("Stub!")
+
+    override fun toString(): String
 
     /**
      * Object for holding the special cases supported by [Source.language].

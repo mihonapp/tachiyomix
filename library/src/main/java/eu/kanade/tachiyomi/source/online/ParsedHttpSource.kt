@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED")
+@file:Suppress("UNUSED", "OVERRIDE_DEPRECATION")
 
 package eu.kanade.tachiyomi.source.online
 

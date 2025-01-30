@@ -72,20 +72,6 @@ abstract class HttpSource : CatalogueSource {
         throw RuntimeException("Stub!")
     }
 
-    override suspend fun getDefaultMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
-
-    override suspend fun getLatestMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
-
-    override suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage = throw RuntimeException("Stub!")
-
-    override suspend fun getMangaDetails(
-        manga: SManga,
-        updateManga: Boolean,
-        fetchChapters: Boolean
-    ): Pair<SManga, List<SChapter>> = throw RuntimeException("Stub!")
-    
-    override suspend fun getPageList(chapter: SChapter): List<Page> = throw RuntimeException("Stub!")
-
     /**
      * Returns the image url for the provided [page]. The function is only called if [Page.imageUrl] is null.
      *
@@ -220,6 +206,8 @@ abstract class HttpSource : CatalogueSource {
     @Deprecated("Directly implement inside [getMangaList]")
     open fun searchMangaParse(response: Response): MangasPage = throw RuntimeException("Stub!")
 
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaDetails(manga, true, false)"))
+    override fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw RuntimeException("Stub!")
     /**
      * Returns the request for the details of a manga. Override only if it's needed to change the
      * url, send different headers or request method like POST.
@@ -239,6 +227,8 @@ abstract class HttpSource : CatalogueSource {
     @Deprecated("Directly implement inside [getMangaDetails]")
     open fun mangaDetailsParse(response: Response): SManga = throw RuntimeException("Stub!")
 
+    @Deprecated("Use the new suspend API instead", replaceWith = ReplaceWith("getMangaDetails(manga, false, true)"))
+    override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw RuntimeException("Stub!")
     /**
      * Returns the request for updating the chapter list. Override only if it's needed to override
      * the url, send different headers or request method like POST.
@@ -257,6 +247,9 @@ abstract class HttpSource : CatalogueSource {
     @Suppress("DeprecatedCallableAddReplaceWith")
     @Deprecated("Directly implement inside [getMangaDetails]")
     open fun chapterListParse(response: Response): List<SChapter> = throw RuntimeException("Stub!")
+
+    @Deprecated("Use the new suspend API instead", replaceWith = ReplaceWith("getPageList"))
+    override fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw RuntimeException("Stub!")
 
     /**
      * Returns the request for getting the page list. Override only if it's needed to override the

@@ -1,4 +1,4 @@
-@file:Suppress("UnusedReceiverParameter", "UNUSED", "UNUSED_PARAMETER")
+@file:Suppress("UnusedReceiverParameter", "UNUSED", "UNUSED_PARAMETER", "NOTHING_TO_INLINE")
 
 package mihonx.network
 
@@ -20,10 +20,10 @@ import kotlin.time.Duration.Companion.seconds
  * @param permits [Int]     Number of requests allowed within a period of units.
  * @param period [Duration] The limiting duration. Defaults to 1.seconds.
  */
-fun OkHttpClient.Builder.rateLimit(
+inline fun OkHttpClient.Builder.rateLimit(
     permits: Int,
     period: Duration = 1.seconds
-): OkHttpClient.Builder = throw RuntimeException("Stub!")
+): OkHttpClient.Builder = rateLimit(permits, period) { true }
 
 /**
  * An OkHttp interceptor that handles given url host's rate limiting.
@@ -39,11 +39,11 @@ fun OkHttpClient.Builder.rateLimit(
  * @param permits [Int]     Number of requests allowed within a period of units.
  * @param period [Duration] The limiting duration. Defaults to 1.seconds.
  */
-fun OkHttpClient.Builder.rateLimit(
+inline fun OkHttpClient.Builder.rateLimit(
     url: String,
     permits: Int,
     period: Duration = 1.seconds,
-): OkHttpClient.Builder = throw RuntimeException("Stub!")
+): OkHttpClient.Builder = rateLimit(permits, period) { it.toString().startsWith(url) }
 
 /**
  * An OkHttp interceptor that handles given url host's rate limiting.
@@ -59,11 +59,11 @@ fun OkHttpClient.Builder.rateLimit(
  * @param permits [Int]     Number of requests allowed within a period of units.
  * @param period [Duration] The limiting duration. Defaults to 1.seconds.
  */
-fun OkHttpClient.Builder.rateLimit(
+inline fun OkHttpClient.Builder.rateLimit(
     httpUrl: HttpUrl,
     permits: Int,
     period: Duration = 1.seconds,
-): OkHttpClient.Builder = throw RuntimeException("Stub!")
+): OkHttpClient.Builder = rateLimit(httpUrl.toString(), permits, period)
 
 /**
  * An OkHttp interceptor that enforces conditional rate limiting based on a given condition.

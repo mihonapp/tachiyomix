@@ -458,7 +458,6 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public fun getMangaDetails (Leu/kanade/tachiyomi/source/model/SManga;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getMangaList (Ljava/lang/String;Leu/kanade/tachiyomi/source/model/FilterList;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getMangaUrl (Leu/kanade/tachiyomi/source/model/SManga;)Ljava/lang/String;
-	protected final fun getNetwork ()Leu/kanade/tachiyomi/network/NetworkHelper;
 	public fun getPageList (Leu/kanade/tachiyomi/source/model/SChapter;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getSearchFilters (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	protected fun getSupportedUserAgentType ()Lmihonx/source/model/UserAgentType;

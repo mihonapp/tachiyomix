@@ -6,9 +6,9 @@ import okhttp3.HttpUrl
 import okhttp3.Request
 import okhttp3.RequestBody
 
-private val DEFAULT_CACHE_CONTROL: CacheControl = throw RuntimeException("Stub!")
-private val DEFAULT_HEADERS: Headers = throw RuntimeException("Stub!")
-private val DEFAULT_BODY: RequestBody = throw RuntimeException("Stub!")
+internal val DEFAULT_CACHE_CONTROL: CacheControl = throw RuntimeException("Stub!")
+internal val DEFAULT_HEADERS: Headers = throw RuntimeException("Stub!")
+internal val DEFAULT_BODY: RequestBody = throw RuntimeException("Stub!")
 
 fun GET(url: String,
         headers: Headers = DEFAULT_HEADERS,

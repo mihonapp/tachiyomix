@@ -148,7 +148,6 @@ public abstract interface class eu/kanade/tachiyomi/source/CatalogueSource : eu/
 	public abstract fun getDefaultMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getFilterList ()Leu/kanade/tachiyomi/source/model/FilterList;
 	public abstract fun getHasLatestListing ()Z
-	public abstract fun getHasSearchFilters ()Z
 	public abstract fun getLang ()Ljava/lang/String;
 	public abstract fun getLanguage ()Ljava/lang/String;
 	public abstract fun getLatestMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -167,7 +166,6 @@ public final class eu/kanade/tachiyomi/source/CatalogueSource$DefaultImpls {
 	public static fun getDefaultMangaList (Leu/kanade/tachiyomi/source/CatalogueSource;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static fun getFilterList (Leu/kanade/tachiyomi/source/CatalogueSource;)Leu/kanade/tachiyomi/source/model/FilterList;
 	public static fun getHasLatestListing (Leu/kanade/tachiyomi/source/CatalogueSource;)Z
-	public static fun getHasSearchFilters (Leu/kanade/tachiyomi/source/CatalogueSource;)Z
 	public static fun getLang (Leu/kanade/tachiyomi/source/CatalogueSource;)Ljava/lang/String;
 	public static fun getLanguage (Leu/kanade/tachiyomi/source/CatalogueSource;)Ljava/lang/String;
 	public static fun getLatestMangaList (Leu/kanade/tachiyomi/source/CatalogueSource;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -188,7 +186,6 @@ public abstract interface class eu/kanade/tachiyomi/source/Source {
 	public abstract fun fetchPageList (Leu/kanade/tachiyomi/source/model/SChapter;)Lrx/Observable;
 	public abstract fun getDefaultMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun getHasLatestListing ()Z
-	public abstract fun getHasSearchFilters ()Z
 	public abstract fun getId ()J
 	public abstract fun getLanguage ()Ljava/lang/String;
 	public abstract fun getLatestMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -448,7 +445,6 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public fun getDefaultMangaList (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getFilterList ()Leu/kanade/tachiyomi/source/model/FilterList;
 	public fun getHasLatestListing ()Z
-	public fun getHasSearchFilters ()Z
 	public final fun getHeaders ()Lokhttp3/Headers;
 	public fun getId ()J
 	public fun getImageUrl (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

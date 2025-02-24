@@ -17,8 +17,6 @@ interface CatalogueSource : Source {
 
     override val language: String get() = throw RuntimeException("Stub!")
 
-    override val hasSearchFilters: Boolean get() = throw RuntimeException("Stub!")
-
     override val hasLatestListing: Boolean get() = throw RuntimeException("Stub!")
 
     override suspend fun getSearchFilters(): FilterList = throw RuntimeException("Stub!")
@@ -27,7 +25,7 @@ interface CatalogueSource : Source {
 
     override suspend fun getLatestMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
 
-    override suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage = throw RuntimeException("Stub!")
+    override suspend fun getMangaList(query: String, filters: FilterList?, page: Int): MangasPage = throw RuntimeException("Stub!")
 
     /**
      * An ISO 639-1 compliant language code (two letters in lower case).

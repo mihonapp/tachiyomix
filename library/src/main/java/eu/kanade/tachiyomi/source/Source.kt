@@ -38,13 +38,6 @@ interface Source {
     val language: String
 
     /**
-     * Indicates if the source supports search filters
-     *
-     * @since extensions-lib 1.6
-     */
-    val hasSearchFilters: Boolean
-
-    /**
      * Whether the source has a list for latest updates
      *
      * @since extensions-lib 1.6
@@ -85,7 +78,7 @@ interface Source {
      * @param filters   the list of filters to apply.
      * @param page      the page number to retrieve.
      */
-    suspend fun getMangaList(query: String, filters: FilterList, page: Int): MangasPage
+    suspend fun getMangaList(query: String, filters: FilterList?, page: Int): MangasPage
 
     /**
      * Get the updated details for a manga and its chapters

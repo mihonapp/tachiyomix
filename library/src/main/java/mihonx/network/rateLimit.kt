@@ -3,6 +3,7 @@
 package mihonx.network
 
 import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -43,7 +44,7 @@ inline fun OkHttpClient.Builder.rateLimit(
     url: String,
     permits: Int,
     period: Duration = 1.seconds,
-): OkHttpClient.Builder = rateLimit(permits, period) { it.toString().startsWith(url) }
+): OkHttpClient.Builder = rateLimit(url.toHttpUrl(), permits, period)
 
 /**
  * An OkHttp interceptor that handles given url host's rate limiting.
@@ -63,7 +64,7 @@ inline fun OkHttpClient.Builder.rateLimit(
     httpUrl: HttpUrl,
     permits: Int,
     period: Duration = 1.seconds,
-): OkHttpClient.Builder = rateLimit(httpUrl.toString(), permits, period)
+): OkHttpClient.Builder = rateLimit(permits, period) { it.host == httpUrl.host }
 
 /**
  * An OkHttp interceptor that enforces conditional rate limiting based on a given condition.

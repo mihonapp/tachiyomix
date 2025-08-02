@@ -22,6 +22,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("Directly implement inside [getDefaultMangaList]")
     override fun popularMangaParse(response: Response): MangasPage {
         throw Exception("Stub!")
     }
@@ -50,6 +51,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("Directly implement inside [getMangaList]")
     override fun searchMangaParse(response: Response): MangasPage {
         throw Exception("Stub!")
     }
@@ -78,6 +80,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("Directly implement inside [getLatestMangaList]")
     override fun latestUpdatesParse(response: Response): MangasPage {
         throw Exception("Stub!")
     }
@@ -106,6 +109,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("Directly implement inside [getMangaDetails]")
     override fun mangaDetailsParse(response: Response): SManga {
         throw Exception("Stub!")
     }
@@ -122,6 +126,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("Directly implement inside [getMangaDetails]")
     override fun chapterListParse(response: Response): List<SChapter> {
         throw Exception("Stub!")
     }
@@ -143,6 +148,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("Directly implement inside [getPageList]")
     override fun pageListParse(response: Response): List<Page> {
         throw Exception("Stub!")
     }
@@ -159,6 +165,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("Directly implement inside [getImageUrl]")
     override fun imageUrlParse(response: Response): String {
         throw Exception("Stub!")
     }

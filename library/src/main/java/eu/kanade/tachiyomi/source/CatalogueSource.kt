@@ -1,28 +1,68 @@
+@file:Suppress("UNUSED")
+
 package eu.kanade.tachiyomi.source
 
 import eu.kanade.tachiyomi.source.model.FilterList
 import eu.kanade.tachiyomi.source.model.MangasPage
 import rx.Observable
 
-@Suppress("unused")
+@Suppress("DEPRECATION")
+@Deprecated(
+    message = "Use the base Source class instead",
+    replaceWith = ReplaceWith(
+        expression = "Source",
+        imports = ["eu.kanade.tachiyomi.source.Source"]
+    )
+)
 interface CatalogueSource : Source {
+
+    @Suppress("DEPRECATION")
+    override val language: String get() = lang
+
+    @Suppress("DEPRECATION")
+    override val hasLatestListing: Boolean get() = supportsLatest
+
+    override suspend fun getSearchFilters(): FilterList = getFilterList()
+
+    override suspend fun getDefaultMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
+
+    override suspend fun getLatestMangaList(page: Int): MangasPage = throw RuntimeException("Stub!")
+
+    override suspend fun getMangaList(query: String, filters: FilterList?, page: Int): MangasPage = throw RuntimeException("Stub!")
 
     /**
      * An ISO 639-1 compliant language code (two letters in lower case).
      */
-    val lang: String
+    @Deprecated("Use language instead", ReplaceWith("language"))
+    val lang: String get() = throw RuntimeException("Stub!")
 
     /**
      * Whether the source has support for latest updates.
      */
-    val supportsLatest: Boolean
+    @Deprecated("Use hasLatestListing instead", ReplaceWith("hasLatestListing"))
+    val supportsLatest: Boolean get() = throw RuntimeException("Stub!")
+
+    /**
+     * Returns the list of filters for the source.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getSearchFilters"))
+    fun getFilterList(): FilterList = throw RuntimeException("Stub!")
 
     /**
      * Returns an observable containing a page with a list of manga.
      *
      * @param page the page number to retrieve.
      */
-    fun fetchPopularManga(page: Int): Observable<MangasPage>
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getDefaultMangaList"))
+    fun fetchPopularManga(page: Int): Observable<MangasPage> = throw RuntimeException("Stub!")
+
+    /**
+     * Returns an observable containing a page with a list of latest manga updates.
+     *
+     * @param page the page number to retrieve.
+     */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getLatestMangaList"))
+    fun fetchLatestUpdates(page: Int): Observable<MangasPage> = throw RuntimeException("Stub!")
 
     /**
      * Returns an observable containing a page with a list of manga.
@@ -31,17 +71,6 @@ interface CatalogueSource : Source {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage>
-
-    /**
-     * Returns an observable containing a page with a list of latest manga updates.
-     *
-     * @param page the page number to retrieve.
-     */
-    fun fetchLatestUpdates(page: Int): Observable<MangasPage>
-
-    /**
-     * Returns the list of filters for the source.
-     */
-    fun getFilterList(): FilterList
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getMangaList"))
+    fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> = throw RuntimeException("Stub!")
 }

@@ -59,6 +59,4 @@ interface SManga {
             throw Exception("Stub!")
         }
     }
-
-
 }

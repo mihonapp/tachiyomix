@@ -13,12 +13,6 @@ class Manga {
         Adult,
     }
 
-    data class Tag(
-        val key: String,
-        val type: String?,
-        val displayName: String,
-    )
-
     enum class ReadingMode {
         RightToLeft,
         LeftToRight,

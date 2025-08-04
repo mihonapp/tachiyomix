@@ -332,18 +332,39 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public static final field Companion Leu/kanade/tachiyomi/source/model/SChapter$Companion;
 	public abstract fun getChapter_number ()F
 	public abstract fun getDate_upload ()J
+	public abstract fun getExtras ()Ljava/util/Map;
+	public abstract fun getKey ()Ljava/lang/String;
+	public abstract fun getLanguage ()Ljava/lang/String;
+	public abstract fun getLockStatus ()Lmihonx/models/Chapter$LockStatus;
 	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getNumber ()Ljava/lang/String;
 	public abstract fun getScanlator ()Ljava/lang/String;
+	public abstract fun getStaff ()Ljava/util/List;
+	public abstract fun getUploadedAt ()Lkotlin/time/Instant;
 	public abstract fun getUrl ()Ljava/lang/String;
+	public abstract fun getVolume ()Ljava/lang/String;
 	public abstract fun setChapter_number (F)V
 	public abstract fun setDate_upload (J)V
+	public abstract fun setExtras (Ljava/util/Map;)V
+	public abstract fun setKey (Ljava/lang/String;)V
+	public abstract fun setLanguage (Ljava/lang/String;)V
+	public abstract fun setLockStatus (Lmihonx/models/Chapter$LockStatus;)V
 	public abstract fun setName (Ljava/lang/String;)V
+	public abstract fun setNumber (Ljava/lang/String;)V
 	public abstract fun setScanlator (Ljava/lang/String;)V
+	public abstract fun setStaff (Ljava/util/List;)V
+	public abstract fun setUploadedAt (Lkotlin/time/Instant;)V
 	public abstract fun setUrl (Ljava/lang/String;)V
+	public abstract fun setVolume (Ljava/lang/String;)V
 }
 
 public final class eu/kanade/tachiyomi/source/model/SChapter$Companion {
 	public final fun create ()Leu/kanade/tachiyomi/source/model/SChapter;
+}
+
+public final class eu/kanade/tachiyomi/source/model/SChapterKt {
+	public static final fun setStaff (Leu/kanade/tachiyomi/source/model/SChapter;Ljava/lang/String;Ljava/lang/String;)Leu/kanade/tachiyomi/source/model/SChapter;
+	public static synthetic fun setStaff$default (Leu/kanade/tachiyomi/source/model/SChapter;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Leu/kanade/tachiyomi/source/model/SChapter;
 }
 
 public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
@@ -355,24 +376,46 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public static final field ON_HIATUS I
 	public static final field PUBLISHING_FINISHED I
 	public static final field UNKNOWN I
+	public abstract fun getAltTitles ()Ljava/util/List;
 	public abstract fun getArtist ()Ljava/lang/String;
 	public abstract fun getAuthor ()Ljava/lang/String;
+	public abstract fun getBanner ()Ljava/lang/String;
+	public abstract fun getContentRating ()Lmihonx/models/Manga$ContentRating;
+	public abstract fun getCover ()Ljava/lang/String;
 	public abstract fun getDescription ()Ljava/lang/String;
+	public abstract fun getExtras ()Ljava/util/Map;
 	public abstract fun getGenre ()Ljava/lang/String;
 	public abstract fun getInitialized ()Z
+	public abstract fun getKey ()Ljava/lang/String;
+	public abstract fun getReadingMode ()Lmihonx/models/Manga$ReadingMode;
+	public abstract fun getScore ()Ljava/lang/Float;
+	public abstract fun getStaff ()Ljava/util/List;
 	public abstract fun getStatus ()I
+	public abstract fun getTags ()Ljava/util/List;
 	public abstract fun getThumbnail_url ()Ljava/lang/String;
 	public abstract fun getTitle ()Ljava/lang/String;
+	public abstract fun getUpdateStrategy ()Lmihonx/models/Manga$UpdateStrategy;
 	public abstract fun getUpdate_strategy ()Leu/kanade/tachiyomi/source/model/UpdateStrategy;
 	public abstract fun getUrl ()Ljava/lang/String;
+	public abstract fun setAltTitles (Ljava/util/List;)V
 	public abstract fun setArtist (Ljava/lang/String;)V
 	public abstract fun setAuthor (Ljava/lang/String;)V
+	public abstract fun setBanner (Ljava/lang/String;)V
+	public abstract fun setContentRating (Lmihonx/models/Manga$ContentRating;)V
+	public abstract fun setCover (Ljava/lang/String;)V
 	public abstract fun setDescription (Ljava/lang/String;)V
+	public abstract fun setExtras (Ljava/util/Map;)V
 	public abstract fun setGenre (Ljava/lang/String;)V
 	public abstract fun setInitialized (Z)V
+	public abstract fun setKey (Ljava/lang/String;)V
+	public abstract fun setReadingMode (Lmihonx/models/Manga$ReadingMode;)V
+	public abstract fun setScore (Ljava/lang/Float;)V
+	public abstract fun setStaff (Ljava/util/List;)V
 	public abstract fun setStatus (I)V
+	public abstract fun setTags (Ljava/util/List;)V
 	public abstract fun setThumbnail_url (Ljava/lang/String;)V
 	public abstract fun setTitle (Ljava/lang/String;)V
+	public abstract fun setUpdateStrategy (Lmihonx/models/Manga$UpdateStrategy;)V
 	public abstract fun setUpdate_strategy (Leu/kanade/tachiyomi/source/model/UpdateStrategy;)V
 	public abstract fun setUrl (Ljava/lang/String;)V
 }
@@ -386,6 +429,12 @@ public final class eu/kanade/tachiyomi/source/model/SManga$Companion {
 	public static final field PUBLISHING_FINISHED I
 	public static final field UNKNOWN I
 	public final fun create ()Leu/kanade/tachiyomi/source/model/SManga;
+}
+
+public final class eu/kanade/tachiyomi/source/model/SMangaKt {
+	public static final fun setStaff (Leu/kanade/tachiyomi/source/model/SManga;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Leu/kanade/tachiyomi/source/model/SManga;
+	public static synthetic fun setStaff$default (Leu/kanade/tachiyomi/source/model/SManga;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Leu/kanade/tachiyomi/source/model/SManga;
+	public static final fun setTags (Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;)Leu/kanade/tachiyomi/source/model/SManga;
 }
 
 public final class eu/kanade/tachiyomi/source/model/UpdateStrategy : java/lang/Enum {
@@ -467,5 +516,106 @@ public abstract class eu/kanade/tachiyomi/source/online/ParsedHttpSource : eu/ka
 public final class eu/kanade/tachiyomi/util/JsoupExtensionsKt {
 	public static final fun asJsoup (Lokhttp3/Response;Ljava/lang/String;)Lorg/jsoup/nodes/Document;
 	public static synthetic fun asJsoup$default (Lokhttp3/Response;Ljava/lang/String;ILjava/lang/Object;)Lorg/jsoup/nodes/Document;
+}
+
+public final class mihonx/models/Chapter {
+	public fun <init> ()V
+}
+
+public final class mihonx/models/Chapter$LockStatus : java/lang/Enum {
+	public static final field External Lmihonx/models/Chapter$LockStatus;
+	public static final field Locked Lmihonx/models/Chapter$LockStatus;
+	public static final field None Lmihonx/models/Chapter$LockStatus;
+	public static final field Unknown Lmihonx/models/Chapter$LockStatus;
+	public static final field Unlocked Lmihonx/models/Chapter$LockStatus;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lmihonx/models/Chapter$LockStatus;
+	public static fun values ()[Lmihonx/models/Chapter$LockStatus;
+}
+
+public final class mihonx/models/Manga {
+	public fun <init> ()V
+}
+
+public final class mihonx/models/Manga$ContentRating : java/lang/Enum {
+	public static final field Adult Lmihonx/models/Manga$ContentRating;
+	public static final field Safe Lmihonx/models/Manga$ContentRating;
+	public static final field Suggestive Lmihonx/models/Manga$ContentRating;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lmihonx/models/Manga$ContentRating;
+	public static fun values ()[Lmihonx/models/Manga$ContentRating;
+}
+
+public final class mihonx/models/Manga$ReadingMode : java/lang/Enum {
+	public static final field LeftToRight Lmihonx/models/Manga$ReadingMode;
+	public static final field LongStrip Lmihonx/models/Manga$ReadingMode;
+	public static final field RightToLeft Lmihonx/models/Manga$ReadingMode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lmihonx/models/Manga$ReadingMode;
+	public static fun values ()[Lmihonx/models/Manga$ReadingMode;
+}
+
+public final class mihonx/models/Manga$Tag {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lmihonx/models/Manga$Tag;
+	public static synthetic fun copy$default (Lmihonx/models/Manga$Tag;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lmihonx/models/Manga$Tag;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getKey ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class mihonx/models/Manga$UpdateStrategy : java/lang/Enum {
+	public static final field AlwaysUpdate Lmihonx/models/Manga$UpdateStrategy;
+	public static final field OnlyFetchOnce Lmihonx/models/Manga$UpdateStrategy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lmihonx/models/Manga$UpdateStrategy;
+	public static fun values ()[Lmihonx/models/Manga$UpdateStrategy;
+}
+
+public abstract interface class mihonx/models/Staff {
+	public abstract fun getKey ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class mihonx/models/Staff$Artist : mihonx/models/Staff$Manga {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun getKey ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+}
+
+public final class mihonx/models/Staff$Author : mihonx/models/Staff$Manga {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun getKey ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+}
+
+public abstract interface class mihonx/models/Staff$Chapter : mihonx/models/Staff {
+}
+
+public final class mihonx/models/Staff$Circle : mihonx/models/Staff$Manga {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun getKey ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+}
+
+public abstract interface class mihonx/models/Staff$Manga : mihonx/models/Staff {
+}
+
+public final class mihonx/models/Staff$Translator : mihonx/models/Staff$Chapter {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun getKey ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+}
+
+public final class mihonx/models/Staff$Uploader : mihonx/models/Staff$Chapter {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun getKey ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
 }
 

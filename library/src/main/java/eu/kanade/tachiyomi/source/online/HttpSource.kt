@@ -276,7 +276,7 @@ abstract class HttpSource : CatalogueSource {
      * @since tachiyomix 1.6
      * @param page the page whose source image has to be downloaded.
      */
-    suspend fun getImage(page: Page): Response {
+    open suspend fun getImage(page: Page): Response {
         throw Exception("Stub!")
     }
 

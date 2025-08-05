@@ -435,7 +435,7 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public final fun getHeaders ()Lokhttp3/Headers;
 	public fun getHomeUrl ()Ljava/lang/String;
 	public fun getId ()J
-	public final fun getImage (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getImage (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getImageUrl (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getLatestUpdates (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getMangaDetails (Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

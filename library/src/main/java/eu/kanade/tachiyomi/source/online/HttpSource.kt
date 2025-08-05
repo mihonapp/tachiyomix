@@ -12,7 +12,7 @@ import rx.Observable
 /**
  * A simple implementation for sources from a website.
  */
-@Suppress("unused", "unused_parameter")
+@Suppress("UNUSED", "UnusedReceiverParameter", "RedundantSuspendModifier")
 abstract class HttpSource : CatalogueSource {
 
     /**
@@ -51,7 +51,7 @@ abstract class HttpSource : CatalogueSource {
     /**
      * Headers builder for requests. Implementations can override this method for custom headers.
      */
-    open protected fun headersBuilder(): Headers.Builder {
+    protected open fun headersBuilder(): Headers.Builder {
         throw Exception("Stub!")
     }
 
@@ -68,6 +68,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getPopularManga"))
     override fun fetchPopularManga(page: Int): Observable<MangasPage> {
         throw Exception("Stub!")
     }
@@ -94,6 +95,7 @@ abstract class HttpSource : CatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
+    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getSearchManga"))
     override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> {
         throw Exception("Stub!")
     }
@@ -119,6 +121,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getLatestUpdates"))
     override fun fetchLatestUpdates(page: Int): Observable<MangasPage> {
         throw Exception("Stub!")
     }
@@ -143,7 +146,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to be updated.
      */
-    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getMangaDetails"))
+    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getMangaDetails"))
     override fun fetchMangaDetails(manga: SManga): Observable<SManga> {
         throw Exception("Stub!")
     }
@@ -171,7 +174,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to look for chapters.
      */
-    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getChapterList"))
+    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getChapterList"))
     override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> {
         throw Exception("Stub!")
     }
@@ -182,7 +185,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to look for chapters.
      */
-    open protected fun chapterListRequest(manga: SManga): Request {
+    protected open fun chapterListRequest(manga: SManga): Request {
         throw Exception("Stub!")
     }
 
@@ -198,6 +201,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
+    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getPageList"))
     override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
         throw Exception("Stub!")
     }
@@ -208,7 +212,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
-    open protected fun pageListRequest(chapter: SChapter): Request {
+    protected open fun pageListRequest(chapter: SChapter): Request {
         throw Exception("Stub!")
     }
 
@@ -225,8 +229,19 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page whose source image has to be fetched.
      */
+    @Deprecated("Use the new suspend API instead", ReplaceWith("getImageUrl"))
     open fun fetchImageUrl(page: Page): Observable<String> {
         throw Exception("Stub!")
+    }
+
+    /**
+     * Returns the image url for the provided [page]. The function is only called if [Page.imageUrl] is null.
+     *
+     * @since tachiyomix 1.6
+     * @param page the page whose source image has to be fetched.
+     */
+    open suspend fun getImageUrl(page: Page): String {
+        throw RuntimeException("Stub!")
     }
 
     /**
@@ -235,7 +250,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the chapter whose page list has to be fetched
      */
-    open protected fun imageUrlRequest(page: Page): Request {
+    protected open fun imageUrlRequest(page: Page): Request {
         throw Exception("Stub!")
     }
 
@@ -256,12 +271,22 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
+     * Returns an observable with the response of the source image.
+     *
+     * @since tachiyomix 1.6
+     * @param page the page whose source image has to be downloaded.
+     */
+    open suspend fun getImage(page: Page): Response {
+        throw Exception("Stub!")
+    }
+
+    /**
      * Returns the request for getting the source image. Override only if it's needed to override
      * the url, send different headers or request method like POST.
      *
      * @param page the chapter whose page list has to be fetched
      */
-    open protected fun imageRequest(page: Page): Request {
+    protected open fun imageRequest(page: Page): Request {
         throw Exception("Stub!")
     }
 
@@ -323,6 +348,7 @@ abstract class HttpSource : CatalogueSource {
      * @param chapter the chapter to be added.
      * @param manga the manga of the chapter.
      */
+    @Deprecated("All these modification should be done when constructing the chapter")
     open fun prepareNewChapter(chapter: SChapter, manga: SManga) {}
 
     /**

@@ -18,9 +18,4 @@ class Manga {
         LeftToRight,
         LongStrip,
     }
-
-    enum class UpdateStrategy {
-        AlwaysUpdate,
-        OnlyFetchOnce,
-    }
 }

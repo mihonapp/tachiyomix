@@ -10,41 +10,73 @@ interface SManga {
 
     var title: String
 
-    var cover: String?
-
+    /**
+     * URL of the manga's banner image.
+     *
+     * Typically a wide image shown in headers or detailed views.
+     * May be `null` if the source does not provide one.
+     */
     var banner: String?
 
+    /**
+     * Alternative titles for the manga.
+     *
+     * This list can include official translations, romanizations,
+     * or other titles the series is known by in different regions or languages.
+     */
     var altTitles: List<String>
 
     var artist: String?
 
     var author: String?
 
+    /**
+     * Age or content rating for the manga.
+     *
+     * Indicates the suitability of the manga’s content for different audiences.
+     * Consumers can utilize it to provide filters or cover blurring in their app.
+     * Realistically only relevant for sources with an `isNsfw` marker.
+     */
     var contentRating: Manga.ContentRating
 
+    /**
+     * Source-provided rating score for the manga.
+     *
+     * Must be a percentile value (e.g., between 0 and 100).
+     * `null` if no rating is available.
+     */
     var score: Float?
 
     var description: String?
 
-    var readingMode: Manga.ReadingMode?
-
-    var updateStrategy: Manga.UpdateStrategy
+    /**
+     * Preferred reading mode for this manga.
+     *
+     * Defines how pages are presented to the reader.
+     *
+     * This value defaults to [Manga.ReadingMode.RightToLeft] if not otherwise specified,
+     * and should only used if the user has chosen the default reading mode in their settings.
+     */
+    var readingMode: Manga.ReadingMode
 
     var genre: String?
 
     var status: Int
 
     @Suppress("PropertyName")
-    @Deprecated("Provide SManga.cover instead")
     var thumbnail_url: String?
 
     @Suppress("DEPRECATION", "PropertyName")
-    @Deprecated("Provide SManga.updateStrategy instead")
     var update_strategy: UpdateStrategy
 
     var initialized: Boolean
 
-    var extras: Map<String, String>
+    /**
+     * Arbitrary metadata attached to this manga.
+     *
+     * Sources may use key prefixes (e.g., `"mhx.*"`) to indicate custom fields relevant to specific consumers.
+     */
+    var memo: Map<String, String>
 
     companion object {
         const val UNKNOWN = 0

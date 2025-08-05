@@ -332,10 +332,9 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public static final field Companion Leu/kanade/tachiyomi/source/model/SChapter$Companion;
 	public abstract fun getChapter_number ()F
 	public abstract fun getDate_upload ()J
-	public abstract fun getExtras ()Ljava/util/Map;
-	public abstract fun getLanguage ()Ljava/lang/String;
-	public abstract fun getLockStatus ()Lmihonx/models/Chapter$LockStatus;
+	public abstract fun getMemo ()Ljava/util/Map;
 	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getNote ()Ljava/lang/String;
 	public abstract fun getNumber ()Ljava/lang/String;
 	public abstract fun getScanlator ()Ljava/lang/String;
 	public abstract fun getUploadedAt ()Lkotlin/time/Instant;
@@ -343,10 +342,9 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public abstract fun getVolume ()Ljava/lang/String;
 	public abstract fun setChapter_number (F)V
 	public abstract fun setDate_upload (J)V
-	public abstract fun setExtras (Ljava/util/Map;)V
-	public abstract fun setLanguage (Ljava/lang/String;)V
-	public abstract fun setLockStatus (Lmihonx/models/Chapter$LockStatus;)V
+	public abstract fun setMemo (Ljava/util/Map;)V
 	public abstract fun setName (Ljava/lang/String;)V
+	public abstract fun setNote (Ljava/lang/String;)V
 	public abstract fun setNumber (Ljava/lang/String;)V
 	public abstract fun setScanlator (Ljava/lang/String;)V
 	public abstract fun setUploadedAt (Lkotlin/time/Instant;)V
@@ -372,17 +370,15 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun getAuthor ()Ljava/lang/String;
 	public abstract fun getBanner ()Ljava/lang/String;
 	public abstract fun getContentRating ()Lmihonx/models/Manga$ContentRating;
-	public abstract fun getCover ()Ljava/lang/String;
 	public abstract fun getDescription ()Ljava/lang/String;
-	public abstract fun getExtras ()Ljava/util/Map;
 	public abstract fun getGenre ()Ljava/lang/String;
 	public abstract fun getInitialized ()Z
+	public abstract fun getMemo ()Ljava/util/Map;
 	public abstract fun getReadingMode ()Lmihonx/models/Manga$ReadingMode;
 	public abstract fun getScore ()Ljava/lang/Float;
 	public abstract fun getStatus ()I
 	public abstract fun getThumbnail_url ()Ljava/lang/String;
 	public abstract fun getTitle ()Ljava/lang/String;
-	public abstract fun getUpdateStrategy ()Lmihonx/models/Manga$UpdateStrategy;
 	public abstract fun getUpdate_strategy ()Leu/kanade/tachiyomi/source/model/UpdateStrategy;
 	public abstract fun getUrl ()Ljava/lang/String;
 	public abstract fun setAltTitles (Ljava/util/List;)V
@@ -390,17 +386,15 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun setAuthor (Ljava/lang/String;)V
 	public abstract fun setBanner (Ljava/lang/String;)V
 	public abstract fun setContentRating (Lmihonx/models/Manga$ContentRating;)V
-	public abstract fun setCover (Ljava/lang/String;)V
 	public abstract fun setDescription (Ljava/lang/String;)V
-	public abstract fun setExtras (Ljava/util/Map;)V
 	public abstract fun setGenre (Ljava/lang/String;)V
 	public abstract fun setInitialized (Z)V
+	public abstract fun setMemo (Ljava/util/Map;)V
 	public abstract fun setReadingMode (Lmihonx/models/Manga$ReadingMode;)V
 	public abstract fun setScore (Ljava/lang/Float;)V
 	public abstract fun setStatus (I)V
 	public abstract fun setThumbnail_url (Ljava/lang/String;)V
 	public abstract fun setTitle (Ljava/lang/String;)V
-	public abstract fun setUpdateStrategy (Lmihonx/models/Manga$UpdateStrategy;)V
 	public abstract fun setUpdate_strategy (Leu/kanade/tachiyomi/source/model/UpdateStrategy;)V
 	public abstract fun setUrl (Ljava/lang/String;)V
 }
@@ -497,21 +491,6 @@ public final class eu/kanade/tachiyomi/util/JsoupExtensionsKt {
 	public static synthetic fun asJsoup$default (Lokhttp3/Response;Ljava/lang/String;ILjava/lang/Object;)Lorg/jsoup/nodes/Document;
 }
 
-public final class mihonx/models/Chapter {
-	public fun <init> ()V
-}
-
-public final class mihonx/models/Chapter$LockStatus : java/lang/Enum {
-	public static final field External Lmihonx/models/Chapter$LockStatus;
-	public static final field Locked Lmihonx/models/Chapter$LockStatus;
-	public static final field None Lmihonx/models/Chapter$LockStatus;
-	public static final field Unknown Lmihonx/models/Chapter$LockStatus;
-	public static final field Unlocked Lmihonx/models/Chapter$LockStatus;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lmihonx/models/Chapter$LockStatus;
-	public static fun values ()[Lmihonx/models/Chapter$LockStatus;
-}
-
 public final class mihonx/models/Manga {
 	public fun <init> ()V
 }
@@ -532,13 +511,5 @@ public final class mihonx/models/Manga$ReadingMode : java/lang/Enum {
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lmihonx/models/Manga$ReadingMode;
 	public static fun values ()[Lmihonx/models/Manga$ReadingMode;
-}
-
-public final class mihonx/models/Manga$UpdateStrategy : java/lang/Enum {
-	public static final field AlwaysUpdate Lmihonx/models/Manga$UpdateStrategy;
-	public static final field OnlyFetchOnce Lmihonx/models/Manga$UpdateStrategy;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lmihonx/models/Manga$UpdateStrategy;
-	public static fun values ()[Lmihonx/models/Manga$UpdateStrategy;
 }
 

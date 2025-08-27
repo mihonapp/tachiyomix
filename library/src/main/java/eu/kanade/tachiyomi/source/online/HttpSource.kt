@@ -335,37 +335,16 @@ abstract class HttpSource : CatalogueSource {
     // ===== Full Chapter Download Support =====
 
     /**
-     * Indicates whether this source supports downloading complete chapters as archive files.
-     * Override this method to return true if your source can provide complete chapter files.
-     *
-     * @since extensions-lib 1.6
-     * @return true if the source supports full chapter downloads, false otherwise
-     */
-    open fun supportsFullChapterDownload(): Boolean = false
-
-    /**
-     * Returns the request for downloading a complete chapter as an archive file.
-     * Override this method if you need to customize the request (e.g., different headers, POST method).
-     * This method is only called if [supportsFullChapterDownload] returns true.
-     *
-     * @since extensions-lib 1.6
-     * @param chapter the chapter to download as a complete archive
-     * @return Request for downloading the complete chapter archive
-     */
-    protected open fun fullChapterRequest(chapter: SChapter): Request {
-        throw Exception("Stub!")
-    }
-
-    /**
-     * Downloads a complete chapter as an archive file.
-     * This default implementation uses [fullChapterRequest] to create the request.
-     * Override this method if you need custom download logic.
+     * Downloads a complete chapter as an archive file (e.g., CBZ).
+     * Override this method if your source can provide complete chapter files
+     * instead of individual page images.
      *
      * @since extensions-lib 1.6
      * @param chapter the chapter to download as a complete archive
      * @return Response containing the complete chapter archive file
+     * @throws UnsupportedOperationException if the source doesn't support full chapter downloads
      */
     open suspend fun getFullChapter(chapter: SChapter): Response {
-        throw Exception("Stub!")
+        throw UnsupportedOperationException("Source does not support full chapter downloads")
     }
 }

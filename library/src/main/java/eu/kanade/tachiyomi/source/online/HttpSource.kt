@@ -331,4 +331,20 @@ abstract class HttpSource : CatalogueSource {
     override fun getFilterList(): FilterList {
         throw Exception("Stub!")
     }
+
+    // ===== Full Chapter Download Support =====
+
+    /**
+     * Downloads a complete chapter as an archive file (e.g., CBZ).
+     * Override this method if your source can provide complete chapter files
+     * instead of individual page images.
+     *
+     * @since extensions-lib 1.6
+     * @param chapter the chapter to download as a complete archive
+     * @return Response containing the complete chapter archive file
+     * @throws UnsupportedOperationException if the source doesn't support full chapter downloads
+     */
+    open suspend fun getFullChapter(chapter: SChapter): Response {
+        throw UnsupportedOperationException("Source does not support full chapter downloads")
+    }
 }

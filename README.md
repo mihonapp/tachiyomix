@@ -2,19 +2,31 @@
 
 Tachiyomi-based extensions library used in [Mihon](https://github.com/mihonapp/mihon).
 
-## 📦 Installation
+## 📦 Usage
 
-Add the following to your Gradle dependencies:
+Add `jitpack.io` repository to your root `build.gradle.kts` file:
+```kotlin
+dependencyResolutionManagement {
+    repositories {
+        maven(url = "https://www.jitpack.io")
+    }
+}
+```
+
+Then add the dependency:
 
 ```kotlin
 dependencies {
     compileOnly("com.github.mihonapp:tachiyomix:1.6")
 }
 ```
+> [!NOTE]
+>
+> `compileOnly` is used because `tachiyomix` provides stub interfaces only. The actual implementations are included in the host app.
 
-## 🔧 Recommended Dependency Versions
+## 🔧 App Dependency Requirements
 
-To ensure compatibility with **TachiyomiX 1.6**, forks should use at least the following versions:
+Host apps using `tachiyomix` must include the following dependencies (or newer versions) to ensure compatibility with version **1.6**:
 
 | Dependency            | Artifact(s)                                                                                                                                                                 | Version  |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
@@ -23,7 +35,7 @@ To ensure compatibility with **TachiyomiX 1.6**, forks should use at least the f
 | kotlinx.serialization | `org.jetbrains.kotlinx:kotlinx-serialization-json` <br> `org.jetbrains.kotlinx:kotlinx-serialization-json-okio` <br> `org.jetbrains.kotlinx:kotlinx-serialization-protobuf` | `1.9.0`  |
 | OkHttp                | `com.squareup.okhttp3:okhttp` <br> `com.squareup.okhttp3:okhttp-brotli` <br> `com.squareup.okhttp3:okhttp-coroutines`                                                       | `5.1.0`  |
 | jsoup                 | `org.jsoup:jsoup`                                                                                                                                                           | `1.21.1` |
-| Ksoup                 | `com.fleeksoft.ksoup:ksoup` <br> `com.fleeksoft.ksoup:ksoup-okio`                                                                                                           | `0.2.5`  |
+| Injekt                | `com.github.mihonapp:injekt`                                                                                                                                                | `1.0.0`  |
 
 ## 📄 License
 

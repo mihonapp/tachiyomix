@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED")
+@file:Suppress("UNUSED", "PropertyName")
 
 package eu.kanade.tachiyomi.source.model
 
@@ -12,11 +12,8 @@ interface SChapter {
 
     var name: String
 
-    @Suppress("PropertyName")
-    @Deprecated("Provide SChapter.uploadedAt instead")
     var date_upload: Long
 
-    @Suppress("PropertyName")
     @Deprecated("Provide SChapter.number instead")
     var chapter_number: Float
 
@@ -39,13 +36,6 @@ interface SChapter {
     var scanlator: String?
 
     /**
-     * UTC timestamp when the chapter was uploaded.
-     *
-     * If `null`, consumers should fall back to [kotlin.time.Clock.System.now].
-     */
-    var uploadedAt: Instant?
-
-    /**
      * Optional note associated with the chapter.
      *
      * This can include author comments, annotations, warnings, or other context
@@ -54,9 +44,9 @@ interface SChapter {
     var note: String?
 
     /**
-     * Arbitrary metadata attached to this chapter.
+     * Extra metadata invisible to users.
      *
-     * Sources may use key prefixes (e.g., `"mhx.*"`) to indicate custom fields relevant to specific consumers.
+     * Apps may define special prefixed keys (e.g., `"mhx.*"`) for custom fields.
      */
     var memo: Map<String, String>
 

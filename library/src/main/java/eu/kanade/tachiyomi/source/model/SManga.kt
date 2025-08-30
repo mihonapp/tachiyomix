@@ -34,7 +34,7 @@ interface SManga {
      * Age or content rating for the manga.
      *
      * Indicates the suitability of the manga’s content for different audiences.
-     * Consumers can utilize it to provide filters or cover blurring in their app.
+     * Apps can utilize it to provide filters or cover blurring in their app.
      * Realistically only relevant for sources with an `isNsfw` marker.
      */
     var contentRating: Manga.ContentRating
@@ -50,14 +50,11 @@ interface SManga {
     var description: String?
 
     /**
-     * Preferred reading mode for this manga.
+     * Preferred reading mode provided by the source, or the majority from the source.
      *
-     * Defines how pages are presented to the reader.
-     *
-     * This value defaults to [Manga.ReadingMode.RightToLeft] if not otherwise specified,
-     * and should only used if the user has chosen the default reading mode in their settings.
+     * Leave it `null` if the source provides entries of various modes and doesn't provide explicit data.
      */
-    var readingMode: Manga.ReadingMode
+    var readingMode: Manga.ReadingMode?
 
     var genre: String?
 
@@ -72,9 +69,9 @@ interface SManga {
     var initialized: Boolean
 
     /**
-     * Arbitrary metadata attached to this manga.
+     * Extra metadata invisible to users.
      *
-     * Sources may use key prefixes (e.g., `"mhx.*"`) to indicate custom fields relevant to specific consumers.
+     * Apps may define special prefixed keys (e.g., `"mhx.*"`) for custom fields.
      */
     var memo: Map<String, String>
 

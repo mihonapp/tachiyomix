@@ -12,7 +12,7 @@ import rx.Observable
 /**
  * A simple implementation for sources from a website.
  */
-@Suppress("UNUSED", "UnusedReceiverParameter", "RedundantSuspendModifier")
+@Suppress("UNUSED", "UnusedReceiverParameter")
 abstract class HttpSource : CatalogueSource {
 
     /**
@@ -68,7 +68,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getPopularManga"))
+    @Deprecated("Use the suspend API instead", ReplaceWith("getPopularManga"))
     override fun fetchPopularManga(page: Int): Observable<MangasPage> {
         throw Exception("Stub!")
     }
@@ -95,7 +95,7 @@ abstract class HttpSource : CatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getSearchManga"))
+    @Deprecated("Use the suspend API instead", ReplaceWith("getSearchManga"))
     override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> {
         throw Exception("Stub!")
     }
@@ -121,7 +121,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getLatestUpdates"))
+    @Deprecated("Use the suspend API instead", ReplaceWith("getLatestUpdates"))
     override fun fetchLatestUpdates(page: Int): Observable<MangasPage> {
         throw Exception("Stub!")
     }
@@ -146,7 +146,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to be updated.
      */
-    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getMangaDetails"))
+    @Deprecated("Use the suspend API instead", ReplaceWith("getMangaDetails"))
     override fun fetchMangaDetails(manga: SManga): Observable<SManga> {
         throw Exception("Stub!")
     }
@@ -174,7 +174,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to look for chapters.
      */
-    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getChapterList"))
+    @Deprecated("Use the suspend API instead", ReplaceWith("getChapterList"))
     override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> {
         throw Exception("Stub!")
     }
@@ -201,7 +201,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
-    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getPageList"))
+    @Deprecated("Use the suspend API instead", ReplaceWith("getPageList"))
     override fun fetchPageList(chapter: SChapter): Observable<List<Page>> {
         throw Exception("Stub!")
     }
@@ -229,7 +229,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page whose source image has to be fetched.
      */
-    @Deprecated("Use the new suspend API instead", ReplaceWith("getImageUrl"))
+    @Deprecated("Use the suspend API instead", ReplaceWith("getImageUrl"))
     open fun fetchImageUrl(page: Page): Observable<String> {
         throw Exception("Stub!")
     }
@@ -271,7 +271,7 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
-     * Returns an observable with the response of the source image.
+     * Returns the HTTP [Response] of the source image for the given [page].
      *
      * @since tachiyomix 1.6
      * @param page the page whose source image has to be downloaded.
@@ -348,7 +348,7 @@ abstract class HttpSource : CatalogueSource {
      * @param chapter the chapter to be added.
      * @param manga the manga of the chapter.
      */
-    @Deprecated("All these modification should be done when constructing the chapter")
+    @Deprecated("All modifications should be done when constructing the chapter")
     open fun prepareNewChapter(chapter: SChapter, manga: SManga) {}
 
     /**

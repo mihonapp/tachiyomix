@@ -1,19 +1,20 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.maven.publish)
+    alias(libs.plugins.tapmoc)
+    alias(libs.plugins.spotless)
+
 }
 
 dependencies {
-    implementation("com.squareup.okhttp3:okhttp:5.1.0")
-    implementation("io.reactivex:rxjava:1.3.8")
-    implementation("io.reactivex:rxandroid:1.2.1")
-    implementation("org.jsoup:jsoup:1.21.1")
-    implementation("com.github.mihonapp:injekt:91edab2317")
+    implementation(libs.okhttp)
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
+    implementation(libs.jsoup)
+    implementation(libs.injekt)
 }
 
 kotlin {
@@ -32,17 +33,24 @@ android {
     defaultConfig {
         minSdk = 21
     }
+}
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+spotless {
+    val ktlintVersion = libs.ktlint.cli.get().version
+    kotlin {
+        target("src/**/*.kt")
+        ktlint(ktlintVersion)
+    }
+
+    kotlinGradle {
+        target("*.gradle.kts")
+        ktlint(ktlintVersion)
     }
 }
 
-tasks.withType<KotlinCompile>().configureEach {
-    compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_17)
-    }
+compatPatrouille {
+    java(17)
+    kotlin("2.2.0")
 }
 
 mavenPublishing {

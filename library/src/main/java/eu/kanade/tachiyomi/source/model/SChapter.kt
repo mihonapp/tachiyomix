@@ -7,15 +7,15 @@ interface SChapter {
 
     var name: String
 
+    @Suppress("PropertyName")
     var date_upload: Long
 
+    @Suppress("PropertyName")
     var chapter_number: Float
 
     var scanlator: String?
 
     companion object {
-        fun create(): SChapter {
-            throw Exception("Stub!")
-        }
+        fun create(): SChapter = throw Exception("Stub!")
     }
 }

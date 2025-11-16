@@ -19,8 +19,8 @@ import java.util.concurrent.TimeUnit
  */
 @Deprecated(
     message = "Default rate limiting implementation is no longer provided. Source developers are now " +
-            "responsible for implementing their own rate limiting logic if desired, to prevent forks " +
-            "from bypassing it.",
+        "responsible for implementing their own rate limiting logic if desired, to prevent forks " +
+        "from bypassing it.",
     replaceWith = ReplaceWith("this"),
 )
 fun OkHttpClient.Builder.rateLimit(

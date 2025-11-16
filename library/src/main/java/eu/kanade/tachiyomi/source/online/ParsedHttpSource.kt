@@ -13,7 +13,7 @@ import org.jsoup.nodes.Element
  */
 @Deprecated(
     message = "In most cases sources only require a subset of the methods from this class. " +
-        "Source developers should make their own implementation according to their needs."
+        "Source developers should make their own implementation according to their needs.",
 )
 abstract class ParsedHttpSource : HttpSource() {
 
@@ -22,9 +22,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
-    override fun popularMangaParse(response: Response): MangasPage {
-        throw Exception("Stub!")
-    }
+    override fun popularMangaParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each manga.
@@ -50,9 +48,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
-    override fun searchMangaParse(response: Response): MangasPage {
-        throw Exception("Stub!")
-    }
+    override fun searchMangaParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each manga.
@@ -78,9 +74,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
-    override fun latestUpdatesParse(response: Response): MangasPage {
-        throw Exception("Stub!")
-    }
+    override fun latestUpdatesParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each manga.
@@ -106,9 +100,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
-    override fun mangaDetailsParse(response: Response): SManga {
-        throw Exception("Stub!")
-    }
+    override fun mangaDetailsParse(response: Response): SManga = throw Exception("Stub!")
 
     /**
      * Returns the details of the manga from the given [document].
@@ -122,9 +114,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
-    override fun chapterListParse(response: Response): List<SChapter> {
-        throw Exception("Stub!")
-    }
+    override fun chapterListParse(response: Response): List<SChapter> = throw Exception("Stub!")
 
     /**
      * Returns the Jsoup selector that returns a list of [Element] corresponding to each chapter.
@@ -143,9 +133,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
-    override fun pageListParse(response: Response): List<Page> {
-        throw Exception("Stub!")
-    }
+    override fun pageListParse(response: Response): List<Page> = throw Exception("Stub!")
 
     /**
      * Returns a page list from the given document.
@@ -159,9 +147,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
-    override fun imageUrlParse(response: Response): String {
-        throw Exception("Stub!")
-    }
+    override fun imageUrlParse(response: Response): String = throw Exception("Stub!")
 
     /**
      * Returns the absolute url to the source image from the document.

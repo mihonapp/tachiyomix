@@ -6,5 +6,4 @@ import androidx.preference.PreferenceScreen
 interface ConfigurableSource {
 
     fun setupPreferenceScreen(screen: PreferenceScreen)
-
 }

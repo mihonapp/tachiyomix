@@ -17,8 +17,10 @@ interface SManga {
 
     var status: Int
 
+    @Suppress("PropertyName")
     var thumbnail_url: String?
 
+    @Suppress("PropertyName")
     var update_strategy: UpdateStrategy
 
     var initialized: Boolean
@@ -32,8 +34,6 @@ interface SManga {
         const val CANCELLED = 5
         const val ON_HIATUS = 6
 
-        fun create(): SManga {
-            throw Exception("Stub!")
-        }
+        fun create(): SManga = throw Exception("Stub!")
     }
 }

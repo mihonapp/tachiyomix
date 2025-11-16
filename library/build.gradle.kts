@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.maven.publish)
     alias(libs.plugins.tapmoc)
     alias(libs.plugins.spotless)
-
 }
 
 dependencies {

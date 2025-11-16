@@ -100,8 +100,6 @@ interface SManga {
         const val CANCELLED = 5
         const val ON_HIATUS = 6
 
-        fun create(): SManga {
-            throw Exception("Stub!")
-        }
+        fun create(): SManga = throw Exception("Stub!")
     }
 }

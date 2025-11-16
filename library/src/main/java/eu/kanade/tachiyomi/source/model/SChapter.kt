@@ -8,9 +8,11 @@ interface SChapter {
 
     var name: String
 
+    @Suppress("PropertyName")
     var date_upload: Long
 
     @Deprecated("Provide SChapter.number instead")
+    @Suppress("PropertyName")
     var chapter_number: Float
 
     /**
@@ -81,8 +83,6 @@ interface SChapter {
     var memo: Map<String, String>
 
     companion object {
-        fun create(): SChapter {
-            throw Exception("Stub!")
-        }
+        fun create(): SChapter = throw Exception("Stub!")
     }
 }

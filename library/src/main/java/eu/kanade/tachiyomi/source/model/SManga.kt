@@ -2,8 +2,6 @@
 
 package eu.kanade.tachiyomi.source.model
 
-import mihonx.models.Manga
-
 interface SManga {
 
     var url: String
@@ -36,8 +34,10 @@ interface SManga {
      * Indicates the suitability of the manga’s content for different audiences.
      * Apps can utilize it to provide filters or cover blurring in their app.
      * Realistically only relevant for sources with an `isNsfw` marker.
+     *
+     * Defaults to [ContentRating.SAFE]
      */
-    var contentRating: Manga.ContentRating
+    var contentRating: ContentRating
 
     /**
      * Source-provided rating score for the manga.
@@ -54,7 +54,7 @@ interface SManga {
      *
      * Leave it `null` if the source provides entries of various modes and doesn't provide explicit data.
      */
-    var readingMode: Manga.ReadingMode?
+    var readingMode: ReadingMode?
 
     var genre: String?
 
@@ -63,17 +63,33 @@ interface SManga {
     @Suppress("PropertyName")
     var thumbnail_url: String?
 
-    @Suppress("DEPRECATION", "PropertyName")
+    @Suppress("PropertyName")
     var update_strategy: UpdateStrategy
 
     var initialized: Boolean
 
     /**
-     * Extra metadata invisible to users.
+     * Extra metadata associated with the manga.
      *
-     * Apps may define special prefixed keys (e.g., `"mhx.*"`) for custom fields.
+     * These key-value pairs are invisible to users and intended for internal or source-specific
+     * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources can populate.
+     *
+     * This allows apps to attach and ask for custom information without affecting the visible
+     * chapter data.
      */
     var memo: Map<String, String>
+
+    enum class ContentRating {
+        SAFE,
+        SUGGESTIVE,
+        ADULT,
+    }
+
+    enum class ReadingMode {
+        RIGHT_TO_LEFT,
+        LEFT_TO_RIGHT,
+        LONG_STRIP,
+    }
 
     companion object {
         const val UNKNOWN = 0

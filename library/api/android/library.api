@@ -337,7 +337,6 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public abstract fun getNote ()Ljava/lang/String;
 	public abstract fun getNumber ()Ljava/lang/String;
 	public abstract fun getScanlator ()Ljava/lang/String;
-	public abstract fun getUploadedAt ()Lkotlin/time/Instant;
 	public abstract fun getUrl ()Ljava/lang/String;
 	public abstract fun getVolume ()Ljava/lang/String;
 	public abstract fun setChapter_number (F)V
@@ -347,7 +346,6 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public abstract fun setNote (Ljava/lang/String;)V
 	public abstract fun setNumber (Ljava/lang/String;)V
 	public abstract fun setScanlator (Ljava/lang/String;)V
-	public abstract fun setUploadedAt (Lkotlin/time/Instant;)V
 	public abstract fun setUrl (Ljava/lang/String;)V
 	public abstract fun setVolume (Ljava/lang/String;)V
 }
@@ -369,12 +367,12 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun getArtist ()Ljava/lang/String;
 	public abstract fun getAuthor ()Ljava/lang/String;
 	public abstract fun getBanner ()Ljava/lang/String;
-	public abstract fun getContentRating ()Lmihonx/models/Manga$ContentRating;
+	public abstract fun getContentRating ()Leu/kanade/tachiyomi/source/model/SManga$ContentRating;
 	public abstract fun getDescription ()Ljava/lang/String;
 	public abstract fun getGenre ()Ljava/lang/String;
 	public abstract fun getInitialized ()Z
 	public abstract fun getMemo ()Ljava/util/Map;
-	public abstract fun getReadingMode ()Lmihonx/models/Manga$ReadingMode;
+	public abstract fun getReadingMode ()Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;
 	public abstract fun getScore ()Ljava/lang/Float;
 	public abstract fun getStatus ()I
 	public abstract fun getThumbnail_url ()Ljava/lang/String;
@@ -385,12 +383,12 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun setArtist (Ljava/lang/String;)V
 	public abstract fun setAuthor (Ljava/lang/String;)V
 	public abstract fun setBanner (Ljava/lang/String;)V
-	public abstract fun setContentRating (Lmihonx/models/Manga$ContentRating;)V
+	public abstract fun setContentRating (Leu/kanade/tachiyomi/source/model/SManga$ContentRating;)V
 	public abstract fun setDescription (Ljava/lang/String;)V
 	public abstract fun setGenre (Ljava/lang/String;)V
 	public abstract fun setInitialized (Z)V
 	public abstract fun setMemo (Ljava/util/Map;)V
-	public abstract fun setReadingMode (Lmihonx/models/Manga$ReadingMode;)V
+	public abstract fun setReadingMode (Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;)V
 	public abstract fun setScore (Ljava/lang/Float;)V
 	public abstract fun setStatus (I)V
 	public abstract fun setThumbnail_url (Ljava/lang/String;)V
@@ -408,6 +406,24 @@ public final class eu/kanade/tachiyomi/source/model/SManga$Companion {
 	public static final field PUBLISHING_FINISHED I
 	public static final field UNKNOWN I
 	public final fun create ()Leu/kanade/tachiyomi/source/model/SManga;
+}
+
+public final class eu/kanade/tachiyomi/source/model/SManga$ContentRating : java/lang/Enum {
+	public static final field ADULT Leu/kanade/tachiyomi/source/model/SManga$ContentRating;
+	public static final field SAFE Leu/kanade/tachiyomi/source/model/SManga$ContentRating;
+	public static final field SUGGESTIVE Leu/kanade/tachiyomi/source/model/SManga$ContentRating;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Leu/kanade/tachiyomi/source/model/SManga$ContentRating;
+	public static fun values ()[Leu/kanade/tachiyomi/source/model/SManga$ContentRating;
+}
+
+public final class eu/kanade/tachiyomi/source/model/SManga$ReadingMode : java/lang/Enum {
+	public static final field LEFT_TO_RIGHT Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;
+	public static final field LONG_STRIP Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;
+	public static final field RIGHT_TO_LEFT Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;
+	public static fun values ()[Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;
 }
 
 public final class eu/kanade/tachiyomi/source/model/UpdateStrategy : java/lang/Enum {
@@ -489,27 +505,5 @@ public abstract class eu/kanade/tachiyomi/source/online/ParsedHttpSource : eu/ka
 public final class eu/kanade/tachiyomi/util/JsoupExtensionsKt {
 	public static final fun asJsoup (Lokhttp3/Response;Ljava/lang/String;)Lorg/jsoup/nodes/Document;
 	public static synthetic fun asJsoup$default (Lokhttp3/Response;Ljava/lang/String;ILjava/lang/Object;)Lorg/jsoup/nodes/Document;
-}
-
-public final class mihonx/models/Manga {
-	public fun <init> ()V
-}
-
-public final class mihonx/models/Manga$ContentRating : java/lang/Enum {
-	public static final field Adult Lmihonx/models/Manga$ContentRating;
-	public static final field Safe Lmihonx/models/Manga$ContentRating;
-	public static final field Suggestive Lmihonx/models/Manga$ContentRating;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lmihonx/models/Manga$ContentRating;
-	public static fun values ()[Lmihonx/models/Manga$ContentRating;
-}
-
-public final class mihonx/models/Manga$ReadingMode : java/lang/Enum {
-	public static final field LeftToRight Lmihonx/models/Manga$ReadingMode;
-	public static final field LongStrip Lmihonx/models/Manga$ReadingMode;
-	public static final field RightToLeft Lmihonx/models/Manga$ReadingMode;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Lmihonx/models/Manga$ReadingMode;
-	public static fun values ()[Lmihonx/models/Manga$ReadingMode;
 }
 

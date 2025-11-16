@@ -2,10 +2,6 @@
 
 package eu.kanade.tachiyomi.source.model
 
-import kotlin.time.ExperimentalTime
-import kotlin.time.Instant
-
-@OptIn(ExperimentalTime::class)
 interface SChapter {
 
     var url: String
@@ -20,16 +16,46 @@ interface SChapter {
     /**
      * Chapter number in string format.
      *
-     * Mihon, for example, validates it with the regex `^-?\d+(?:\.\d+)?[a-z]?$`.
-     * Example values: `"12"`, `"5.5"`, `"0a"`, `"-1"`.
+     * Typically validated using the pattern:
+     * ```
+     * ^(?:-?\d+(?:\.\d+)?[a-z]?|nan)$
+     * ```
+     *
+     * This format supports:
+     * * Whole numbers → `"1"`
+     * * Decimal numbers → `"1.5"`
+     * * Optional trailing lowercase letters → `"1a"`, `"1.5b"`
+     * * Negative values → `"-1"`
+     * * `null` for unnumbered chapters
+     * * Literal `"nan"` for unknown or ambiguous values
+     *
+     * When encountering `"nan"`, the app may attempt to infer a chapter number manually.
+     * If parsing still fails, it is recommended to treat the value as `null`.
+     *
+     * See also: [volume]
      */
     var number: String?
 
     /**
      * Volume number in string format.
      *
-     * Mihon, for example, validates it with the regex `^-?\d+(?:\.\d+)?[a-z]?$`, similar to [number].
-     * Example values: `"1"`, `"2.5"`, `"3b"`.
+     * Typically validated using the pattern:
+     * ```
+     * ^(?:-?\d+(?:\.\d+)?[a-z]?|nan)$
+     * ```
+     *
+     * This format supports:
+     * * Whole numbers → `"1"`
+     * * Decimal numbers → `"1.5"`
+     * * Optional trailing lowercase letters → `"1a"`, `"1.5b"`
+     * * Negative values → `"-1"`
+     * * `null` for unnumbered volumes
+     * * Literal `"nan"` for unknown or ambiguous values
+     *
+     * When encountering `"nan"`, the app may attempt to infer a volume number manually.
+     * If parsing still fails, it is recommended to treat the value as `null`.
+     *
+     * See also: [number]
      */
     var volume: String?
 
@@ -38,15 +64,19 @@ interface SChapter {
     /**
      * Optional note associated with the chapter.
      *
-     * This can include author comments, annotations, warnings, or other context
-     * shown to the user alongside the chapter. Content is free-form and source-defined.
+     * This can include date of availability, locked status, or other context shown to the user
+     * alongside the chapter. Content is free-form and source-defined.
      */
     var note: String?
 
     /**
-     * Extra metadata invisible to users.
+     * Extra metadata associated with the chapter.
      *
-     * Apps may define special prefixed keys (e.g., `"mhx.*"`) for custom fields.
+     * These key-value pairs are invisible to users and intended for internal or source-specific
+     * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources can populate.
+     *
+     * This allows apps to attach and ask for custom information without affecting the visible
+     * chapter data.
      */
     var memo: Map<String, String>
 

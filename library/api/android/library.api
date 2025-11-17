@@ -452,6 +452,7 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public fun getClient ()Lokhttp3/OkHttpClient;
 	public fun getFilterList ()Leu/kanade/tachiyomi/source/model/FilterList;
 	public final fun getHeaders ()Lokhttp3/Headers;
+	public fun getHomeUrl ()Ljava/lang/String;
 	public fun getId ()J
 	public fun getMangaDetails (Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getMangaUrl (Leu/kanade/tachiyomi/source/model/SManga;)Ljava/lang/String;

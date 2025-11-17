@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED")
+@file:Suppress("UNUSED", "PropertyName")
 
 package eu.kanade.tachiyomi.source.model
 
@@ -60,10 +60,8 @@ interface SManga {
 
     var status: Int
 
-    @Suppress("PropertyName")
     var thumbnail_url: String?
 
-    @Suppress("PropertyName")
     var update_strategy: UpdateStrategy
 
     var initialized: Boolean

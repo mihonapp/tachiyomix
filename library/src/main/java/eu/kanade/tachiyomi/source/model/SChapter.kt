@@ -8,11 +8,9 @@ interface SChapter {
 
     var name: String
 
-    @Suppress("PropertyName")
     var date_upload: Long
 
     @Deprecated("Provide SChapter.number instead")
-    @Suppress("PropertyName")
     var chapter_number: Float
 
     /**

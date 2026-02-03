@@ -33,8 +33,7 @@ interface CatalogueSource : Source {
      * @param filters the list of filters to apply.
      */
     @Deprecated("Use the suspend API instead", ReplaceWith("getSearchManga"))
-    fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> =
-        throw Exception("Stub!")
+    fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> = throw Exception("Stub!")
 
     /**
      * Returns an observable containing a page with a list of latest manga updates.

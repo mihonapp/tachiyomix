@@ -4,7 +4,7 @@ import eu.kanade.tachiyomi.source.model.FilterList
 import eu.kanade.tachiyomi.source.model.MangasPage
 import rx.Observable
 
-@Suppress("unused")
+@Suppress("UNUSED")
 interface CatalogueSource : Source {
 
     /**
@@ -15,14 +15,15 @@ interface CatalogueSource : Source {
     /**
      * Whether the source has support for latest updates.
      */
-    val supportsLatest: Boolean
+    override val supportsLatest: Boolean
 
     /**
      * Returns an observable containing a page with a list of manga.
      *
      * @param page the page number to retrieve.
      */
-    fun fetchPopularManga(page: Int): Observable<MangasPage>
+    @Deprecated("Use the suspend API instead", ReplaceWith("getPopularManga"))
+    fun fetchPopularManga(page: Int): Observable<MangasPage> = throw Exception("Stub!")
 
     /**
      * Returns an observable containing a page with a list of manga.
@@ -31,17 +32,19 @@ interface CatalogueSource : Source {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage>
+    @Deprecated("Use the suspend API instead", ReplaceWith("getSearchManga"))
+    fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> = throw Exception("Stub!")
 
     /**
      * Returns an observable containing a page with a list of latest manga updates.
      *
      * @param page the page number to retrieve.
      */
-    fun fetchLatestUpdates(page: Int): Observable<MangasPage>
+    @Deprecated("Use the suspend API instead", ReplaceWith("getLatestUpdates"))
+    fun fetchLatestUpdates(page: Int): Observable<MangasPage> = throw Exception("Stub!")
 
     /**
      * Returns the list of filters for the source.
      */
-    fun getFilterList(): FilterList
+    override fun getFilterList(): FilterList
 }

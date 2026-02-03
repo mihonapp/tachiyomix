@@ -16,7 +16,7 @@ import rx.Observable
 /**
  * A simple implementation for sources from a website.
  */
-@Suppress("unused", "unused_parameter")
+@Suppress("UNUSED", "UnusedReceiverParameter")
 abstract class HttpSource : CatalogueSource {
 
     /**
@@ -81,6 +81,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated("Use the suspend API instead", ReplaceWith("getPopularManga"))
     override fun fetchPopularManga(page: Int): Observable<MangasPage> = throw Exception("Stub!")
 
     /**
@@ -105,6 +106,7 @@ abstract class HttpSource : CatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
+    @Deprecated("Use the suspend API instead", ReplaceWith("getSearchManga"))
     override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> = throw Exception("Stub!")
 
     /**
@@ -128,6 +130,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
+    @Deprecated("Use the suspend API instead", ReplaceWith("getLatestUpdates"))
     override fun fetchLatestUpdates(page: Int): Observable<MangasPage> = throw Exception("Stub!")
 
     /**
@@ -150,7 +153,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to be updated.
      */
-    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getMangaDetails"))
+    @Deprecated("Use the combined suspend API instead", replaceWith = ReplaceWith("getMangaUpdate"))
     override fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw Exception("Stub!")
 
     /**
@@ -174,7 +177,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to look for chapters.
      */
-    @Deprecated("Use the non-RxJava API instead", replaceWith = ReplaceWith("getChapterList"))
+    @Deprecated("Use the combined suspend API instead", replaceWith = ReplaceWith("getMangaUpdate"))
     override fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw Exception("Stub!")
 
     /**
@@ -197,6 +200,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
+    @Deprecated("Use the suspend API instead", ReplaceWith("getPageList"))
     override fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw Exception("Stub!")
 
     /**
@@ -220,7 +224,16 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page whose source image has to be fetched.
      */
+    @Deprecated("Use the suspend API instead", ReplaceWith("getImageUrl"))
     open fun fetchImageUrl(page: Page): Observable<String> = throw Exception("Stub!")
+
+    /**
+     * Returns the image url for the provided [page]. The function is only called if [Page.imageUrl] is null.
+     *
+     * @since tachiyomix 1.6
+     * @param page the page whose source image has to be fetched.
+     */
+    open suspend fun getImageUrl(page: Page): String = throw Exception("Stub!")
 
     /**
      * Returns the request for getting the url to the source image. Override only if it's needed to
@@ -243,6 +256,14 @@ abstract class HttpSource : CatalogueSource {
      * @param page the page whose source image has to be downloaded.
      */
     fun fetchImage(page: Page): Observable<Response> = throw Exception("Stub!")
+
+    /**
+     * Returns the HTTP [Response] of the source image for the given [page].
+     *
+     * @since tachiyomix 1.6
+     * @param page the page whose source image has to be downloaded.
+     */
+    open suspend fun getImage(page: Page): Response = throw Exception("Stub!")
 
     /**
      * Returns the request for getting the source image. Override only if it's needed to override
@@ -300,6 +321,7 @@ abstract class HttpSource : CatalogueSource {
      * @param chapter the chapter to be added.
      * @param manga the manga of the chapter.
      */
+    @Deprecated("All modifications should be done when constructing the chapter")
     open fun prepareNewChapter(chapter: SChapter, manga: SManga) {}
 
     /**

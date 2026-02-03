@@ -5,6 +5,7 @@ import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import rx.Observable
 
 /**
@@ -60,22 +61,22 @@ interface Source {
     suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage = throw Exception("Stub!")
 
     /**
-     * Get the updated details for a manga.
+     * Fetches updated information for a manga.
+     *
+     * Depending on the provided flags, this may include updated manga metadata,
+     * available chapters, or both.
      *
      * @since tachiyomix 1.6
-     * @param manga the manga to update.
-     * @return the updated manga.
+     * @param manga The manga to fetch updates for.
+     * @param includeManga Whether to include updated manga details.
+     * @param includeChapters Whether to include available chapters.
+     * @return An [SMangaUpdate] containing the requested updates.
      */
-    suspend fun getMangaDetails(manga: SManga): SManga = throw Exception("Stub!")
-
-    /**
-     * Get all the available chapters for a manga.
-     *
-     * @since tachiyomix 1.6
-     * @param manga the manga to update.
-     * @return the chapters for the manga.
-     */
-    suspend fun getChapterList(manga: SManga): List<SChapter> = throw Exception("Stub!")
+    suspend fun getMangaUpdate(
+        manga: SManga,
+        includeManga: Boolean,
+        includeChapters: Boolean,
+    ): SMangaUpdate = throw Exception("Stub!")
 
     /**
      * Get the list of pages a chapter has. Pages should be returned
@@ -87,10 +88,10 @@ interface Source {
      */
     suspend fun getPageList(chapter: SChapter): List<Page> = throw Exception("Stub!")
 
-    @Deprecated("Use the suspend API instead", ReplaceWith("getMangaDetails"))
+    @Deprecated("Use the combined suspend API instead", ReplaceWith("getMangaUpdate"))
     fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw Exception("Stub!")
 
-    @Deprecated("Use the suspend API instead", ReplaceWith("getChapterList"))
+    @Deprecated("Use the combined suspend API instead", ReplaceWith("getMangaUpdate"))
     fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw Exception("Stub!")
 
     @Deprecated("Use the suspend API instead", ReplaceWith("getPageList"))

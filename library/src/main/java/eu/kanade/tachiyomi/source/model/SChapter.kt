@@ -73,7 +73,7 @@ interface SChapter {
      * Extra metadata associated with the chapter.
      *
      * These key-value pairs are invisible to users and intended for internal or source-specific
-     * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources can populate.
+     * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources to populate.
      *
      * This allows apps to attach and ask for custom information without affecting the visible
      * chapter data.

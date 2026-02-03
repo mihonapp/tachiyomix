@@ -45,7 +45,7 @@ interface SManga {
      * Must be a percentile value (e.g., between 0 and 100).
      * `null` if no rating is available.
      */
-    var score: Float?
+    var score: Int?
 
     var description: String?
 
@@ -70,7 +70,7 @@ interface SManga {
      * Extra metadata associated with the manga.
      *
      * These key-value pairs are invisible to users and intended for internal or source-specific
-     * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources can populate.
+     * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources to populate.
      *
      * This allows apps to attach and ask for custom information without affecting the visible
      * chapter data.

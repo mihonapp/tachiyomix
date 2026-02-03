@@ -373,7 +373,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun getInitialized ()Z
 	public abstract fun getMemo ()Ljava/util/Map;
 	public abstract fun getReadingMode ()Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;
-	public abstract fun getScore ()Ljava/lang/Float;
+	public abstract fun getScore ()Ljava/lang/Integer;
 	public abstract fun getStatus ()I
 	public abstract fun getThumbnail_url ()Ljava/lang/String;
 	public abstract fun getTitle ()Ljava/lang/String;
@@ -389,7 +389,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun setInitialized (Z)V
 	public abstract fun setMemo (Ljava/util/Map;)V
 	public abstract fun setReadingMode (Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;)V
-	public abstract fun setScore (Ljava/lang/Float;)V
+	public abstract fun setScore (Ljava/lang/Integer;)V
 	public abstract fun setStatus (I)V
 	public abstract fun setThumbnail_url (Ljava/lang/String;)V
 	public abstract fun setTitle (Ljava/lang/String;)V

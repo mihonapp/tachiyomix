@@ -335,11 +335,13 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public abstract fun getName ()Ljava/lang/String;
 	public abstract fun getScanlator ()Ljava/lang/String;
 	public abstract fun getUrl ()Ljava/lang/String;
+	public abstract fun getIsPremium ()Z
 	public abstract fun setChapter_number (F)V
 	public abstract fun setDate_upload (J)V
 	public abstract fun setName (Ljava/lang/String;)V
 	public abstract fun setScanlator (Ljava/lang/String;)V
 	public abstract fun setUrl (Ljava/lang/String;)V
+	public abstract fun setIsPremium (Z)V
 }
 
 public final class eu/kanade/tachiyomi/source/model/SChapter$Companion {

@@ -30,6 +30,19 @@ abstract class HttpSource : CatalogueSource {
     abstract val baseUrl: String
 
     /**
+     * Returns the base (home) URL of the website as a string.
+     *
+     * This is typically the root address that serves as the main entry point
+     * to the site's content, such as "https://mihon.tech".
+     *
+     * This method is used in the browse screen to determine the URL
+     * opened when tapping "Open in WebView".
+     *
+     * @return The website’s home page URL. Defaults to [baseUrl].
+     */
+    open fun getHomeUrl(): String = throw Exception("Stub!")
+
+    /**
      * Version id used to generate the source id. If the site completely changes and urls are
      * incompatible, you may increase this value and it'll be considered as a new source.
      */
@@ -266,7 +279,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param url the full url to the chapter.
      */
-    fun SChapter.setUrlWithoutDomain(url: String) = throw Exception("Stub!")
+    fun SChapter.setUrlWithoutDomain(url: String): Unit = throw Exception("Stub!")
 
     /**
      * Assigns the url of the manga without the scheme and domain. It saves some redundancy from
@@ -274,7 +287,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param url the full url to the manga.
      */
-    fun SManga.setUrlWithoutDomain(url: String) = throw Exception("Stub!")
+    fun SManga.setUrlWithoutDomain(url: String): Unit = throw Exception("Stub!")
 
     /**
      * Returns the url of the given string without the scheme and domain.

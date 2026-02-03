@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.android.library)
     alias(libs.plugins.maven.publish)
     alias(libs.plugins.tapmoc)
@@ -21,8 +21,6 @@ kotlin {
     abiValidation {
         enabled.set(true)
     }
-
-    androidTarget()
 }
 
 android {
@@ -47,9 +45,9 @@ spotless {
     }
 }
 
-compatPatrouille {
+tapmoc {
     java(17)
-    kotlin("2.2.0")
+    kotlin("2.3.0")
 }
 
 mavenPublishing {

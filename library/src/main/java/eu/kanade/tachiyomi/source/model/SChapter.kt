@@ -15,6 +15,8 @@ interface SChapter {
 
     var scanlator: String?
 
+    var isPremium: Boolean
+
     companion object {
         fun create(): SChapter = throw Exception("Stub!")
     }

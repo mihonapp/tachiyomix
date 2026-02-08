@@ -1,29 +1,93 @@
+@file:Suppress("UNUSED", "PropertyName")
+
 package eu.kanade.tachiyomi.source.model
 
-@Suppress("unused")
 interface SManga {
 
     var url: String
 
     var title: String
 
+    /**
+     * URL of the manga's banner image.
+     *
+     * Typically a wide image shown in headers or detailed views.
+     * May be `null` if the source does not provide one.
+     */
+    var banner: String?
+
+    /**
+     * Alternative titles for the manga.
+     *
+     * This list can include official translations, romanizations,
+     * or other titles the series is known by in different regions or languages.
+     */
+    var altTitles: List<String>
+
     var artist: String?
 
     var author: String?
 
+    /**
+     * Age or content rating for the manga.
+     *
+     * Indicates the suitability of the manga’s content for different audiences.
+     * Apps can utilize it to provide filters or cover blurring in their app.
+     * Realistically only relevant for sources with an `isNsfw` marker.
+     *
+     * Defaults to [ContentRating.SAFE]
+     */
+    var contentRating: ContentRating
+
+    /**
+     * Source-provided rating score for the manga.
+     *
+     * Must be a percentile value (e.g., between 0 and 100).
+     * `null` if no rating is available.
+     */
+    var score: Int?
+
     var description: String?
+
+    /**
+     * Preferred reading mode provided by the source, or the majority from the source.
+     *
+     * Leave it `null` if the source provides entries of various modes and doesn't provide explicit data.
+     */
+    var readingMode: ReadingMode?
 
     var genre: String?
 
     var status: Int
 
-    @Suppress("PropertyName")
     var thumbnail_url: String?
 
-    @Suppress("PropertyName")
     var update_strategy: UpdateStrategy
 
     var initialized: Boolean
+
+    /**
+     * Extra metadata associated with the manga.
+     *
+     * These key-value pairs are invisible to users and intended for internal or source-specific
+     * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources to populate.
+     *
+     * This allows apps to attach and ask for custom information without affecting the visible
+     * chapter data.
+     */
+    var memo: Map<String, String>
+
+    enum class ContentRating {
+        SAFE,
+        SUGGESTIVE,
+        ADULT,
+    }
+
+    enum class ReadingMode {
+        RIGHT_TO_LEFT,
+        LEFT_TO_RIGHT,
+        LONG_STRIP,
+    }
 
     companion object {
         const val UNKNOWN = 0

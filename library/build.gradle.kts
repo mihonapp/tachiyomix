@@ -47,7 +47,6 @@ spotless {
 
 tapmoc {
     java(17)
-    kotlin("2.3.0")
 }
 
 mavenPublishing {

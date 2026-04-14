@@ -7,6 +7,7 @@ import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
+import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -84,6 +85,8 @@ abstract class HttpSource : CatalogueSource {
     @Deprecated("Use the suspend API instead", ReplaceWith("getPopularManga"))
     override fun fetchPopularManga(page: Int): Observable<MangasPage> = throw Exception("Stub!")
 
+    override suspend fun getPopularManga(page: Int): MangasPage = throw Exception("Stub!")
+
     /**
      * Returns the request for the popular manga given the page.
      *
@@ -109,6 +112,8 @@ abstract class HttpSource : CatalogueSource {
     @Deprecated("Use the suspend API instead", ReplaceWith("getSearchManga"))
     override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> = throw Exception("Stub!")
 
+    override suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage = throw Exception("Stub!")
+
     /**
      * Returns the request for the search manga given the page.
      *
@@ -132,6 +137,8 @@ abstract class HttpSource : CatalogueSource {
      */
     @Deprecated("Use the suspend API instead", ReplaceWith("getLatestUpdates"))
     override fun fetchLatestUpdates(page: Int): Observable<MangasPage> = throw Exception("Stub!")
+
+    override suspend fun getLatestUpdates(page: Int): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns the request for latest manga given the page.
@@ -195,6 +202,28 @@ abstract class HttpSource : CatalogueSource {
      */
     protected abstract fun chapterListParse(response: Response): List<SChapter>
 
+    override suspend fun getMangaUpdate(
+        manga: SManga,
+        chapters: List<SChapter>,
+        includeManga: Boolean,
+        includeChapters: Boolean,
+    ): SMangaUpdate = throw Exception("Stub!")
+
+    /**
+     * Returns the request for the update of a manga. Override only if it's needed to change the
+     * url, send different headers or request method like POST.
+     *
+     * @param manga the manga to be updated.
+     */
+    open fun mangaUpdateRequest(manga: SManga): Request = throw Exception("Stub!")
+
+    /**
+     * Parses the response from the site and returns the update of a manga.
+     *
+     * @param response the response from the site.
+     */
+    protected abstract fun mangaUpdateParse(response: Response): SManga
+
     /**
      * Returns an observable with the page list for a chapter.
      *
@@ -202,6 +231,8 @@ abstract class HttpSource : CatalogueSource {
      */
     @Deprecated("Use the suspend API instead", ReplaceWith("getPageList"))
     override fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw Exception("Stub!")
+
+    override suspend fun getPageList(chapter: SChapter): List<Page> = throw Exception("Stub!")
 
     /**
      * Returns the request for getting the page list. Override only if it's needed to override the
@@ -255,6 +286,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page whose source image has to be downloaded.
      */
+    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getImage"))
     fun fetchImage(page: Page): Observable<Response> = throw Exception("Stub!")
 
     /**
@@ -323,9 +355,4 @@ abstract class HttpSource : CatalogueSource {
      */
     @Deprecated("All modifications should be done when constructing the chapter")
     open fun prepareNewChapter(chapter: SChapter, manga: SManga) {}
-
-    /**
-     * Returns the list of filters for the source.
-     */
-    override fun getFilterList(): FilterList = throw Exception("Stub!")
 }

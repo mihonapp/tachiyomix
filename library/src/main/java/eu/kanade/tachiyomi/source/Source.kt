@@ -15,7 +15,7 @@ import rx.Observable
 interface Source {
 
     /**
-     * Id for the source. Must be unique.
+     * ID for the source. Must be unique.
      */
     val id: Long
 
@@ -32,7 +32,7 @@ interface Source {
     /**
      * Returns the list of filters for the source.
      */
-    fun getFilterList(): FilterList
+    fun getFilterList(): FilterList = throw Exception("Stub!")
 
     /**
      * Get a page with a list of manga.
@@ -40,7 +40,7 @@ interface Source {
      * @since tachiyomix 1.6
      * @param page the page number to retrieve.
      */
-    suspend fun getPopularManga(page: Int): MangasPage = throw Exception("Stub!")
+    suspend fun getPopularManga(page: Int): MangasPage
 
     /**
      * Get a page with a list of latest manga updates.
@@ -48,7 +48,7 @@ interface Source {
      * @since tachiyomix 1.6
      * @param page the page number to retrieve.
      */
-    suspend fun getLatestUpdates(page: Int): MangasPage = throw Exception("Stub!")
+    suspend fun getLatestUpdates(page: Int): MangasPage
 
     /**
      * Get a page with a list of manga.
@@ -58,25 +58,26 @@ interface Source {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage = throw Exception("Stub!")
+    suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage
 
     /**
      * Fetches updated information for a manga.
      *
-     * Depending on the provided flags, this may include updated manga metadata,
-     * available chapters, or both.
+     * Depending on the provided flags or source availability, this may include
+     * updated manga metadata, available chapters, or both.
      *
      * @since tachiyomix 1.6
      * @param manga The manga to fetch updates for.
+     * @param chapters Existing chapters of the manga
      * @param includeManga Whether to include updated manga details.
      * @param includeChapters Whether to include available chapters.
-     * @return An [SMangaUpdate] containing the requested updates.
      */
     suspend fun getMangaUpdate(
         manga: SManga,
+        chapters: List<SChapter>,
         includeManga: Boolean,
         includeChapters: Boolean,
-    ): SMangaUpdate = throw Exception("Stub!")
+    ): SMangaUpdate
 
     /**
      * Get the list of pages a chapter has. Pages should be returned
@@ -86,7 +87,7 @@ interface Source {
      * @param chapter the chapter.
      * @return the pages for the chapter.
      */
-    suspend fun getPageList(chapter: SChapter): List<Page> = throw Exception("Stub!")
+    suspend fun getPageList(chapter: SChapter): List<Page>
 
     @Deprecated("Use the combined suspend API instead", ReplaceWith("getMangaUpdate"))
     fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw Exception("Stub!")

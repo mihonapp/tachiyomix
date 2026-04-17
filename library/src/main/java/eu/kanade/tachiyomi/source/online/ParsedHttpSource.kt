@@ -22,6 +22,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("The helper functions are inherently limiting and hides the underlying implementation. Source developers should make their own implementation according to their needs.")
     override fun popularMangaParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
@@ -48,6 +49,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("The helper functions are inherently limiting and hides the underlying implementation. Source developers should make their own implementation according to their needs.")
     override fun searchMangaParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
@@ -74,6 +76,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("The helper functions are inherently limiting and hides the underlying implementation. Source developers should make their own implementation according to their needs.")
     override fun latestUpdatesParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
@@ -100,6 +103,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("The helper functions are inherently limiting and hides the underlying implementation. Source developers should make their own implementation according to their needs.")
     override fun mangaDetailsParse(response: Response): SManga = throw Exception("Stub!")
 
     /**
@@ -114,6 +118,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("The helper functions are inherently limiting and hides the underlying implementation. Source developers should make their own implementation according to their needs.")
     override fun chapterListParse(response: Response): List<SChapter> = throw Exception("Stub!")
 
     /**
@@ -133,6 +138,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("The helper functions are inherently limiting and hides the underlying implementation. Source developers should make their own implementation according to their needs.")
     override fun pageListParse(response: Response): List<Page> = throw Exception("Stub!")
 
     /**
@@ -147,6 +153,7 @@ abstract class ParsedHttpSource : HttpSource() {
      *
      * @param response the response from the site.
      */
+    @Deprecated("The helper functions are inherently limiting and hides the underlying implementation. Source developers should make their own implementation according to their needs.")
     override fun imageUrlParse(response: Response): String = throw Exception("Stub!")
 
     /**

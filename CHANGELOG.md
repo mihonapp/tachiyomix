@@ -14,7 +14,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `Source.getPopularManga`; Suspend alternative to `CatalogueSource.fetchPopularManga`.
+- `Source.getLatestUpdates`; Suspend alternative to `CatalogueSource.fetchLatestUpdates`.
+- `Source.getSearchManga`; Suspend alternative to `CatalogueSource.fetchSearchManga`.
+- `Source.getMangaUpdate`; Combined suspend alternative to `Source.fetchMangaDetails` and `Source.fetchChapterList`.
+- `Source.getPageList`; Suspend alternative to `Source.fetchPageList`.
+- `Source.getFilterList`; Moving up the hierarchy from  `CatalogueSource.getFilterList`.
 - `HttpSource.getHomeUrl`; New method to determine the URL opened when tapping “Open in WebView” in the browse screen.
+- `HttpSource.mangaUpdateRequest`;
+- `HttpSource.mangaUpdateParse`;
+- `HttpSource.getImageUrl`; Suspend alternative to `CatalogueSource.fetchImageUrl`.
+- `HttpSource.getImage`; Suspend alternative to `CatalogueSource.fetchImage`.
 - `SChapter.number` and `SChapter.volume`; Chapter number and volume in string format.
 - `SChapter.note`; Optional note associated with the chapter (e.g., lock status or a short description).
 - `SManga.banner`; Optional URL for the banner image associated with the manga.
@@ -25,6 +35,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SManga.memo` and `SChapter.memo`; Internal key–value pairs associated with the manga or chapter.
 
 ### Deprecated
+- `CatalogueSource.fetchPopularManga`; Deprecated in favor of `Source.getPopularManga`.
+- `CatalogueSource.fetchLatestUpdates`; Deprecated in favor of `Source.getLatestUpdates`.
+- `CatalogueSource.fetchSearchManga`; Deprecated in favor of `Source.getSearchManga`.
+- `Source.fetchMangaDetails`; Deprecated in favor of `Source.getMangaUpdate`.
+- `Source.fetchChapterList`; Deprecated in favor of `Source.getMangaUpdate`.
+- `Source.fetchPageList`; Deprecated in favor of `Source.getPageList`.
+- `HttpSource.fetchImageUrl`; Deprecated in favor of `Source.getImageUrl`.
+- `HttpSource.fetchImage`; Deprecated in favor of `Source.getImage`.
+- `HttpSource.prepareNewChapter`; Deprecated with no replacement.
 - `rateLimit` and `rateLimitHost`; Deprecated with no replacement.
 - `ParsedHttpSource`; Deprecated with no replacement.
 - `NetworkHelper.cloudflareClient`; Deprecated in favor of `NetworkHelper.client`, which should support cloudflare bypass by default.

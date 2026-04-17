@@ -93,7 +93,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun popularMangaRequest(page: Int): Request
+    protected open fun popularMangaRequest(page: Int): Request = throw Exception("Stub!")
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
@@ -104,7 +104,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun popularMangaParse(response: Response): MangasPage
+    protected open fun popularMangaParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns an observable containing a page with a list of manga. Normally it's not needed to
@@ -128,7 +128,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
+    protected open fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request = throw Exception("Stub!")
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
@@ -139,7 +139,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun searchMangaParse(response: Response): MangasPage
+    protected open fun searchMangaParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns an observable containing a page with a list of latest manga updates.
@@ -158,7 +158,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun latestUpdatesRequest(page: Int): Request
+    protected open fun latestUpdatesRequest(page: Int): Request = throw Exception("Stub!")
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
@@ -169,7 +169,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun latestUpdatesParse(response: Response): MangasPage
+    protected open fun latestUpdatesParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns an observable with the updated details for a manga. Normally it's not needed to
@@ -201,7 +201,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun mangaDetailsParse(response: Response): SManga
+    protected open fun mangaDetailsParse(response: Response): SManga = throw Exception("Stub!")
 
     /**
      * Returns an observable with the updated chapter list for a manga. Normally it's not needed to
@@ -233,7 +233,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun chapterListParse(response: Response): List<SChapter>
+    protected open fun chapterListParse(response: Response): List<SChapter> = throw Exception("Stub!")
 
     /**
      * Returns an observable with the page list for a chapter.
@@ -264,7 +264,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun pageListParse(response: Response): List<Page>
+    protected open fun pageListParse(response: Response): List<Page> = throw Exception("Stub!")
 
     /**
      * Returns an observable with the page containing the source url of the image. If there's any
@@ -304,7 +304,7 @@ abstract class HttpSource : CatalogueSource {
         message = "The helper functions are inherently limiting and hides the underlying implementation. " +
             "Source developers should make their own implementation according to their needs.",
     )
-    protected abstract fun imageUrlParse(response: Response): String
+    protected open fun imageUrlParse(response: Response): String = throw Exception("Stub!")
 
     /**
      * Returns an observable with the response of the source image.

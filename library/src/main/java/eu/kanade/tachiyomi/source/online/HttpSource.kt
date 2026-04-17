@@ -84,8 +84,6 @@ abstract class HttpSource : CatalogueSource {
     @Deprecated("Use the suspend API instead", ReplaceWith("getPopularManga"))
     override fun fetchPopularManga(page: Int): Observable<MangasPage> = throw Exception("Stub!")
 
-    override suspend fun getPopularManga(page: Int): MangasPage = throw Exception("Stub!")
-
     /**
      * Returns the request for the popular manga given the page.
      *
@@ -111,8 +109,6 @@ abstract class HttpSource : CatalogueSource {
     @Deprecated("Use the suspend API instead", ReplaceWith("getSearchManga"))
     override fun fetchSearchManga(page: Int, query: String, filters: FilterList): Observable<MangasPage> = throw Exception("Stub!")
 
-    override suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage = throw Exception("Stub!")
-
     /**
      * Returns the request for the search manga given the page.
      *
@@ -136,8 +132,6 @@ abstract class HttpSource : CatalogueSource {
      */
     @Deprecated("Use the suspend API instead", ReplaceWith("getLatestUpdates"))
     override fun fetchLatestUpdates(page: Int): Observable<MangasPage> = throw Exception("Stub!")
-
-    override suspend fun getLatestUpdates(page: Int): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns the request for latest manga given the page.
@@ -208,8 +202,6 @@ abstract class HttpSource : CatalogueSource {
      */
     @Deprecated("Use the suspend API instead", ReplaceWith("getPageList"))
     override fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw Exception("Stub!")
-
-    override suspend fun getPageList(chapter: SChapter): List<Page> = throw Exception("Stub!")
 
     /**
      * Returns the request for getting the page list. Override only if it's needed to override the

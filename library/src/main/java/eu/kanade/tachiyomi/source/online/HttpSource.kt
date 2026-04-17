@@ -89,14 +89,22 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    protected abstract fun popularMangaRequest(page: Int): Request
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun popularMangaRequest(page: Int): Request = throw Exception("Stub!")
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
      *
      * @param response the response from the site.
      */
-    protected abstract fun popularMangaParse(response: Response): MangasPage
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun popularMangaParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns an observable containing a page with a list of manga. Normally it's not needed to
@@ -116,14 +124,22 @@ abstract class HttpSource : CatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    protected abstract fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request = throw Exception("Stub!")
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
      *
      * @param response the response from the site.
      */
-    protected abstract fun searchMangaParse(response: Response): MangasPage
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun searchMangaParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns an observable containing a page with a list of latest manga updates.
@@ -138,14 +154,22 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    protected abstract fun latestUpdatesRequest(page: Int): Request
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun latestUpdatesRequest(page: Int): Request = throw Exception("Stub!")
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
      *
      * @param response the response from the site.
      */
-    protected abstract fun latestUpdatesParse(response: Response): MangasPage
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun latestUpdatesParse(response: Response): MangasPage = throw Exception("Stub!")
 
     /**
      * Returns an observable with the updated details for a manga. Normally it's not needed to
@@ -162,6 +186,10 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to be updated.
      */
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
     open fun mangaDetailsRequest(manga: SManga): Request = throw Exception("Stub!")
 
     /**
@@ -169,7 +197,11 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun mangaDetailsParse(response: Response): SManga
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun mangaDetailsParse(response: Response): SManga = throw Exception("Stub!")
 
     /**
      * Returns an observable with the updated chapter list for a manga. Normally it's not needed to
@@ -186,6 +218,10 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to look for chapters.
      */
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
     protected open fun chapterListRequest(manga: SManga): Request = throw Exception("Stub!")
 
     /**
@@ -193,7 +229,11 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun chapterListParse(response: Response): List<SChapter>
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun chapterListParse(response: Response): List<SChapter> = throw Exception("Stub!")
 
     /**
      * Returns an observable with the page list for a chapter.
@@ -209,6 +249,10 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
     protected open fun pageListRequest(chapter: SChapter): Request = throw Exception("Stub!")
 
     /**
@@ -216,7 +260,11 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun pageListParse(response: Response): List<Page>
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun pageListParse(response: Response): List<Page> = throw Exception("Stub!")
 
     /**
      * Returns an observable with the page containing the source url of the image. If there's any
@@ -241,6 +289,10 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the chapter whose page list has to be fetched
      */
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
     protected open fun imageUrlRequest(page: Page): Request = throw Exception("Stub!")
 
     /**
@@ -248,7 +300,11 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun imageUrlParse(response: Response): String
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
+    protected open fun imageUrlParse(response: Response): String = throw Exception("Stub!")
 
     /**
      * Returns an observable with the response of the source image.
@@ -272,6 +328,10 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the chapter whose page list has to be fetched
      */
+    @Deprecated(
+        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
+            "Source developers should make their own implementation according to their needs.",
+    )
     protected open fun imageRequest(page: Page): Request = throw Exception("Stub!")
 
     /**

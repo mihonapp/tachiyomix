@@ -7,7 +7,6 @@ import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
-import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -201,28 +200,6 @@ abstract class HttpSource : CatalogueSource {
      * @param response the response from the site.
      */
     protected abstract fun chapterListParse(response: Response): List<SChapter>
-
-    override suspend fun getMangaUpdate(
-        manga: SManga,
-        chapters: List<SChapter>,
-        includeManga: Boolean,
-        includeChapters: Boolean,
-    ): SMangaUpdate = throw Exception("Stub!")
-
-    /**
-     * Returns the request for the update of a manga. Override only if it's needed to change the
-     * url, send different headers or request method like POST.
-     *
-     * @param manga the manga to be updated.
-     */
-    open fun mangaUpdateRequest(manga: SManga): Request = throw Exception("Stub!")
-
-    /**
-     * Parses the response from the site and returns the update of a manga.
-     *
-     * @param response the response from the site.
-     */
-    protected abstract fun mangaUpdateParse(response: Response): SManga
 
     /**
      * Returns an observable with the page list for a chapter.

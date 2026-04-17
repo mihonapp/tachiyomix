@@ -493,8 +493,6 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	protected abstract fun latestUpdatesRequest (I)Lokhttp3/Request;
 	protected abstract fun mangaDetailsParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/SManga;
 	public fun mangaDetailsRequest (Leu/kanade/tachiyomi/source/model/SManga;)Lokhttp3/Request;
-	protected abstract fun mangaUpdateParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/SManga;
-	public fun mangaUpdateRequest (Leu/kanade/tachiyomi/source/model/SManga;)Lokhttp3/Request;
 	protected abstract fun pageListParse (Lokhttp3/Response;)Ljava/util/List;
 	protected fun pageListRequest (Leu/kanade/tachiyomi/source/model/SChapter;)Lokhttp3/Request;
 	protected abstract fun popularMangaParse (Lokhttp3/Response;)Leu/kanade/tachiyomi/source/model/MangasPage;

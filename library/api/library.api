@@ -120,6 +120,15 @@ public final class eu/kanade/tachiyomi/network/OkHttpExtensionsKt {
 	public static final fun asObservableSuccess (Lokhttp3/Call;)Lrx/Observable;
 	public static final fun await (Lokhttp3/Call;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun awaitSuccess (Lokhttp3/Call;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun cachelessCallWithProgress (Lokhttp3/OkHttpClient;Lokhttp3/Request;Leu/kanade/tachiyomi/network/ProgressListener;)Lokhttp3/Call;
+}
+
+public abstract interface class eu/kanade/tachiyomi/network/ProgressListener {
+	public abstract fun onProgress (F)V
+}
+
+public final class eu/kanade/tachiyomi/network/ProgressListenerKt {
+	public static final fun onProgress (Leu/kanade/tachiyomi/network/ProgressListener;JJ)V
 }
 
 public final class eu/kanade/tachiyomi/network/RequestsKt {
@@ -481,8 +490,7 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public final fun getHeaders ()Lokhttp3/Headers;
 	public fun getHomeUrl ()Ljava/lang/String;
 	public fun getId ()J
-	public fun getImage (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun getImageUrl (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getImage (Leu/kanade/tachiyomi/source/model/Page;Leu/kanade/tachiyomi/network/ProgressListener;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getLatestUpdates (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getMangaUpdate (Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getMangaUrl (Leu/kanade/tachiyomi/source/model/SManga;)Ljava/lang/String;

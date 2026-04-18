@@ -21,7 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Source.getPageList`; Suspend alternative to `Source.fetchPageList`.
 - `Source.getFilterList`; Moving up the hierarchy from  `CatalogueSource.getFilterList`.
 - `HttpSource.getHomeUrl`; New method to determine the URL opened when tapping “Open in WebView” in the browse screen.
-- `HttpSource.getImageUrl`; Suspend alternative to `CatalogueSource.fetchImageUrl`.
 - `HttpSource.getImage`; Suspend alternative to `CatalogueSource.fetchImage`.
 - `SChapter.number` and `SChapter.volume`; Chapter number and volume in string format.
 - `SChapter.note`; Optional note associated with the chapter (e.g., lock status or a short description).
@@ -41,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Source.fetchMangaDetails`; Deprecated in favor of `Source.getMangaUpdate`.
 - `Source.fetchChapterList`; Deprecated in favor of `Source.getMangaUpdate`.
 - `Source.fetchPageList`; Deprecated in favor of `Source.getPageList`.
-- `HttpSource.fetchImageUrl`; Deprecated in favor of `Source.getImageUrl`.
+- `HttpSource.fetchImageUrl`; Deprecated in favor of `Source.getImage`.
 - `HttpSource.fetchImage`; Deprecated in favor of `Source.getImage`.
 - `HttpSource.xxxRequest` and `HttpSource.xxxParse`; Deprecated with no replacement.
 - `HttpSource.prepareNewChapter`; Deprecated with no replacement.

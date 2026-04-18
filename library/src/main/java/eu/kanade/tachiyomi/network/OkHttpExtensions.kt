@@ -3,6 +3,8 @@
 package eu.kanade.tachiyomi.network
 
 import okhttp3.Call
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.Response
 import rx.Observable
 
@@ -18,3 +20,5 @@ suspend fun Call.await(): Response = throw Exception("Stub!")
  * Similar to [await] but throws [HttpException] if [Response.isSuccessful] returns false
  */
 suspend fun Call.awaitSuccess(): Response = throw Exception("Stub!")
+
+fun OkHttpClient.cachelessCallWithProgress(request: Request, listener: ProgressListener): Call = throw Exception("Stub!")

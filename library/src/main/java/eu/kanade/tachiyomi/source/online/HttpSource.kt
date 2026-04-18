@@ -1,6 +1,8 @@
 package eu.kanade.tachiyomi.source.online
 
 import eu.kanade.tachiyomi.network.NetworkHelper
+import eu.kanade.tachiyomi.network.ProgressListener
+import eu.kanade.tachiyomi.network.cachelessCallWithProgress
 import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.model.FilterList
 import eu.kanade.tachiyomi.source.model.MangasPage
@@ -272,16 +274,8 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page whose source image has to be fetched.
      */
-    @Deprecated("Use the suspend API instead", ReplaceWith("getImageUrl"))
+    @Deprecated("Use the `getImage` suspend API instead", ReplaceWith("getImage"))
     open fun fetchImageUrl(page: Page): Observable<String> = throw Exception("Stub!")
-
-    /**
-     * Returns the image url for the provided [page]. The function is only called if [Page.imageUrl] is null.
-     *
-     * @since tachiyomix 1.6
-     * @param page the page whose source image has to be fetched.
-     */
-    open suspend fun getImageUrl(page: Page): String = throw Exception("Stub!")
 
     /**
      * Returns the request for getting the url to the source image. Override only if it's needed to
@@ -311,16 +305,18 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page whose source image has to be downloaded.
      */
-    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getImage"))
+    @Deprecated("Use the `getImage` suspend API instead", replaceWith = ReplaceWith("getImage"))
     fun fetchImage(page: Page): Observable<Response> = throw Exception("Stub!")
 
     /**
-     * Returns the HTTP [Response] of the source image for the given [page].
+     * Returns the HTTP [Response] of the source image for the given [page] with progress callback via [progressListener].
+     * Note: It is recommended to use [OkHttpClient.cachelessCallWithProgress] inside the method.
      *
      * @since tachiyomix 1.6
      * @param page the page whose source image has to be downloaded.
+     * @param progressListener listener used to receive fetch progress updates.
      */
-    open suspend fun getImage(page: Page): Response = throw Exception("Stub!")
+    open suspend fun getImage(page: Page, progressListener: ProgressListener): Response = throw Exception("Stub!")
 
     /**
      * Returns the request for getting the source image. Override only if it's needed to override

@@ -59,7 +59,10 @@ interface SChapter {
      */
     var volume: String?
 
+    @Deprecated("Provide SChapter.scanlators instead")
     var scanlator: String?
+
+    var scanlators: List<String>
 
     /**
      * Optional note associated with the chapter.

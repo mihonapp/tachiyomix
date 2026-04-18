@@ -1,4 +1,4 @@
-@file:Suppress("UnusedReceiverParameter", "RedundantSuspendModifier")
+@file:Suppress("Unused", "UnusedReceiverParameter", "RedundantSuspendModifier")
 
 package eu.kanade.tachiyomi.network
 
@@ -12,5 +12,9 @@ fun Call.asObservable(): Observable<Response> = throw Exception("Stub!")
 @Deprecated("Use suspend APIs instead")
 fun Call.asObservableSuccess(): Observable<Response> = throw Exception("Stub!")
 
-@Deprecated("Relocated to a different package. Use `eu.kanade.tachiyomi.util.await` instead", ReplaceWith("await()", "eu.kanade.tachiyomi.util.await"))
 suspend fun Call.await(): Response = throw Exception("Stub!")
+
+/**
+ * Similar to [await] but throws [HttpException] if [Response.isSuccessful] returns false
+ */
+suspend fun Call.awaitSuccess(): Response = throw Exception("Stub!")

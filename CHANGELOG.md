@@ -31,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SManga.score`; Source-provided rating score of the manga.
 - `SManga.readingMode`; Preferred reading mode indicated by the source.
 - `SManga.memo` and `SChapter.memo`; Internal key–value pairs associated with the manga or chapter.
+- `HttpException`; Use it to have a standardized error message in the app across the extensions.
+- `Call.await` and `Call.awaitSuccess`; Suspend helper function for `OkHttp`. Use instead of `com.squareup.okhttp3:okhttp-coroutines`.
 
 ### Deprecated
 - `CatalogueSource.fetchPopularManga`; Deprecated in favor of `Source.getPopularManga`.
@@ -47,6 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ParsedHttpSource`; Deprecated with no replacement.
 - `NetworkHelper.cloudflareClient`; Deprecated in favor of `NetworkHelper.client`, which should support cloudflare bypass by default.
 - `SChapter.chapter_number`; Deprecated in favor of `SChapter.number`.
+- `Call.asObservable` and `Call.asObservableSuccess`; Deprecated with no replacement.
+- `Call.await`; Moved to a new package.
 
 ### Other
 - Begin tracking ABI changes.

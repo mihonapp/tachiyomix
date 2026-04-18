@@ -99,6 +99,11 @@ public final class eu/kanade/tachiyomi/AppInfo {
 	public final fun getVersionName ()Ljava/lang/String;
 }
 
+public final class eu/kanade/tachiyomi/network/HttpException : java/lang/IllegalStateException {
+	public fun <init> (I)V
+	public final fun getCode ()I
+}
+
 public final class eu/kanade/tachiyomi/network/JavaScriptEngine {
 	public fun <init> (Landroid/content/Context;)V
 	public final fun evaluate (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -114,6 +119,7 @@ public final class eu/kanade/tachiyomi/network/OkHttpExtensionsKt {
 	public static final fun asObservable (Lokhttp3/Call;)Lrx/Observable;
 	public static final fun asObservableSuccess (Lokhttp3/Call;)Lrx/Observable;
 	public static final fun await (Lokhttp3/Call;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun awaitSuccess (Lokhttp3/Call;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class eu/kanade/tachiyomi/network/RequestsKt {

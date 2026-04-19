@@ -58,8 +58,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Other
 - Begin tracking ABI changes.
-- Bump Android `compileSdk` to 36.
-- Update Kotlin to `v2.2.21`.
-- Update OkHttp to `v5.3.0`.
-- Update jsoup to `v1.21.2`.
+- Bump Android `compileSdk` to `37`.
+- Update Kotlin to `v2.3.20`.
+- Update OkHttp to `v5.3.2`.
+- Update jsoup to `v1.22.1`.
 - Replace dependency `com.github.inorichi.injekt:injekt-core` → `com.github.mihonapp:injekt`.
+
+[Unreleased]: https://github.com/mihonapp/tachiyomix/compare/607fb6e...main

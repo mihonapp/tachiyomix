@@ -25,7 +25,7 @@ kotlin {
 
 android {
     namespace = "eu.kanade.tachiyomi.extensions"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 21

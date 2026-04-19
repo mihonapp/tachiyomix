@@ -66,17 +66,20 @@ interface Source {
      * Depending on the provided flags or source availability, this may include
      * updated manga metadata, available chapters, or both.
      *
+     * If a value is not requested, the existing provided value should be returned as-is.
+     * Even if updated data is returned when a flag is set to `false`, the host app may ignore it.
+     *
      * @since tachiyomix 1.6
      * @param manga The manga to fetch updates for.
      * @param chapters Existing chapters of the manga
-     * @param includeManga Whether to include updated manga details.
-     * @param includeChapters Whether to include available chapters.
+     * @param fetchDetails Whether to include updated manga details.
+     * @param fetchChapters Whether to include available chapters.
      */
     suspend fun getMangaUpdate(
         manga: SManga,
         chapters: List<SChapter>,
-        includeManga: Boolean,
-        includeChapters: Boolean,
+        fetchDetails: Boolean,
+        fetchChapters: Boolean,
     ): SMangaUpdate
 
     /**

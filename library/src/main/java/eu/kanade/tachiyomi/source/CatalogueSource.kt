@@ -25,8 +25,8 @@ interface CatalogueSource : Source {
     override suspend fun getMangaUpdate(
         manga: SManga,
         chapters: List<SChapter>,
-        includeManga: Boolean,
-        includeChapters: Boolean,
+        fetchDetails: Boolean,
+        fetchChapters: Boolean,
     ): SMangaUpdate = throw Exception("Stub!")
 
     override suspend fun getPageList(chapter: SChapter): List<Page> = throw Exception("Stub!")

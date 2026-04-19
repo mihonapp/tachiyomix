@@ -307,31 +307,11 @@ abstract class HttpSource : CatalogueSource {
     protected open fun imageUrlParse(response: Response): String = throw Exception("Stub!")
 
     /**
-     * Returns an observable with the response of the source image.
-     *
-     * @param page the page whose source image has to be downloaded.
-     */
-    @Deprecated("Use the suspend API instead", replaceWith = ReplaceWith("getImage"))
-    fun fetchImage(page: Page): Observable<Response> = throw Exception("Stub!")
-
-    /**
-     * Returns the HTTP [Response] of the source image for the given [page].
-     *
-     * @since tachiyomix 1.6
-     * @param page the page whose source image has to be downloaded.
-     */
-    open suspend fun getImage(page: Page): Response = throw Exception("Stub!")
-
-    /**
      * Returns the request for getting the source image. Override only if it's needed to override
      * the url, send different headers or request method like POST.
      *
      * @param page the chapter whose page list has to be fetched
      */
-    @Deprecated(
-        message = "The helper functions are inherently limiting and hides the underlying implementation. " +
-            "Source developers should make their own implementation according to their needs.",
-    )
     protected open fun imageRequest(page: Page): Request = throw Exception("Stub!")
 
     /**

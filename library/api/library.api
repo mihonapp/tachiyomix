@@ -467,7 +467,6 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	protected fun chapterListParse (Lokhttp3/Response;)Ljava/util/List;
 	protected fun chapterListRequest (Leu/kanade/tachiyomi/source/model/SManga;)Lokhttp3/Request;
 	public fun fetchChapterList (Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
-	public final fun fetchImage (Leu/kanade/tachiyomi/source/model/Page;)Lrx/Observable;
 	public fun fetchImageUrl (Leu/kanade/tachiyomi/source/model/Page;)Lrx/Observable;
 	public fun fetchLatestUpdates (I)Lrx/Observable;
 	public fun fetchMangaDetails (Leu/kanade/tachiyomi/source/model/SManga;)Lrx/Observable;
@@ -481,7 +480,6 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public final fun getHeaders ()Lokhttp3/Headers;
 	public fun getHomeUrl ()Ljava/lang/String;
 	public fun getId ()J
-	public fun getImage (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getImageUrl (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getLatestUpdates (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getMangaUpdate (Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;ZZLkotlin/coroutines/Continuation;)Ljava/lang/Object;

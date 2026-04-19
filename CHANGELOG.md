@@ -22,7 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Source.getFilterList`; Moving up the hierarchy from  `CatalogueSource.getFilterList`.
 - `HttpSource.getHomeUrl`; New method to determine the URL opened when tapping “Open in WebView” in the browse screen.
 - `HttpSource.getImageUrl`; Suspend alternative to `CatalogueSource.fetchImageUrl`.
-- `HttpSource.getImage`; Suspend alternative to `CatalogueSource.fetchImage`.
 - `SChapter.number` and `SChapter.volume`; Chapter number and volume in string format.
 - `SChapter.note`; Optional note associated with the chapter (e.g., lock status or a short description).
 - `SManga.banner`; Optional URL for the banner image associated with the manga.
@@ -42,14 +41,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Source.fetchChapterList`; Deprecated in favor of `Source.getMangaUpdate`.
 - `Source.fetchPageList`; Deprecated in favor of `Source.getPageList`.
 - `HttpSource.fetchImageUrl`; Deprecated in favor of `Source.getImageUrl`.
-- `HttpSource.fetchImage`; Deprecated in favor of `Source.getImage`.
-- `HttpSource.xxxRequest` and `HttpSource.xxxParse`; Deprecated with no replacement.
+- `HttpSource.xxxRequest` and `HttpSource.xxxParse` except `HttpSource.imageRequest`; Deprecated with no replacement.
 - `HttpSource.prepareNewChapter`; Deprecated with no replacement.
 - `rateLimit` and `rateLimitHost`; Deprecated with no replacement.
 - `ParsedHttpSource`; Deprecated with no replacement.
 - `NetworkHelper.cloudflareClient`; Deprecated in favor of `NetworkHelper.client`, which should support cloudflare bypass by default.
 - `SChapter.chapter_number`; Deprecated in favor of `SChapter.number`.
 - `Call.asObservable` and `Call.asObservableSuccess`; Deprecated with no replacement.
+
+### Removed
+- `HttpSource.fetchImage`; Removed with no replacement.
 
 ### Other
 - Begin tracking ABI changes.

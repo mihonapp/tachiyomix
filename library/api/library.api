@@ -359,6 +359,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public abstract fun getNote ()Ljava/lang/String;
 	public abstract fun getNumber ()Ljava/lang/String;
 	public abstract fun getScanlator ()Ljava/lang/String;
+	public abstract fun getScanlators ()Ljava/util/List;
 	public abstract fun getUrl ()Ljava/lang/String;
 	public abstract fun getVolume ()Ljava/lang/String;
 	public abstract fun setChapter_number (F)V
@@ -368,6 +369,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public abstract fun setNote (Ljava/lang/String;)V
 	public abstract fun setNumber (Ljava/lang/String;)V
 	public abstract fun setScanlator (Ljava/lang/String;)V
+	public abstract fun setScanlators (Ljava/util/List;)V
 	public abstract fun setUrl (Ljava/lang/String;)V
 	public abstract fun setVolume (Ljava/lang/String;)V
 }
@@ -392,6 +394,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun getContentRating ()Leu/kanade/tachiyomi/source/model/SManga$ContentRating;
 	public abstract fun getDescription ()Ljava/lang/String;
 	public abstract fun getGenre ()Ljava/lang/String;
+	public abstract fun getGenres ()Ljava/util/List;
 	public abstract fun getInitialized ()Z
 	public abstract fun getMemo ()Ljava/util/Map;
 	public abstract fun getReadingMode ()Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;
@@ -408,6 +411,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun setContentRating (Leu/kanade/tachiyomi/source/model/SManga$ContentRating;)V
 	public abstract fun setDescription (Ljava/lang/String;)V
 	public abstract fun setGenre (Ljava/lang/String;)V
+	public abstract fun setGenres (Ljava/util/List;)V
 	public abstract fun setInitialized (Z)V
 	public abstract fun setMemo (Ljava/util/Map;)V
 	public abstract fun setReadingMode (Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;)V

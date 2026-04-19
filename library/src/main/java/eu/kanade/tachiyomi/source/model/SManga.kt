@@ -56,7 +56,10 @@ interface SManga {
      */
     var readingMode: ReadingMode?
 
+    @Deprecated("Provide SChapter.genres instead")
     var genre: String?
+
+    var genres: List<String>
 
     var status: Int
 

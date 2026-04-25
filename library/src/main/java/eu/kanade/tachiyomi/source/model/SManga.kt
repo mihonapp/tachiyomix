@@ -1,20 +1,11 @@
-@file:Suppress("UNUSED", "PropertyName")
-
 package eu.kanade.tachiyomi.source.model
 
+@Suppress("UNUSED", "PropertyName")
 interface SManga {
 
     var url: String
 
     var title: String
-
-    /**
-     * URL of the manga's banner image.
-     *
-     * Typically, a wide image shown in headers or detailed views.
-     * May be `null` if the source does not provide one.
-     */
-    var banner: String?
 
     /**
      * Alternative titles for the manga.
@@ -24,9 +15,21 @@ interface SManga {
      */
     var altTitles: List<String>
 
+    var thumbnail_url: String?
+
+    /**
+     * URL of the manga's banner image.
+     *
+     * Typically, a wide image shown in headers or detailed views.
+     * May be `null` if the source does not provide one.
+     */
+    var banner: String?
+
     var artist: String?
 
     var author: String?
+
+    var status: Int
 
     /**
      * Age or content rating for the manga.
@@ -49,6 +52,11 @@ interface SManga {
 
     var description: String?
 
+    @Deprecated("Provide SManga.genres instead")
+    var genre: String?
+
+    var genres: List<String>
+
     /**
      * Preferred reading mode provided by the source, or the majority from the source.
      *
@@ -56,18 +64,7 @@ interface SManga {
      */
     var readingMode: ReadingMode?
 
-    @Deprecated("Provide SManga.genres instead")
-    var genre: String?
-
-    var genres: List<String>
-
-    var status: Int
-
-    var thumbnail_url: String?
-
     var update_strategy: UpdateStrategy
-
-    var initialized: Boolean
 
     /**
      * Extra metadata associated with the manga.
@@ -79,6 +76,8 @@ interface SManga {
      * chapter data.
      */
     var memo: Map<String, String>
+
+    var initialized: Boolean
 
     enum class ContentRating {
         SAFE,

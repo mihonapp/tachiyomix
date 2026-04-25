@@ -1,14 +1,34 @@
-@file:Suppress("UNUSED", "PropertyName")
-
 package eu.kanade.tachiyomi.source.model
 
+@Suppress("UNUSED", "PropertyName")
 interface SChapter {
 
     var url: String
 
     var name: String
 
-    var date_upload: Long
+    /**
+     * Volume number in string format.
+     *
+     * Typically validated using the pattern:
+     * ```
+     * ^(?:-?\d+(?:\.\d+)?[a-z]?|nan)$
+     * ```
+     *
+     * This format supports:
+     * * Whole numbers → `"1"`
+     * * Decimal numbers → `"1.5"`
+     * * Optional trailing lowercase letters → `"1a"`, `"1.5b"`
+     * * Negative values → `"-1"`
+     * * `null` for unnumbered volumes
+     * * Literal `"nan"` for unknown or ambiguous values
+     *
+     * When encountering `"nan"`, the app may attempt to infer a volume number manually.
+     * If parsing still fails, it is recommended to treat the value as `null`.
+     *
+     * See also: [number]
+     */
+    var volume: String?
 
     @Deprecated("Provide SChapter.number instead")
     var chapter_number: Float
@@ -36,33 +56,12 @@ interface SChapter {
      */
     var number: String?
 
-    /**
-     * Volume number in string format.
-     *
-     * Typically validated using the pattern:
-     * ```
-     * ^(?:-?\d+(?:\.\d+)?[a-z]?|nan)$
-     * ```
-     *
-     * This format supports:
-     * * Whole numbers → `"1"`
-     * * Decimal numbers → `"1.5"`
-     * * Optional trailing lowercase letters → `"1a"`, `"1.5b"`
-     * * Negative values → `"-1"`
-     * * `null` for unnumbered volumes
-     * * Literal `"nan"` for unknown or ambiguous values
-     *
-     * When encountering `"nan"`, the app may attempt to infer a volume number manually.
-     * If parsing still fails, it is recommended to treat the value as `null`.
-     *
-     * See also: [number]
-     */
-    var volume: String?
-
     @Deprecated("Provide SChapter.scanlators instead")
     var scanlator: String?
 
     var scanlators: List<String>
+
+    var date_upload: Long
 
     /**
      * Optional note associated with the chapter.

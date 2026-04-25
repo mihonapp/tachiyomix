@@ -332,11 +332,8 @@ public final class eu/kanade/tachiyomi/source/model/MangasPage {
 	public final fun component2 ()Z
 	public final fun copy (Ljava/util/List;Z)Leu/kanade/tachiyomi/source/model/MangasPage;
 	public static synthetic fun copy$default (Leu/kanade/tachiyomi/source/model/MangasPage;Ljava/util/List;ZILjava/lang/Object;)Leu/kanade/tachiyomi/source/model/MangasPage;
-	public fun equals (Ljava/lang/Object;)Z
 	public final fun getHasNextPage ()Z
 	public final fun getMangas ()Ljava/util/List;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
 }
 
 public final class eu/kanade/tachiyomi/source/model/Page {

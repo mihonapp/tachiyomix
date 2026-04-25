@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("Unused", "FunctionName")
 
 package eu.kanade.tachiyomi.network
 
@@ -12,7 +12,6 @@ private val DEFAULT_CACHE_CONTROL: CacheControl = throw Exception("Stub!")
 private val DEFAULT_HEADERS: Headers = throw Exception("Stub!")
 private val DEFAULT_BODY: RequestBody = throw Exception("Stub!")
 
-@Suppress("FunctionName")
 fun GET(
     url: String,
     headers: Headers = DEFAULT_HEADERS,
@@ -22,14 +21,12 @@ fun GET(
 /**
  * @since tachiyomix 1.4
  */
-@Suppress("FunctionName")
 fun GET(
     url: HttpUrl,
     headers: Headers = DEFAULT_HEADERS,
     cache: CacheControl = DEFAULT_CACHE_CONTROL,
 ): Request = throw Exception("Stub!")
 
-@Suppress("FunctionName")
 fun POST(
     url: String,
     headers: Headers = DEFAULT_HEADERS,

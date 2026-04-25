@@ -2,6 +2,7 @@ package androidx.preference;
 
 import android.content.Context;
 
+@SuppressWarnings("unused")
 public class ListPreference extends Preference {
 
     public ListPreference(Context context) {

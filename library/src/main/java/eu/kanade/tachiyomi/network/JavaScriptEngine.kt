@@ -5,6 +5,7 @@ import android.content.Context
 /**
  * Util for evaluating JavaScript in sources.
  */
+@Suppress("Unused")
 class JavaScriptEngine(context: Context) {
 
     /**
@@ -15,5 +16,6 @@ class JavaScriptEngine(context: Context) {
      * @param script JavaScript to execute.
      * @return Result of JavaScript code as a primitive type.
      */
+    @Suppress("RedundantSuspendModifier")
     suspend fun <T> evaluate(script: String): T = throw Exception("Stub!")
 }

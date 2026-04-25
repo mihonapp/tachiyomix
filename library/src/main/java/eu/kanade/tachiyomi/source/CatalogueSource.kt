@@ -8,7 +8,7 @@ import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import rx.Observable
 
-@Suppress("UNUSED")
+@Suppress("Unused")
 interface CatalogueSource : Source {
 
     /**

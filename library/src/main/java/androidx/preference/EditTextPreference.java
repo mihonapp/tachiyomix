@@ -3,6 +3,7 @@ package androidx.preference;
 import android.content.Context;
 import android.widget.EditText;
 
+@SuppressWarnings("unused")
 public class EditTextPreference extends DialogPreference {
 
     public EditTextPreference(Context context) {

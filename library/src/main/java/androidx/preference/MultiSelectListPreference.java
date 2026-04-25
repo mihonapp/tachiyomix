@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.Set;
 
+@SuppressWarnings("unused")
 public class MultiSelectListPreference extends DialogPreference {
 
     public MultiSelectListPreference(Context context) {

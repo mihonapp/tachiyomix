@@ -11,6 +11,7 @@ import org.jsoup.nodes.Element
 /**
  * A simple implementation for sources from a website using Jsoup, an HTML parser.
  */
+@Suppress("Unused")
 @Deprecated(
     message = "In most cases sources only require a subset of the methods from this class. " +
         "Source developers should make their own implementation according to their needs.",

@@ -2,6 +2,7 @@ package androidx.preference;
 
 import android.content.Context;
 
+@SuppressWarnings("unused")
 public class TwoStatePreference extends Preference {
 
     public TwoStatePreference(Context context) { throw new RuntimeException("Stub!"); }

@@ -1,5 +1,6 @@
 package androidx.preference;
 
+@SuppressWarnings("unused")
 public abstract class DialogPreference extends Preference {
 
     public CharSequence getDialogTitle() {

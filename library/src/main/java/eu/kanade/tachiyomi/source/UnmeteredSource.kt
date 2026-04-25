@@ -5,5 +5,5 @@ package eu.kanade.tachiyomi.source
  *
  * This typically applies for self-hosted sources.
  */
-@Suppress("unused")
+@Suppress("Unused")
 interface UnmeteredSource

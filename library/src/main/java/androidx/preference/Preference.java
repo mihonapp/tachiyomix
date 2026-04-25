@@ -1,5 +1,6 @@
 package androidx.preference;
 
+@SuppressWarnings("unused")
 public class Preference {
 
     public void setOnPreferenceChangeListener(OnPreferenceChangeListener onPreferenceChangeListener) {

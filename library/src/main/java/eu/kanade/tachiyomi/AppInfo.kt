@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi
 
+@Suppress("Unused")
 object AppInfo {
     /**
      * Version code of the host application. May be useful for sharing as User-Agent information.

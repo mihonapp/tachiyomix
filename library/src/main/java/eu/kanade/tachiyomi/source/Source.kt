@@ -66,8 +66,9 @@ interface Source {
      * Depending on the provided flags or source availability, this may include
      * updated manga metadata, available chapters, or both.
      *
-     * If a value is not requested, the existing provided value may be returned as-is.
-     * Even if updated data is returned when a flag is set to `false`, the host app may ignore it.
+     * If a value is not requested, the existing provided value can be returned as-is.
+     * The host app may apply any returned updates regardless of the flags,
+     * so it’s best to avoid returning unintended or inaccurate data.
      *
      * @since tachiyomix 1.6
      * @param manga The manga to fetch updates for.

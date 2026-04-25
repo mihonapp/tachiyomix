@@ -19,10 +19,10 @@ import java.util.concurrent.TimeUnit
  * @param period {Long}   The limiting duration. Defaults to 1.
  * @param unit {TimeUnit} The unit of time for the period. Defaults to seconds.
  */
+@Suppress("UnusedReceiverParameter")
 @Deprecated(
     message = "Default rate limiting implementation is no longer provided. Source developers are now " +
-        "responsible for implementing their own rate limiting logic if desired, to prevent forks " +
-        "from bypassing it.",
+        "responsible for implementing their own rate limiting logic if desired",
     replaceWith = ReplaceWith("this"),
 )
 fun OkHttpClient.Builder.rateLimitHost(

@@ -20,7 +20,7 @@ fun GET(
 ): Request = throw Exception("Stub!")
 
 /**
- * @since extensions-lib 1.4
+ * @since tachiyomix 1.4
  */
 @Suppress("FunctionName")
 fun GET(

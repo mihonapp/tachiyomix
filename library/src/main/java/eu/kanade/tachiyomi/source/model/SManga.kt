@@ -11,7 +11,7 @@ interface SManga {
     /**
      * URL of the manga's banner image.
      *
-     * Typically a wide image shown in headers or detailed views.
+     * Typically, a wide image shown in headers or detailed views.
      * May be `null` if the source does not provide one.
      */
     var banner: String?
@@ -56,7 +56,7 @@ interface SManga {
      */
     var readingMode: ReadingMode?
 
-    @Deprecated("Provide SChapter.genres instead")
+    @Deprecated("Provide SManga.genres instead")
     var genre: String?
 
     var genres: List<String>

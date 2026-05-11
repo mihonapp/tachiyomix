@@ -3,7 +3,24 @@ package eu.kanade.tachiyomi.source.model
 @Suppress("UNUSED", "PropertyName")
 interface SChapter {
 
-    var url: String
+    /**
+     * Stable unique identifier for the chapter.
+     *
+     * This field is intended to eventually replace [url] as the primary identifier used by the
+     * host app.
+     *
+     * Currently, this field is optional. However, if [key] is non-null, it MUST be used instead of
+     * [url] when identifying or referencing the chapter. Otherwise, [url] is used as the fallback
+     * identifier, i.e. `key ?: url`.
+     *
+     * When [key] is non-null, it is expected to be unique within the scope of its source, and
+     * uniqueness validation is performed immediately.
+     *
+     * Future versions will make this field required.
+     *
+     * @since tachiyomix 1.6
+     */
+    var key: String?
 
     var name: String
 
@@ -26,7 +43,8 @@ interface SChapter {
      * When encountering `"nan"`, the app may attempt to infer a volume number manually.
      * If parsing still fails, it is recommended to treat the value as `null`.
      *
-     * See also: [number]
+     * @see number
+     * @since tachiyomix 1.6
      */
     var volume: String?
 
@@ -52,7 +70,8 @@ interface SChapter {
      * When encountering `"nan"`, the app may attempt to infer a chapter number manually.
      * If parsing still fails, it is recommended to treat the value as `null`.
      *
-     * See also: [volume]
+     * @see volume
+     * @since tachiyomix 1.6
      */
     var number: String?
 
@@ -64,12 +83,42 @@ interface SChapter {
     var date_upload: Long
 
     /**
+     * Language of the chapter content.
+     *
+     * Expected to be a valid IETF BCP 47 language tag such as:
+     * * `"en"` → English
+     * * `"en-US"` → English (United States)
+     * * `"zh-Hant"` → Traditional Chinese
+     * * `"es-419"` → Spanish (Latin America)
+     *
+     * A value of `null` indicates that the language is unknown or unspecified.
+     *
+     * @see SManga.language
+     * @since tachiyomix 1.6
+     */
+    var language: String?
+
+    /**
+     * Whether the chapter is currently locked or otherwise inaccessible.
+     *
+     * Locked chapters may require payment, waiting, authentication, or another action before
+     * they can be read.
+     *
+     * @since tachiyomix 1.6
+     */
+    var locked: Boolean
+
+    /**
      * Optional note associated with the chapter.
      *
      * This can include date of availability, locked status, or other context shown to the user
      * alongside the chapter. Content is free-form and source-defined.
+     *
+     * @since tachiyomix 1.6
      */
     var note: String?
+
+    var url: String
 
     /**
      * Extra metadata associated with the chapter.
@@ -79,6 +128,8 @@ interface SChapter {
      *
      * This allows apps to attach and ask for custom information without affecting the visible
      * chapter data.
+     *
+     * @since tachiyomix 1.6
      */
     var memo: Map<String, String>
 

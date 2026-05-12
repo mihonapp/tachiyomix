@@ -1,5 +1,8 @@
 package eu.kanade.tachiyomi.source.model
 
+import eu.kanade.tachiyomi.source.Source
+import kotlinx.serialization.json.JsonObject
+
 @Suppress("UNUSED", "PropertyName")
 interface SChapter {
 
@@ -85,14 +88,19 @@ interface SChapter {
     /**
      * Language of the chapter content.
      *
-     * Expected to be a valid IETF BCP 47 language tag such as:
+     * Expected to be a valid IETF BCP 47 language tag, for example:
      * * `"en"` → English
      * * `"en-US"` → English (United States)
      * * `"zh-Hant"` → Traditional Chinese
      * * `"es-419"` → Spanish (Latin America)
      *
-     * A value of `null` indicates that the language is unknown or unspecified.
+     * A value of `null` indicates that the language is unknown, unspecified,
+     * or not applicable (for example artwork or textless content).
      *
+     * If [SManga.language] is not inferred as `"multi"`, any non-null value
+     * must match it.
+     *
+     * @see Source.language
      * @see SManga.language
      * @since tachiyomix 1.6
      */
@@ -131,7 +139,7 @@ interface SChapter {
      *
      * @since tachiyomix 1.6
      */
-    var memo: Map<String, String>
+    var memo: JsonObject
 
     companion object {
         fun create(): SChapter = throw Exception("Stub!")

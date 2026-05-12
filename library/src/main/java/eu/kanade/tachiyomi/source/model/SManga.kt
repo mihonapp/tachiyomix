@@ -1,5 +1,8 @@
 package eu.kanade.tachiyomi.source.model
 
+import eu.kanade.tachiyomi.source.Source
+import kotlinx.serialization.json.JsonObject
+
 @Suppress("UNUSED", "PropertyName")
 interface SManga {
 
@@ -53,9 +56,9 @@ interface SManga {
     var status: Int
 
     /**
-     * Main language of the manga's chapters content.
+     * Primary language of the manga.
      *
-     * Expected to be a valid IETF BCP 47 language tag such as:
+     * Expected to be a valid IETF BCP 47 language tag, for example:
      * * `"en"` → English
      * * `"en-US"` → English (United States)
      * * `"zh-Hant"` → Traditional Chinese
@@ -63,6 +66,10 @@ interface SManga {
      *
      * A value of `null` indicates that the language is unknown or unspecified.
      *
+     * If [Source.language] is not `"multi"`, any non-null value must match it.
+     * Otherwise, the manga should be treated as multilingual (`"multi"`).
+     *
+     * @see Source.language
      * @see SChapter.language
      * @since tachiyomix 1.6
      */
@@ -116,11 +123,11 @@ interface SManga {
      * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources to populate.
      *
      * This allows apps to attach and ask for custom information without affecting the visible
-     * chapter data.
+     * manga data.
      *
      * @since tachiyomix 1.6
      */
-    var memo: Map<String, String>
+    var memo: JsonObject
 
     var initialized: Boolean
 

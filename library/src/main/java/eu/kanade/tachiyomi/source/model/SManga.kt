@@ -1,9 +1,29 @@
 package eu.kanade.tachiyomi.source.model
 
+import eu.kanade.tachiyomi.source.Source
+import kotlinx.serialization.json.JsonObject
+
 @Suppress("UNUSED", "PropertyName")
 interface SManga {
 
-    var url: String
+    /**
+     * Stable unique identifier for the chapter.
+     *
+     * This field is intended to eventually replace [url] as the primary identifier used by the
+     * host app.
+     *
+     * Currently, this field is optional. However, if [key] is non-null, it MUST be used instead of
+     * [url] when identifying or referencing the chapter. Otherwise, [url] is used as the fallback
+     * identifier, i.e. `key ?: url`.
+     *
+     * When [key] is non-null, it is expected to be unique within the scope of its source, and
+     * uniqueness validation is performed immediately.
+     *
+     * Future versions will make this field required.
+     *
+     * @since tachiyomix 1.6
+     */
+    var key: String?
 
     var title: String
 
@@ -12,6 +32,8 @@ interface SManga {
      *
      * This list can include official translations, romanizations,
      * or other titles the series is known by in different regions or languages.
+     *
+     * @since tachiyomix 1.6
      */
     var altTitles: List<String>
 
@@ -22,6 +44,8 @@ interface SManga {
      *
      * Typically, a wide image shown in headers or detailed views.
      * May be `null` if the source does not provide one.
+     *
+     * @since tachiyomix 1.6
      */
     var banner: String?
 
@@ -30,6 +54,26 @@ interface SManga {
     var author: String?
 
     var status: Int
+
+    /**
+     * Primary language of the manga.
+     *
+     * Expected to be a valid IETF BCP 47 language tag, for example:
+     * * `"en"` → English
+     * * `"en-US"` → English (United States)
+     * * `"zh-Hant"` → Traditional Chinese
+     * * `"es-419"` → Spanish (Latin America)
+     *
+     * A value of `null` indicates that the language is unknown or unspecified.
+     *
+     * If [Source.language] is not `"multi"`, any non-null value must match it.
+     * Otherwise, the manga should be treated as multilingual (`"multi"`).
+     *
+     * @see Source.language
+     * @see SChapter.language
+     * @since tachiyomix 1.6
+     */
+    var language: String?
 
     /**
      * Age or content rating for the manga.
@@ -47,6 +91,8 @@ interface SManga {
      *
      * Must be a percentile value (e.g., between 0 and 100).
      * `null` if no rating is available.
+     *
+     * @since tachiyomix 1.6
      */
     var score: Int?
 
@@ -61,10 +107,14 @@ interface SManga {
      * Preferred reading mode provided by the source, or the majority from the source.
      *
      * Leave it `null` if the source provides entries of various modes and doesn't provide explicit data.
+     *
+     * @since tachiyomix 1.6
      */
     var readingMode: ReadingMode?
 
     var update_strategy: UpdateStrategy
+
+    var url: String
 
     /**
      * Extra metadata associated with the manga.
@@ -73,9 +123,11 @@ interface SManga {
      * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources to populate.
      *
      * This allows apps to attach and ask for custom information without affecting the visible
-     * chapter data.
+     * manga data.
+     *
+     * @since tachiyomix 1.6
      */
-    var memo: Map<String, String>
+    var memo: JsonObject
 
     var initialized: Boolean
 

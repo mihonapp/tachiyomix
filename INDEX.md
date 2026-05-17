@@ -14,8 +14,8 @@ message Index {
   // Display name of the store (e.g. "Antsy's Epic Store").
   string name = 1;
 
-  // Short label shown beside plugins in the UI (e.g. "AES").
-  string badgeLabel = 2;
+  // Compact store identifier shown beside plugins (e.g. "AES").
+  optional string badgeLabel = 2;
 
   // Public signing key used to verify extension authenticity.
   string signingKey = 3;
@@ -95,8 +95,8 @@ message Source {
       "description": "Display name of the store (e.g. 'Antsy's Epic Store')."
     },
     "badgeLabel": {
-      "type": "string",
-      "description": "Short label shown beside plugins in the UI (e.g. 'AES')."
+      "type": ["string", "null"],
+      "description": "Compact store identifier shown beside plugins (e.g. "AES")."
     },
     "signingKey": {
       "type": "string",

@@ -1,91 +1,194 @@
 # 📚 TachiyomiX Index
 
 Index file format for TachiyomiX based extension stores.
-It can be represented as JSON or Protobuf, and host apps should support both formats.
+It can be represented as Protobuf or JSON, and host apps should support both formats.
+
+## 📦 Protobuf
+
+```proto
+syntax = "proto3";
+
+package tachiyomix;
+
+message Index {
+  // Display name of the store (e.g. "Antsy's Epic Store").
+  string name = 1;
+
+  // Short label shown beside plugins in the UI (e.g. "AES").
+  string badgeLabel = 2;
+
+  // Public signing key used to verify extension authenticity.
+  string signingKey = 3;
+
+  // Contact and community information for the store.
+  Contact contact = 4;
+
+  // List of all extensions published by this store.
+  repeated Extension extensions = 5;
+}
+
+message Contact {
+  // Official website URL.
+  optional string website = 1;
+
+  // Discord invite or server URL.
+  optional string discord = 2;
+}
+
+message Extension {
+  // Extension display name.
+  string name = 1;
+
+  // Unique package identifier of the extension.
+  string package = 2;
+
+  // Downloadable resources for this extension.
+  Resource resource = 3;
+
+  // Extension API version.
+  double extensionLib = 4;
+
+  // Version code of the extension build.
+  int32 versionCode = 5;
+
+  // Sources provided by this extension.
+  repeated Source sources = 6;
+}
+
+message Resource {
+  // Direct APK download URL.
+  string apk = 1;
+
+  // Icon image URL.
+  string icon = 2;
+}
+
+message Source {
+  // Unique source identifier.
+  int64 id = 1;
+
+  // Display name of the source.
+  string name = 2;
+
+  // Primary language code (e.g. "en", "ja").
+  string language = 3;
+
+  // Main website URL of the source.
+  string homeUrl = 4;
+
+  // Domains used by the source.
+  repeated string domains = 5;
+}
+
+```
 
 ## 📦 JSON
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TachiyomiX Index Schema",
+  "title": "TachiyomiX Index",
   "type": "object",
   "properties": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "description": "Display name of the store (e.g. 'Antsy's Epic Store')."
+    },
+    "badgeLabel": {
+      "type": "string",
+      "description": "Short label shown beside plugins in the UI (e.g. 'AES')."
     },
     "signingKey": {
-      "type": "string"
+      "type": "string",
+      "description": "Public signing key used to verify extension authenticity."
     },
     "contact": {
-      "type": "object",
+      "type": ["object", "null"],
+      "description": "Contact and community information for the store.",
       "properties": {
         "website": {
-          "type": ["string", "null"]
+          "type": ["string", "null"],
+          "description": "Official website URL."
         },
         "discord": {
-          "type": ["string", "null"]
+          "type": ["string", "null"],
+          "description": "Discord invite or server URL."
         }
       }
     },
     "extensions": {
       "type": "array",
+      "description": "List of all extensions published by this store.",
       "items": {
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Extension display name."
           },
           "package": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique package identifier of the extension."
           },
           "resource": {
             "type": "object",
+            "description": "Downloadable resources for this extension.",
             "properties": {
               "apk": {
                 "type": "string",
-                "format": "uri"
+                "description": "Direct APK download URL."
               },
               "icon": {
                 "type": "string",
-                "format": "uri"
+                "description": "Icon image URL."
               }
             },
-            "required": [
-              "apk",
-              "icon"
-            ]
+            "required": ["apk", "icon"]
           },
           "extensionLib": {
-            "type": "number"
+            "type": "number",
+            "description": "Extension API version."
           },
           "versionCode": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Version code of the extension build."
           },
           "sources": {
             "type": "array",
+            "description": "Sources provided by this extension.",
             "items": {
               "type": "object",
               "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "lang": {
-                  "type": "string"
-                },
                 "id": {
-                  "type": "string"
+                  "type": "integer",
+                  "description": "Unique source identifier."
                 },
-                "baseUrl": {
+                "name": {
                   "type": "string",
-                  "format": "uri"
+                  "description": "Display name of the source."
+                },
+                "language": {
+                  "type": "string",
+                  "description": "Primary language code (e.g. 'en', 'ja')."
+                },
+                "homeUrl": {
+                  "type": "string",
+                  "description": "Main website URL of the source."
+                },
+                "domains": {
+                  "type": "array",
+                  "description": "Domains used by the source.",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               },
               "required": [
-                "name",
-                "lang",
                 "id",
-                "baseUrl"
+                "name",
+                "language",
+                "homeUrl",
+                "domains"
               ]
             }
           }
@@ -103,50 +206,10 @@ It can be represented as JSON or Protobuf, and host apps should support both for
   },
   "required": [
     "name",
+    "badgeLabel",
     "signingKey",
     "contact",
     "extensions"
   ]
-}
-```
-
-## 📦 Protobuf
-
-```proto
-syntax = "proto3";
-
-package tachiyomix;
-
-message Index {
-  string name = 1;
-  string signingKey = 2;
-  Contact contact = 3;
-  repeated Extension extensions = 4;
-}
-
-message Contact {
-  optional string website = 1;
-  optional string discord = 2;
-}
-
-message Extension {
-  string name = 1;
-  string package = 2;
-  Resource resource = 3;
-  double extensionLib = 4;
-  int32 versionCode = 5;
-  repeated Source sources = 6;
-}
-
-message Resource {
-  string apk = 1;   // URI as string
-  string icon = 2;  // URI as string
-}
-
-message Source {
-  string name = 1;
-  string lang = 2;
-  string id = 3;
-  string baseUrl = 4; // URI as string
 }
 ```

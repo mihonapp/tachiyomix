@@ -76,8 +76,8 @@ message Source {
   // Main website URL of the source.
   string homeUrl = 4;
 
-  // Domains used by the source.
-  repeated string domains = 5;
+  // Mirror URLs used by the source.
+  repeated string mirrorUrls = 5;
 }
 
 ```
@@ -175,9 +175,9 @@ message Source {
                   "type": "string",
                   "description": "Main website URL of the source."
                 },
-                "domains": {
+                "mirrorUrls": {
                   "type": "array",
-                  "description": "Domains used by the source.",
+                  "description": "Mirror URLs used by the source.",
                   "items": {
                     "type": "string"
                   }
@@ -188,7 +188,7 @@ message Source {
                 "name",
                 "language",
                 "homeUrl",
-                "domains"
+                "mirrorUrls"
               ]
             }
           }

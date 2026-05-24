@@ -79,6 +79,10 @@ message Source {
 
   // Indicates the highest maturity level of the source's content.
   ContentRating contentRating = 6;
+
+  // Optional status or informational message shown for the source.
+  // Supports Markdown formatting.
+  optional string message = 7;
 }
 
 enum ContentRating {
@@ -206,6 +210,10 @@ enum ContentRating {
                     "EROTICA",
                     "PORNOGRAPHIC"
                   ]
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Optional status or informational message shown for the source. Supports Markdown formatting."
                 }
               },
               "required": [

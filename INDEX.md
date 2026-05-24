@@ -8,20 +8,18 @@ It can be represented as Protobuf or JSON, and host apps should support both for
 ```proto
 syntax = "proto3";
 
-package tachiyomix;
-
 message Index {
   // Display name of the store (e.g. "Antsy's Epic Store").
   string name = 1;
 
-  // Compact store identifier shown beside plugins (e.g. "AES").
+  // Short identifier used to represent the store (e.g. "AES").
   optional string badgeLabel = 2;
 
   // Public signing key used to verify extension authenticity.
   string signingKey = 3;
 
   // Contact and community information for the store.
-  Contact contact = 4;
+  optional Contact contact = 4;
 
   // List of all extensions published by this store.
   repeated Extension extensions = 5;
@@ -39,14 +37,14 @@ message Extension {
   // Extension display name.
   string name = 1;
 
-  // Unique package identifier of the extension.
-  string package = 2;
+  // Unique package name of the extension.
+  string packageName = 2;
 
   // Downloadable resources for this extension.
-  Resource resource = 3;
+  Resources resources = 3;
 
-  // Extension API version.
-  double extensionLib = 4;
+  // Version of the extension API in MAJOR.MINOR format.
+  string extensionLib = 4;
 
   // Version code of the extension build.
   int32 versionCode = 5;
@@ -55,12 +53,12 @@ message Extension {
   repeated Source sources = 6;
 }
 
-message Resource {
+message Resources {
   // Direct APK download URL.
-  string apk = 1;
+  string apkUrl = 1;
 
   // Icon image URL.
-  string icon = 2;
+  string iconUrl = 2;
 }
 
 message Source {
@@ -70,16 +68,34 @@ message Source {
   // Display name of the source.
   string name = 2;
 
-  // Primary language code (e.g. "en", "ja").
+  // Primary language code (e.g. "en", "ja", "pt-BR").
   string language = 3;
 
   // Main website URL of the source.
   string homeUrl = 4;
 
-  // Mirror URLs used by the source.
+  // Alternative home URLs for the source.
   repeated string mirrorUrls = 5;
+
+  // Indicates the highest maturity level of the source's content.
+  ContentRating contentRating = 6;
 }
 
+enum ContentRating {
+  // Suitable for general audiences.
+  CONTENT_RATING_SAFE = 0;
+
+  // May include suggestive themes, partial nudity,
+  // or fanservice, but not explicit sexual acts.
+  CONTENT_RATING_SUGGESTIVE = 1;
+
+  // Contains explicit sexual themes or nudity
+  // intended for mature audiences.
+  CONTENT_RATING_EROTICA = 2;
+
+  // Contains explicit pornographic or sexually graphic content.
+  CONTENT_RATING_PORNOGRAPHIC = 3;
+}
 ```
 
 ## 📦 JSON
@@ -87,31 +103,30 @@ message Source {
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TachiyomiX Index",
   "type": "object",
   "properties": {
     "name": {
       "type": "string",
-      "description": "Display name of the store (e.g. 'Antsy's Epic Store')."
+      "description": "Display name of the store (e.g. \"Antsy's Epic Store\")."
     },
     "badgeLabel": {
-      "type": ["string", "null"],
-      "description": "Compact store identifier shown beside plugins (e.g. "AES")."
+      "type": "string",
+      "description": "Short identifier used to represent the store (e.g. \"AES\")."
     },
     "signingKey": {
       "type": "string",
       "description": "Public signing key used to verify extension authenticity."
     },
     "contact": {
-      "type": ["object", "null"],
+      "type": "object",
       "description": "Contact and community information for the store.",
       "properties": {
         "website": {
-          "type": ["string", "null"],
+          "type": "string",
           "description": "Official website URL."
         },
         "discord": {
-          "type": ["string", "null"],
+          "type": "string",
           "description": "Discord invite or server URL."
         }
       }
@@ -126,28 +141,28 @@ message Source {
             "type": "string",
             "description": "Extension display name."
           },
-          "package": {
+          "packageName": {
             "type": "string",
-            "description": "Unique package identifier of the extension."
+            "description": "Unique package name of the extension."
           },
-          "resource": {
+          "resources": {
             "type": "object",
             "description": "Downloadable resources for this extension.",
             "properties": {
-              "apk": {
+              "apkUrl": {
                 "type": "string",
                 "description": "Direct APK download URL."
               },
-              "icon": {
+              "iconUrl": {
                 "type": "string",
                 "description": "Icon image URL."
               }
             },
-            "required": ["apk", "icon"]
+            "required": ["apkUrl", "iconUrl"]
           },
           "extensionLib": {
-            "type": "number",
-            "description": "Extension API version."
+            "type": "string",
+            "description": "Version of the extension API in MAJOR.MINOR format."
           },
           "versionCode": {
             "type": "integer",
@@ -169,7 +184,7 @@ message Source {
                 },
                 "language": {
                   "type": "string",
-                  "description": "Primary language code (e.g. 'en', 'ja')."
+                  "description": "Primary language code (e.g. 'en', 'ja', 'pt-BR')."
                 },
                 "homeUrl": {
                   "type": "string",
@@ -177,10 +192,20 @@ message Source {
                 },
                 "mirrorUrls": {
                   "type": "array",
-                  "description": "Mirror URLs used by the source.",
+                  "description": "Alternative home URLs for the source.",
                   "items": {
                     "type": "string"
                   }
+                },
+                "contentRating": {
+                  "type": "string",
+                  "description": "Indicates the highest maturity level of the source's content.",
+                  "enum": [
+                    "SAFE",
+                    "SUGGESTIVE",
+                    "EROTICA",
+                    "PORNOGRAPHIC"
+                  ]
                 }
               },
               "required": [
@@ -188,15 +213,16 @@ message Source {
                 "name",
                 "language",
                 "homeUrl",
-                "mirrorUrls"
+                "mirrorUrls",
+                "contentRating"
               ]
             }
           }
         },
         "required": [
           "name",
-          "package",
-          "resource",
+          "packageName",
+          "resources",
           "extensionLib",
           "versionCode",
           "sources"
@@ -206,9 +232,7 @@ message Source {
   },
   "required": [
     "name",
-    "badgeLabel",
     "signingKey",
-    "contact",
     "extensions"
   ]
 }

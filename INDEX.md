@@ -1,9 +1,10 @@
 # 📚 TachiyomiX Index
 
 Index file format for TachiyomiX based extension stores.
-It can be represented as Protobuf or JSON, and host apps should support both formats.
+It can be represented as [Protobuf](https://protobuf.dev) or the [JSON equivalent](https://protobuf.dev/programming-guides/json),
+and host apps should support both formats.
 
-## 📦 Protobuf
+## 📦 index.proto
 
 ```proto
 syntax = "proto3";
@@ -49,8 +50,11 @@ message Extension {
   // Version code of the extension build.
   int32 versionCode = 5;
 
+  // User facing version of the extension.
+  string versionName = 6;
+
   // Sources provided by this extension.
-  repeated Source sources = 6;
+  repeated Source sources = 7;
 }
 
 message Resources {
@@ -99,149 +103,5 @@ enum ContentRating {
 
   // Contains explicit pornographic or sexually graphic content.
   CONTENT_RATING_PORNOGRAPHIC = 3;
-}
-```
-
-## 📦 JSON
-
-```json
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "description": "Display name of the store (e.g. \"Antsy's Epic Store\")."
-    },
-    "badgeLabel": {
-      "type": "string",
-      "description": "Short identifier used to represent the store (e.g. \"AES\")."
-    },
-    "signingKey": {
-      "type": "string",
-      "description": "Public signing key used to verify extension authenticity."
-    },
-    "contact": {
-      "type": "object",
-      "description": "Contact and community information for the store.",
-      "properties": {
-        "website": {
-          "type": "string",
-          "description": "Official website URL."
-        },
-        "discord": {
-          "type": "string",
-          "description": "Discord invite or server URL."
-        }
-      }
-    },
-    "extensions": {
-      "type": "array",
-      "description": "List of all extensions published by this store.",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Extension display name."
-          },
-          "packageName": {
-            "type": "string",
-            "description": "Unique package name of the extension."
-          },
-          "resources": {
-            "type": "object",
-            "description": "Downloadable resources for this extension.",
-            "properties": {
-              "apkUrl": {
-                "type": "string",
-                "description": "Direct APK download URL."
-              },
-              "iconUrl": {
-                "type": "string",
-                "description": "Icon image URL."
-              }
-            },
-            "required": ["apkUrl", "iconUrl"]
-          },
-          "extensionLib": {
-            "type": "string",
-            "description": "Version of the extension API in MAJOR.MINOR format."
-          },
-          "versionCode": {
-            "type": "integer",
-            "description": "Version code of the extension build."
-          },
-          "sources": {
-            "type": "array",
-            "description": "Sources provided by this extension.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "description": "Unique source identifier."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Display name of the source."
-                },
-                "language": {
-                  "type": "string",
-                  "description": "Primary language code (e.g. 'en', 'ja', 'pt-BR')."
-                },
-                "homeUrl": {
-                  "type": "string",
-                  "description": "Main website URL of the source."
-                },
-                "mirrorUrls": {
-                  "type": "array",
-                  "description": "Alternative home URLs for the source.",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "contentRating": {
-                  "type": "string",
-                  "description": "Indicates the highest maturity level of the source's content.",
-                  "enum": [
-                    "SAFE",
-                    "SUGGESTIVE",
-                    "EROTICA",
-                    "PORNOGRAPHIC"
-                  ]
-                },
-                "message": {
-                  "type": "string",
-                  "description": "Optional status or informational message shown for the source. Supports Markdown formatting."
-                }
-              },
-              "required": [
-                "id",
-                "name",
-                "language",
-                "homeUrl",
-                "mirrorUrls",
-                "contentRating"
-              ]
-            }
-          }
-        },
-        "required": [
-          "name",
-          "packageName",
-          "resources",
-          "extensionLib",
-          "versionCode",
-          "sources"
-        ]
-      }
-    }
-  },
-  "required": [
-    "name",
-    "signingKey",
-    "extensions"
-  ]
 }
 ```

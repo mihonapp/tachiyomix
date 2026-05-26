@@ -14,13 +14,13 @@ message Index {
   string name = 1;
 
   // Short identifier used to represent the store (e.g. "AES").
-  optional string badgeLabel = 2;
+  string badgeLabel = 2;
 
   // Public signing key used to verify extension authenticity.
   string signingKey = 3;
 
   // Contact and community information for the store.
-  optional Contact contact = 4;
+  Contact contact = 4;
 
   // List of all extensions published by this store.
   repeated Extension extensions = 5;
@@ -28,7 +28,7 @@ message Index {
 
 message Contact {
   // Official website URL.
-  optional string website = 1;
+  string website = 1;
 
   // Discord invite or server URL.
   optional string discord = 2;
@@ -48,7 +48,7 @@ message Extension {
   string extensionLib = 4;
 
   // Version code of the extension build.
-  int32 versionCode = 5;
+  int64 versionCode = 5;
 
   // User facing version of the extension.
   string versionName = 6;
@@ -93,15 +93,16 @@ enum ContentRating {
   // Suitable for general audiences.
   CONTENT_RATING_SAFE = 0;
 
-  // May include suggestive themes, partial nudity,
-  // or fanservice, but not explicit sexual acts.
+  // Suggestive themes, fanservice, innuendo,
+  // partial nudity, or non-explicit intimacy.
   CONTENT_RATING_SUGGESTIVE = 1;
 
-  // Contains explicit sexual themes or nudity
-  // intended for mature audiences.
+  // Explicit sexual content that is present
+  // but not the sole purpose of the work.
   CONTENT_RATING_EROTICA = 2;
 
-  // Contains explicit pornographic or sexually graphic content.
+  // Explicit sexual content primarily intended
+  // for sexual arousal.
   CONTENT_RATING_PORNOGRAPHIC = 3;
 }
 ```

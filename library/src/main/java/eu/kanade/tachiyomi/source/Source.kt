@@ -25,6 +25,27 @@ interface Source {
     val name: String
 
     /**
+     * Primary language of the source.
+     *
+     * Expected to be a valid IETF BCP 47 language tag, for example:
+     * * `"en"` → English
+     * * `"en-US"` → English (United States)
+     * * `"zh-Hant"` → Traditional Chinese
+     * * `"es-419"` → Spanish (Latin America)
+     *
+     * Sources containing multiple languages, language-independent content,
+     * or content without readable text should use the literal `"multi"`.
+     *
+     * For backward compatibility, the default [CatalogueSource] implementation
+     * normalizes `"all"` and `"other"` to `"multi"` and leaves all other values unchanged.
+     *
+     * @see SManga.language
+     * @see SChapter.language
+     * @since tachiyomix 1.6
+     */
+    val language: String
+
+    /**
      * Whether the source has support for latest updates.
      */
     val supportsLatest: Boolean

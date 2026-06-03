@@ -1,152 +1,108 @@
 # 📚 TachiyomiX Index
 
 Index file format for TachiyomiX based extension stores.
-It can be represented as JSON or Protobuf, and host apps should support both formats.
+It can be represented as [Protobuf](https://protobuf.dev) or the [JSON equivalent](https://protobuf.dev/programming-guides/json),
+and host apps should support both formats.
 
-## 📦 JSON
-
-```json
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "TachiyomiX Index Schema",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string"
-    },
-    "signingKey": {
-      "type": "string"
-    },
-    "contact": {
-      "type": "object",
-      "properties": {
-        "website": {
-          "type": ["string", "null"]
-        },
-        "discord": {
-          "type": ["string", "null"]
-        }
-      }
-    },
-    "extensions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "package": {
-            "type": "string"
-          },
-          "resource": {
-            "type": "object",
-            "properties": {
-              "apk": {
-                "type": "string",
-                "format": "uri"
-              },
-              "icon": {
-                "type": "string",
-                "format": "uri"
-              }
-            },
-            "required": [
-              "apk",
-              "icon"
-            ]
-          },
-          "extensionLib": {
-            "type": "number"
-          },
-          "versionCode": {
-            "type": "integer"
-          },
-          "sources": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "lang": {
-                  "type": "string"
-                },
-                "id": {
-                  "type": "string"
-                },
-                "baseUrl": {
-                  "type": "string",
-                  "format": "uri"
-                }
-              },
-              "required": [
-                "name",
-                "lang",
-                "id",
-                "baseUrl"
-              ]
-            }
-          }
-        },
-        "required": [
-          "name",
-          "package",
-          "resource",
-          "extensionLib",
-          "versionCode",
-          "sources"
-        ]
-      }
-    }
-  },
-  "required": [
-    "name",
-    "signingKey",
-    "contact",
-    "extensions"
-  ]
-}
-```
-
-## 📦 Protobuf
+## 📦 index.proto
 
 ```proto
 syntax = "proto3";
 
-package tachiyomix;
-
 message Index {
+  // Display name of the store (e.g. "Antsy's Epic Store").
   string name = 1;
-  string signingKey = 2;
-  Contact contact = 3;
-  repeated Extension extensions = 4;
+
+  // Short identifier used to represent the store (e.g. "AES").
+  string badgeLabel = 2;
+
+  // Public signing key used to verify extension authenticity.
+  string signingKey = 3;
+
+  // Contact and community information for the store.
+  Contact contact = 4;
+
+  // List of all extensions published by this store.
+  repeated Extension extensions = 5;
 }
 
 message Contact {
-  optional string website = 1;
+  // Official website URL.
+  string website = 1;
+
+  // Discord invite or server URL.
   optional string discord = 2;
 }
 
 message Extension {
+  // Extension display name.
   string name = 1;
-  string package = 2;
-  Resource resource = 3;
-  double extensionLib = 4;
-  int32 versionCode = 5;
-  repeated Source sources = 6;
+
+  // Unique package name of the extension.
+  string packageName = 2;
+
+  // Downloadable resources for this extension.
+  Resources resources = 3;
+
+  // Version of the extension API in MAJOR.MINOR format.
+  string extensionLib = 4;
+
+  // Version code of the extension build.
+  int64 versionCode = 5;
+
+  // User facing version of the extension.
+  string versionName = 6;
+
+  // Sources provided by this extension.
+  repeated Source sources = 7;
 }
 
-message Resource {
-  string apk = 1;   // URI as string
-  string icon = 2;  // URI as string
+message Resources {
+  // Direct APK download URL.
+  string apkUrl = 1;
+
+  // Icon image URL.
+  string iconUrl = 2;
 }
 
 message Source {
-  string name = 1;
-  string lang = 2;
-  string id = 3;
-  string baseUrl = 4; // URI as string
+  // Unique source identifier.
+  int64 id = 1;
+
+  // Display name of the source.
+  string name = 2;
+
+  // Primary language code (e.g. "en", "ja", "pt-BR").
+  string language = 3;
+
+  // Main website URL of the source.
+  string homeUrl = 4;
+
+  // Alternative home URLs for the source.
+  repeated string mirrorUrls = 5;
+
+  // Indicates the highest maturity level of the source's content.
+  ContentRating contentRating = 6;
+
+  // Optional status or informational message shown for the source.
+  // Supports Markdown formatting.
+  optional string message = 7;
+}
+
+enum ContentRating {
+  // Suitable for general audiences.
+  CONTENT_RATING_SAFE = 0;
+
+  // Suggestive themes, fanservice, innuendo,
+  // partial nudity, or non-explicit intimacy.
+  CONTENT_RATING_SUGGESTIVE = 1;
+
+  // Explicit sexual content that is present
+  // but not the sole purpose of the work.
+  CONTENT_RATING_EROTICA = 2;
+
+  // Explicit sexual content primarily intended
+  // for sexual arousal.
+  CONTENT_RATING_PORNOGRAPHIC = 3;
 }
 ```

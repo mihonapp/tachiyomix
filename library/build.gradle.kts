@@ -14,6 +14,7 @@ dependencies {
     implementation(libs.rxandroid)
     implementation(libs.jsoup)
     implementation(libs.injekt)
+    implementation(libs.kotlinx.serialization.json)
 }
 
 kotlin {

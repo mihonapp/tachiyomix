@@ -1,5 +1,7 @@
 package eu.kanade.tachiyomi.source.model
 
+import kotlinx.serialization.json.JsonObject
+
 @Suppress("UNUSED", "PropertyName")
 interface SChapter {
 
@@ -74,13 +76,15 @@ interface SChapter {
     /**
      * Extra metadata associated with the chapter.
      *
-     * These key-value pairs are invisible to users and intended for internal or source-specific
-     * purposes. Apps may define their own namespaced keys (e.g., `"mhx.*"`) for sources to populate.
+     * The JSON object is not visible to users and intended for internal or source-specific
+     * purposes. Apps may define their own namespaced keys (e.g., `"mihon.*"`) for sources to populate.
      *
      * This allows apps to attach and ask for custom information without affecting the visible
      * chapter data.
+     *
+     * @since tachiyomix 1.6
      */
-    var memo: Map<String, String>
+    var memo: JsonObject
 
     companion object {
         fun create(): SChapter = throw Exception("Stub!")

@@ -31,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SManga.contentRating`; Content rating of the manga.
 - `SManga.score`; Source-provided rating score of the manga.
 - `SManga.readingMode`; Preferred reading mode indicated by the source.
-- `SManga.memo` and `SChapter.memo`; Internal key–value pairs associated with the manga or chapter.
+- `SManga.memo` and `SChapter.memo`; Internal JSON object associated with the manga or chapter.
 - `HttpException`; Use it to have a standardized error message in the app across the extensions.
 - `Call.awaitSuccess`; `Call.await` variant with a check to `Response.isSuccessful`.
 

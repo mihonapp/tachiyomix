@@ -351,7 +351,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public static final field Companion Leu/kanade/tachiyomi/source/model/SChapter$Companion;
 	public abstract fun getChapter_number ()F
 	public abstract fun getDate_upload ()J
-	public abstract fun getMemo ()Ljava/util/Map;
+	public abstract fun getMemo ()Lkotlinx/serialization/json/JsonObject;
 	public abstract fun getName ()Ljava/lang/String;
 	public abstract fun getNote ()Ljava/lang/String;
 	public abstract fun getNumber ()Ljava/lang/String;
@@ -361,7 +361,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public abstract fun getVolume ()Ljava/lang/String;
 	public abstract fun setChapter_number (F)V
 	public abstract fun setDate_upload (J)V
-	public abstract fun setMemo (Ljava/util/Map;)V
+	public abstract fun setMemo (Lkotlinx/serialization/json/JsonObject;)V
 	public abstract fun setName (Ljava/lang/String;)V
 	public abstract fun setNote (Ljava/lang/String;)V
 	public abstract fun setNumber (Ljava/lang/String;)V
@@ -393,7 +393,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun getGenre ()Ljava/lang/String;
 	public abstract fun getGenres ()Ljava/util/List;
 	public abstract fun getInitialized ()Z
-	public abstract fun getMemo ()Ljava/util/Map;
+	public abstract fun getMemo ()Lkotlinx/serialization/json/JsonObject;
 	public abstract fun getReadingMode ()Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;
 	public abstract fun getScore ()Ljava/lang/Integer;
 	public abstract fun getStatus ()I
@@ -410,7 +410,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun setGenre (Ljava/lang/String;)V
 	public abstract fun setGenres (Ljava/util/List;)V
 	public abstract fun setInitialized (Z)V
-	public abstract fun setMemo (Ljava/util/Map;)V
+	public abstract fun setMemo (Lkotlinx/serialization/json/JsonObject;)V
 	public abstract fun setReadingMode (Leu/kanade/tachiyomi/source/model/SManga$ReadingMode;)V
 	public abstract fun setScore (Ljava/lang/Integer;)V
 	public abstract fun setStatus (I)V

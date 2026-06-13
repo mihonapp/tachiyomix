@@ -18,11 +18,10 @@ dependencies {
 
 kotlin {
     @OptIn(ExperimentalAbiValidation::class)
-    abiValidation {
-        enabled.set(true)
-    }
+    abiValidation {}
 }
 
+@Suppress("DEPRECATION")
 android {
     namespace = "eu.kanade.tachiyomi.extensions"
     compileSdk = 37

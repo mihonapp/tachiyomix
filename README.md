@@ -28,14 +28,14 @@ dependencies {
 
 Host apps using `tachiyomix` must include the following dependencies (or newer compatible versions) to ensure compatibility with version **1.6**:
 
-| Dependency            | Artifact(s)                                                                                                                                                                 | Version  |
-|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| Kotlin                | `org.jetbrains.kotlin:kotlin-stdlib`                                                                                                                                        | `2.4.0`  |
-| kotlinx.coroutines    | `org.jetbrains.kotlinx:kotlinx-coroutines-core`                                                                                                                             | `1.10.2` |
-| kotlinx.serialization | `org.jetbrains.kotlinx:kotlinx-serialization-json` <br> `org.jetbrains.kotlinx:kotlinx-serialization-json-okio` <br> `org.jetbrains.kotlinx:kotlinx-serialization-protobuf` | `1.7.3`  |
-| OkHttp                | `com.squareup.okhttp3:okhttp` <br> `com.squareup.okhttp3:okhttp-brotli` <br> `com.squareup.okhttp3:okhttp-zstd`                                                             | `5.4.0`  |
-| jsoup                 | `org.jsoup:jsoup`                                                                                                                                                           | `1.22.2` |
-| Injekt                | `com.github.mihonapp:injekt`                                                                                                                                                | `1.0.0`  |
+| Dependency            | Artifact(s)                                                                                                                                                                 | Version      |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
+| Kotlin                | `org.jetbrains.kotlin:kotlin-stdlib`                                                                                                                                        | `2.4.0`      |
+| kotlinx.coroutines    | `org.jetbrains.kotlinx:kotlinx-coroutines-core`                                                                                                                             | `1.10.2`     |
+| kotlinx.serialization | `org.jetbrains.kotlinx:kotlinx-serialization-json` <br> `org.jetbrains.kotlinx:kotlinx-serialization-json-okio` <br> `org.jetbrains.kotlinx:kotlinx-serialization-protobuf` | `1.7.3`      |
+| OkHttp                | `com.squareup.okhttp3:okhttp` <br> `com.squareup.okhttp3:okhttp-brotli` <br> `com.squareup.okhttp3:okhttp-zstd`                                                             | `5.4.0`      |
+| jsoup                 | `org.jsoup:jsoup`                                                                                                                                                           | `1.22.2`     |
+| Injekt                | `com.github.mihonapp:injekt`                                                                                                                                                | `91edab2317` |
 
 ## 📄 License
 

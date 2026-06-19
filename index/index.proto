@@ -20,3 +20,11 @@ message Index {
     string extensionListUrl = 6;
   }
 }
+
+message Contact {
+  // Official website URL.
+  string website = 1;
+
+  // Discord invite or server URL.
+  optional string discord = 2;
+}

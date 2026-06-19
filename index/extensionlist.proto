@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+message ExtensionList {
+  repeated Extension extensions = 1;
+}
+
+message Extension {
+  // Extension display name.
+  string name = 1;
+
+  // Unique package name of the extension.
+  string packageName = 2;
+
+  // Downloadable resources for this extension.
+  Resources resources = 3;
+
+  // Version of the extension API in MAJOR.MINOR format.
+  string extensionLib = 4;
+
+  // Version code of the extension build.
+  int64 versionCode = 5;
+
+  // User facing version of the extension.
+  string versionName = 6;
+
+  // Sources provided by this extension.
+  repeated Source sources = 7;
+}
+
+message Resources {
+  // Direct APK download URL.
+  string apkUrl = 1;
+
+  // Icon image URL.
+  string iconUrl = 2;
+}
+
+message Source {
+  // Unique source identifier.
+  int64 id = 1;
+
+  // Display name of the source.
+  string name = 2;
+
+  // Primary language code (e.g. "en", "ja", "pt-BR").
+  string language = 3;
+
+  // Main website URL of the source.
+  string homeUrl = 4;
+
+  // Alternative home URLs for the source.
+  repeated string mirrorUrls = 5;
+
+  // Indicates the highest maturity level of the source's content.
+  ContentRating contentRating = 6;
+
+  // Optional status or informational message shown for the source.
+  // Supports Markdown formatting.
+  optional string message = 7;
+}
+
+enum ContentRating {
+  // Suitable for general audiences.
+  CONTENT_RATING_SAFE = 0;
+
+  // Suggestive themes, fanservice, innuendo,
+  // partial nudity, or non-explicit intimacy.
+  CONTENT_RATING_SUGGESTIVE = 1;
+
+  // Explicit sexual content that is present
+  // but not the sole purpose of the work.
+  CONTENT_RATING_EROTICA = 2;
+
+  // Explicit sexual content primarily intended
+  // for sexual arousal.
+  CONTENT_RATING_PORNOGRAPHIC = 3;
+}

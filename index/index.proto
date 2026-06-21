@@ -16,8 +16,8 @@ message Index {
   // List of all extensions published by this store,
   // or a URL linking to a extension list file.
   oneof extensions {
-    ExtensionList list = 101;
-    string listUrl = 102;
+    ExtensionList extensionList = 101;
+    string extensionListUrl = 102;
   }
 }
 

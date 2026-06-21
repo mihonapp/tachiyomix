@@ -52,8 +52,11 @@ message Extension {
   // User facing version of the extension.
   string versionName = 6;
 
+  // Content warning applicable for the extension.
+  ContentWarning contentWarning = 7;
+
   // Sources provided by this extension.
-  repeated Source sources = 7;
+  repeated Source sources = 8;
 }
 
 message Resources {
@@ -80,27 +83,21 @@ message Source {
   // Alternative home URLs for the source.
   repeated string mirrorUrls = 5;
 
-  // Indicates the highest maturity level of the source's content.
-  ContentRating contentRating = 6;
+  // Content warning applicable for the source.
+  // ContentWarning contentWarning = 6;
 
   // Optional status or informational message shown for the source.
   // Supports Markdown formatting.
   optional string message = 7;
 }
 
-enum ContentRating {
-  // Suitable for general audiences.
-  CONTENT_RATING_SAFE = 0;
+enum ContentWarning {
+  // Contains only safe content.
+  CONTENT_WARNING_SAFE = 0;
 
-  // Suggestive themes, fanservice, innuendo,
-  // partial nudity, or non-explicit intimacy.
-  CONTENT_RATING_SUGGESTIVE = 1;
+  // Might contain both safe and 18+ content.
+  CONTENT_WARNING_MIXED = 1;
 
-  // Explicit sexual content that is present
-  // but not the sole purpose of the work.
-  CONTENT_RATING_EROTICA = 2;
-
-  // Explicit sexual content primarily intended
-  // for sexual arousal.
-  CONTENT_RATING_PORNOGRAPHIC = 3;
+  // Primarily focused on 18+ content
+  CONTENT_WARNING_NSFW = 2;
 }

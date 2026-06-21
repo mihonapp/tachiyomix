@@ -13,10 +13,11 @@ message Index {
   // Contact and community information for the store.
   Contact contact = 4;
 
-  // List of all extensions published by this store, or a URL linking to a separate ExtensionList proto file.
-  oneof extension_list_or_url {
-    ExtensionList extensionList = 5;
-    string extensionListUrl = 6;
+  // List of all extensions published by this store,
+  // or a URL linking to a extension list file.
+  oneof extensions {
+    ExtensionList list = 101;
+    string listUrl = 102;
   }
 }
 

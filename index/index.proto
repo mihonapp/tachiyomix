@@ -13,8 +13,12 @@ message Index {
   // Contact and community information for the store.
   Contact contact = 4;
 
-  // List of all extensions published by this store.
-  repeated Extension extensions = 5;
+  // List of all extensions published by this store,
+  // or a URL linking to a extension list file.
+  oneof extensions {
+    ExtensionList list = 101;
+    string listUrl = 102;
+  }
 }
 
 message Contact {
@@ -23,6 +27,10 @@ message Contact {
 
   // Discord invite or server URL.
   optional string discord = 2;
+}
+
+message ExtensionList {
+  repeated Extension extensions = 1;
 }
 
 message Extension {

@@ -92,12 +92,14 @@ message Source {
 }
 
 enum ContentWarning {
+  CONTENT_WARNING_UNSPECIFIED = 0;
+
   // Contains only safe content.
-  CONTENT_WARNING_SAFE = 0;
+  CONTENT_WARNING_SAFE = 1;
 
   // Might contain both safe and 18+ content.
-  CONTENT_WARNING_MIXED = 1;
+  CONTENT_WARNING_MIXED = 2;
 
   // Primarily focused on 18+ content
-  CONTENT_WARNING_NSFW = 2;
+  CONTENT_WARNING_NSFW = 3;
 }

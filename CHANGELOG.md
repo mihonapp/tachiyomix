@@ -78,4 +78,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replace dependency `com.github.inorichi.injekt:injekt-core` → `com.github.mihonapp:injekt`.
 
 [Unreleased]: https://github.com/mihonapp/tachiyomix/compare/1.6.0...main
-[Unreleased]: https://github.com/mihonapp/tachiyomix/compare/607fb6e...1.6.0
+[1.6.0]: https://github.com/mihonapp/tachiyomix/compare/607fb6e...1.6.0

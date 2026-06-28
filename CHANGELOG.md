@@ -12,7 +12,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Other` - for technical stuff.
 
 ## [Unreleased]
+### Added
+- `SManga.genres`; Manga genres in list format.
+- `SChapter.number` and `SChapter.volume`; Chapter number and volume in string format.
+- `SChapter.scanlators`; Chapter scanlators in list format.
+- `SChapter.note`; Optional note associated with the chapter (e.g., lock status or a short description).
+- `SManga.banner`; Optional URL for the banner image associated with the manga.
+- `SManga.altTitles`; List of alternative titles associated with the manga.
+- `SManga.contentRating`; Content rating of the manga.
+- `SManga.score`; Source-provided rating score of the manga.
+- `SManga.readingMode`; Preferred reading mode indicated by the source.
 
+### Deprecated
+- `SManga.genre`; Deprecated in favor of `SManga.genres`.
+- `SChapter.chapter_number`; Deprecated in favor of `SChapter.number`.
+- `SChapter.scanlator`; Deprecated in favor of `SChapter.scanlators`.
+
+## [1.6.0] - Jun 28, 2026
 ### Added
 - `Source.getPopularManga`; Suspend alternative to `CatalogueSource.fetchPopularManga`.
 - `Source.getLatestUpdates`; Suspend alternative to `CatalogueSource.fetchLatestUpdates`.
@@ -59,9 +75,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Other
 - Begin tracking ABI changes.
 - Bump Android `compileSdk` to `37`.
-- Update Kotlin to `v2.3.20`.
-- Update OkHttp to `v5.3.2`.
-- Update jsoup to `v1.22.1`.
 - Replace dependency `com.github.inorichi.injekt:injekt-core` → `com.github.mihonapp:injekt`.
 
-[Unreleased]: https://github.com/mihonapp/tachiyomix/compare/607fb6e...main
+[Unreleased]: https://github.com/mihonapp/tachiyomix/compare/1.6.0...main
+[Unreleased]: https://github.com/mihonapp/tachiyomix/compare/607fb6e...1.6.0

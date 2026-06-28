@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - Jun 28, 2026
 ### Added
 - `Source.getPopularManga`; Suspend alternative to `CatalogueSource.fetchPopularManga`.
 - `Source.getLatestUpdates`; Suspend alternative to `CatalogueSource.fetchLatestUpdates`.
@@ -49,4 +50,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump Android `compileSdk` to `37`.
 - Replace dependency `com.github.inorichi.injekt:injekt-core` → `com.github.mihonapp:injekt`.
 
-[Unreleased]: https://github.com/mihonapp/tachiyomix/compare/607fb6e...main
+[Unreleased]: https://github.com/mihonapp/tachiyomix/compare/1.6.0...main
+[1.6.0]: https://github.com/mihonapp/tachiyomix/compare/607fb6e...1.6.0

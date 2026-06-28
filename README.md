@@ -24,6 +24,30 @@ dependencies {
 >
 > `compileOnly` is used because `tachiyomix` provides stub interfaces only. The actual implementations are included in the host app.
 
+## 📜 Extension Manifest Requirements
+
+Extensions are required to declare the following features and metadata to be correctly recognized and loaded in the app.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-feature android:name="tachiyomi.extension" />
+    <application>
+        <!-- The display name of the extension -->
+        <meta-data android:name="tachiyomix.name" android:value="Mihon Manga" />
+
+        <!-- Content Rating: 0 = Safe, 1 = Mixed, 2 = NSFW -->
+        <meta-data android:name="tachiyomix.contentWarning" android:value="0" />
+
+        <!-- Target library version -->
+        <meta-data android:name="tachiyomix.extensionLib" android:value="1.6" />
+
+        <!-- The fully qualified (or relative to package name) class name of the extension -->
+        <meta-data android:name="tachiyomi.extension.class" android:value=".Mihon" />
+    </application>
+</manifest>
+```
+
 ## 🔧 App Dependency Requirements
 
 Host apps using `tachiyomix` must include the following dependencies (or newer compatible versions) to ensure compatibility with version **1.6**:

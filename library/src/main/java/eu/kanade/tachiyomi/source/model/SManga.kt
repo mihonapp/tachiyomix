@@ -45,8 +45,6 @@ interface SManga {
      * * `"mul"` → Multiple languages
      * * `"und"` → Undetermined
      *
-     * A value of `null` indicates that the language is unknown or unspecified.
-     *
      * If [Source.language] is not `"mul"`, any non-null value must match it.
      * A `null` value should be treated as [Source.language].
      *

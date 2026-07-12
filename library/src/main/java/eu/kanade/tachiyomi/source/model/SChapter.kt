@@ -77,9 +77,6 @@ interface SChapter {
      * * `"mul"` → Multiple languages
      * * `"und"` → Undetermined
      *
-     * A value of `null` indicates that the language is unknown, unspecified,
-     * or not applicable (for example, language-independent or textless content).
-     *
      * If [SManga.language] is not inferred as `"mul"`, any non-null value must match it.
      * A `null` value should be treated as [SManga.language].
      *

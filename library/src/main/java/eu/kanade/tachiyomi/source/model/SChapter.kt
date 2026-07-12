@@ -82,7 +82,7 @@ interface SChapter {
      *
      * @see Source.language
      * @see SManga.language
-     * @since tachiyomix 1.6
+     * @since tachiyomix 1.7
      */
     var language: String?
 

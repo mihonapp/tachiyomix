@@ -50,7 +50,7 @@ interface SManga {
      *
      * @see Source.language
      * @see SChapter.language
-     * @since tachiyomix 1.6
+     * @since tachiyomix 1.7
      */
     var language: String?
 

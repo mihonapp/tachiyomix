@@ -45,7 +45,7 @@ interface Source {
      *
      * @see SManga.language
      * @see SChapter.language
-     * @since tachiyomix 1.6
+     * @since tachiyomix 1.7
      */
     val language: String
 

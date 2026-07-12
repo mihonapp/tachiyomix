@@ -100,7 +100,7 @@ interface Source {
      * The host app applies the migrations with a version higher than what it has already
      * applied for a given library entry, one at a time and in ascending order.
      *
-     * @since tachiyomix 1.6
+     * @since tachiyomix 1.7
      */
     fun getMigrations(): List<Migration> = emptyList()
 

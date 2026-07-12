@@ -29,7 +29,8 @@ interface SChapter {
      * When encountering `"nan"`, the app may attempt to infer a volume number manually.
      * If parsing still fails, it is recommended to treat the value as `null`.
      *
-     * See also: [number]
+     * @see number
+     * @since tachiyomix 1.7
      */
     var volume: String?
 
@@ -55,7 +56,8 @@ interface SChapter {
      * When encountering `"nan"`, the app may attempt to infer a chapter number manually.
      * If parsing still fails, it is recommended to treat the value as `null`.
      *
-     * See also: [volume]
+     * @see volume
+     * @since tachiyomix 1.7
      */
     var number: String?
 
@@ -87,10 +89,22 @@ interface SChapter {
     var language: String?
 
     /**
+     * Whether the chapter is currently locked or otherwise inaccessible.
+     *
+     * Locked chapters may require payment, waiting, authentication, or another action before
+     * they can be read.
+     *
+     * @since tachiyomix 1.7
+     */
+    var locked: Boolean
+
+    /**
      * Optional note associated with the chapter.
      *
      * This can include date of availability, locked status, or other context shown to the user
      * alongside the chapter. Content is free-form and source-defined.
+     *
+     * @since tachiyomix 1.7
      */
     var note: String?
 

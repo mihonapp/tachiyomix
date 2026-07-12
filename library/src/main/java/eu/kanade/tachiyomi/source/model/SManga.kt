@@ -15,6 +15,8 @@ interface SManga {
      *
      * This list can include official translations, romanizations,
      * or other titles the series is known by in different regions or languages.
+     *
+     * @since tachiyomix 1.7
      */
     var altTitles: List<String>
 
@@ -25,6 +27,8 @@ interface SManga {
      *
      * Typically, a wide image shown in headers or detailed views.
      * May be `null` if the source does not provide one.
+     *
+     * @since tachiyomix 1.7
      */
     var banner: String?
 
@@ -70,6 +74,8 @@ interface SManga {
      *
      * Must be a percentile value (e.g., between 0 and 100).
      * `null` if no rating is available.
+     *
+     * @since tachiyomix 1.7
      */
     var score: Int?
 
@@ -84,6 +90,8 @@ interface SManga {
      * Preferred reading mode provided by the source, or the majority from the source.
      *
      * Leave it `null` if the source provides entries of various modes and doesn't provide explicit data.
+     *
+     * @since tachiyomix 1.7
      */
     var readingMode: ReadingMode?
 

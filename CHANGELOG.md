@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SChapter.scanlators`; Chapter scanlators in list format.
 - `SChapter.note`; Optional note associated with the chapter (e.g., lock status or a short description).
 - `SChapter.language`; Language of the chapter content, represented as an IETF BCP 47 language tag.
+- `SChapter.locked`; Whether the chapter is currently locked or inaccessible.
 
 ### Deprecated
 - `SManga.genre`; Deprecated in favor of `SManga.genres`.

@@ -13,15 +13,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- `Source.language`; Primary language of the source, represented as an IETF BCP 47 language tag.
 - `SManga.genres`; Manga genres in list format.
 - `SManga.banner`; Optional URL for the banner image associated with the manga.
 - `SManga.altTitles`; List of alternative titles associated with the manga.
 - `SManga.contentRating`; Content rating of the manga.
 - `SManga.score`; Source-provided rating score of the manga.
 - `SManga.readingMode`; Preferred reading mode indicated by the source.
+- `SManga.language`; Primary language of the manga, represented as an IETF BCP 47 language tag.
 - `SChapter.number` and `SChapter.volume`; Chapter number and volume in string format.
 - `SChapter.scanlators`; Chapter scanlators in list format.
 - `SChapter.note`; Optional note associated with the chapter (e.g., lock status or a short description).
+- `SChapter.language`; Language of the chapter content, represented as an IETF BCP 47 language tag.
 
 ### Deprecated
 - `SManga.genre`; Deprecated in favor of `SManga.genres`.

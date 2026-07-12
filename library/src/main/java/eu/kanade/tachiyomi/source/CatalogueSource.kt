@@ -9,12 +9,10 @@ import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import rx.Observable
 
 @Suppress("Unused")
+@Deprecated("Use Source interface directly", ReplaceWith("Source"))
 interface CatalogueSource : Source {
 
-    /**
-     * An ISO 639-1 compliant language code (two letters in lower case).
-     */
-    val lang: String
+    override val language: String get() = throw Exception("Stub!")
 
     override suspend fun getPopularManga(page: Int): MangasPage = throw Exception("Stub!")
 
@@ -30,6 +28,12 @@ interface CatalogueSource : Source {
     ): SMangaUpdate = throw Exception("Stub!")
 
     override suspend fun getPageList(chapter: SChapter): List<Page> = throw Exception("Stub!")
+
+    /**
+     * An ISO 639-1 compliant language code (two letters in lower case).
+     */
+    @Deprecated("Use the language API instead", ReplaceWith("language"))
+    val lang: String
 
     /**
      * Returns an observable containing a page with a list of manga.

@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Other` - for technical stuff.
 
 ## [Unreleased]
+### Breaking Changes
+- Bump Android `minSdk` to `24`; Kotlin 2.2 generates Java default methods that are natively supported on Android 7+.
+
 ### Added
 - `Source.language`; Primary language of the source, represented as an IETF BCP 47 language tag.
 - `SManga.genres`; Manga genres in list format.

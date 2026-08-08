@@ -16,7 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump Android `minSdk` to `24`; Kotlin 2.2 generates Java default methods that are natively supported on Android 7+.
 
 ### Added
+- `Listing`; A named collection of manga offered by a source, identified by an `id`.
 - `Source.language`; Primary language of the source, represented as an IETF BCP 47 language tag.
+- `Source.getListings`; Listings offered by the source, in display order. The first one is the default.
+- `Source.getMangaList`; Get a page with a list of manga from one of the source's listings.
 - `SManga.genres`; Manga genres in list format.
 - `SManga.banner`; Optional URL for the banner image associated with the manga.
 - `SManga.altTitles`; List of alternative titles associated with the manga.
@@ -31,6 +34,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SChapter.locked`; Whether the chapter is currently locked or inaccessible.
 
 ### Deprecated
+- `Source.getPopularManga`; Deprecated in favor of the listing API. See `Source.getMangaList`.
+- `Source.getLatestUpdates`; Deprecated in favor of the listing API. See `Source.getMangaList`.
+- `Source.supportsLatest`; Deprecated in favor of the listing API. See `Source.getListings`.
 - `SManga.genre`; Deprecated in favor of `SManga.genres`.
 - `SChapter.chapter_number`; Deprecated in favor of `SChapter.number`.
 - `SChapter.scanlator`; Deprecated in favor of `SChapter.scanlators`.

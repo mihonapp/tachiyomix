@@ -63,4 +63,6 @@ Host apps using `tachiyomix` must include the following dependencies (or newer c
 
 ## 📄 License
 
-TachiyomiX is distributed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+TachiyomiX is distributed under the [Mozilla Public License 2.0](./LICENSE-MPL).
+
+The contents of the [library](./library) directory are licensed under the [Apache License 2.0](./LICENSE-APACHE).

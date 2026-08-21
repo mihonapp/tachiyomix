@@ -48,17 +48,17 @@ Extensions are required to declare the following features and metadata to be cor
 </manifest>
 ```
 
-## 🔧 App Dependency Requirements
+## 🔧 App Requirements
 
-Host apps using `tachiyomix` must include the following dependencies (or newer compatible versions) to ensure compatibility with version **1.6**:
+Host apps using `tachiyomix` should have a min sdk of 26 and must include the following dependencies (or newer compatible versions) to ensure compatibility with version **1.6**:
 
 | Dependency            | Artifact(s)                                                                                                                                                                 | Version      |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
 | Kotlin                | `org.jetbrains.kotlin:kotlin-stdlib`                                                                                                                                        | `2.4.0`      |
-| kotlinx.coroutines    | `org.jetbrains.kotlinx:kotlinx-coroutines-core`                                                                                                                             | `1.10.2`     |
-| kotlinx.serialization | `org.jetbrains.kotlinx:kotlinx-serialization-json` <br> `org.jetbrains.kotlinx:kotlinx-serialization-json-okio` <br> `org.jetbrains.kotlinx:kotlinx-serialization-protobuf` | `1.7.3`      |
-| OkHttp                | `com.squareup.okhttp3:okhttp` <br> `com.squareup.okhttp3:okhttp-brotli` <br> `com.squareup.okhttp3:okhttp-zstd`                                                             | `5.4.0`      |
-| jsoup                 | `org.jsoup:jsoup`                                                                                                                                                           | `1.22.2`     |
+| kotlinx.coroutines    | `org.jetbrains.kotlinx:kotlinx-coroutines-core`                                                                                                                             | `1.11.0`     |
+| kotlinx.serialization | `org.jetbrains.kotlinx:kotlinx-serialization-json` <br> `org.jetbrains.kotlinx:kotlinx-serialization-json-okio` <br> `org.jetbrains.kotlinx:kotlinx-serialization-protobuf` | `1.11.0`     |
+| OkHttp                | `com.squareup.okhttp3:okhttp` <br> `com.squareup.okhttp3:okhttp-brotli` <br> `com.squareup.okhttp3:okhttp-zstd`                                                             | `5.5.0`      |
+| jsoup                 | `org.jsoup:jsoup`                                                                                                                                                           | `1.23.1`     |
 | Injekt                | `com.github.mihonapp:injekt`                                                                                                                                                | `91edab2317` |
 
 ## 📄 License

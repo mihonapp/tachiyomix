@@ -1,0 +1,14 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, macosArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <tachiyomix:mihonx>
+abstract interface mihonx/Context { // mihonx/Context|null[0]
+    abstract val json // mihonx/Context.json|{}json[0]
+        abstract fun <get-json>(): kotlinx.serialization.json/Json // mihonx/Context.json.<get-json>|<get-json>(){}[0]
+    abstract val protobuf // mihonx/Context.protobuf|{}protobuf[0]
+        abstract fun <get-protobuf>(): kotlinx.serialization.protobuf/ProtoBuf // mihonx/Context.protobuf.<get-protobuf>|<get-protobuf>(){}[0]
+}

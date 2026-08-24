@@ -1,0 +1,5 @@
+public abstract interface class mihonx/Context {
+	public abstract fun getJson ()Lkotlinx/serialization/json/Json;
+	public abstract fun getProtobuf ()Lkotlinx/serialization/protobuf/ProtoBuf;
+}
+

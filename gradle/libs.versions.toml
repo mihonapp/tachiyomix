@@ -12,6 +12,7 @@ jsoup = "1.23.1"
 [libraries]
 injekt = { module = "com.github.mihonapp:injekt", version = "91edab2317" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-protobuf = { module = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf", version.ref = "kotlinx-serialization" }
 jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 rxandroid = { module = "io.reactivex:rxandroid", version = "1.2.1" }
@@ -22,6 +23,7 @@ ktlint-cli = { group = "com.pinterest.ktlint", name = "ktlint-cli", version.ref 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-gradle" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin-gradle" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 tapmoc = { id = "com.gradleup.tapmoc", version.ref = "tapmoc" }

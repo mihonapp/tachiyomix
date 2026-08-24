@@ -4,12 +4,14 @@ plugins {
 }
 
 dependencies {
+    api(project(":mihonx"))
+
     implementation(libs.okhttp)
     implementation(libs.rxjava)
     implementation(libs.rxandroid)
     implementation(libs.jsoup)
     implementation(libs.injekt)
-    implementation(libs.kotlinx.serialization.json)
+    compileOnlyApi(libs.kotlinx.serialization.json)
 }
 
 android {

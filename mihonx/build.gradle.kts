@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+
 plugins {
     id("mihon.library.multiplatform")
 }
@@ -10,6 +12,16 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
     macosArm64()
+
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    applyDefaultHierarchyTemplate {
+        common {
+            group("nonAndroid") {
+                withJvm()
+                withApple()
+            }
+        }
+    }
 
     sourceSets {
         commonMain {

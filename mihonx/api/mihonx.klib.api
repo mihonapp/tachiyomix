@@ -6,9 +6,31 @@
 // - Show declarations: true
 
 // Library unique name: <tachiyomix:mihonx>
+open annotation class mihonx.platform/DelicatePlatformApi : kotlin/Annotation { // mihonx.platform/DelicatePlatformApi|null[0]
+    constructor <init>() // mihonx.platform/DelicatePlatformApi.<init>|<init>(){}[0]
+}
+
+abstract interface mihonx.js/JSEngine : kotlin/AutoCloseable { // mihonx.js/JSEngine|null[0]
+    abstract suspend fun compile(kotlin/String): kotlin/ByteArray // mihonx.js/JSEngine.compile|compile(kotlin.String){}[0]
+    abstract suspend fun execute(kotlin/ByteArray): kotlin/Any? // mihonx.js/JSEngine.execute|execute(kotlin.ByteArray){}[0]
+    abstract suspend fun execute(kotlin/String): kotlin/Any? // mihonx.js/JSEngine.execute|execute(kotlin.String){}[0]
+}
+
 abstract interface mihonx/Context { // mihonx/Context|null[0]
     abstract val json // mihonx/Context.json|{}json[0]
         abstract fun <get-json>(): kotlinx.serialization.json/Json // mihonx/Context.json.<get-json>|<get-json>(){}[0]
+    abstract val platformContext // mihonx/Context.platformContext|{}platformContext[0]
+        abstract fun <get-platformContext>(): mihonx.platform/PlatformContext // mihonx/Context.platformContext.<get-platformContext>|<get-platformContext>(){}[0]
     abstract val protobuf // mihonx/Context.protobuf|{}protobuf[0]
         abstract fun <get-protobuf>(): kotlinx.serialization.protobuf/ProtoBuf // mihonx/Context.protobuf.<get-protobuf>|<get-protobuf>(){}[0]
+
+    abstract fun jsEngine(): mihonx.js/JSEngine // mihonx/Context.jsEngine|jsEngine(){}[0]
+}
+
+abstract class mihonx.js/JSEngineException : kotlin/RuntimeException { // mihonx.js/JSEngineException|null[0]
+    constructor <init>() // mihonx.js/JSEngineException.<init>|<init>(){}[0]
+}
+
+abstract class mihonx.platform/PlatformContext { // mihonx.platform/PlatformContext|null[0]
+    constructor <init>() // mihonx.platform/PlatformContext.<init>|<init>(){}[0]
 }

@@ -7,6 +7,7 @@ import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
 import eu.kanade.tachiyomi.source.model.SMangaUpdate
 import rx.Observable
+import tachiyomix.source.Migration
 
 /**
  * A basic interface for creating a source. It could be an online source, a local source, etc...
@@ -117,6 +118,16 @@ interface Source {
      * @return the pages for the chapter.
      */
     suspend fun getPageList(chapter: SChapter): List<Page>
+
+    /**
+     * Returns the list of self-migrations this source supports, if any.
+     *
+     * The host app applies the migrations with a version higher than what it has already
+     * applied for a given library entry, one at a time and in ascending order.
+     *
+     * @since tachiyomix 1.7
+     */
+    fun getMigrations(): List<Migration> = emptyList()
 
     @Deprecated("Use the combined suspend API instead", ReplaceWith("getMangaUpdate"))
     fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw Exception("Stub!")

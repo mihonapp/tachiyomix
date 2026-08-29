@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.source
 
 import eu.kanade.tachiyomi.source.model.FilterList
+import eu.kanade.tachiyomi.source.model.Listing
 import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
@@ -14,8 +15,14 @@ interface CatalogueSource : Source {
 
     override val language: String get() = throw Exception("Stub!")
 
+    override fun getListings(): List<Listing> = throw Exception("Stub!")
+
+    override suspend fun getMangaList(page: Int, listing: Listing): MangasPage = throw Exception("Stub!")
+
+    @Deprecated("Use the listing API instead", ReplaceWith("getMangaList"))
     override suspend fun getPopularManga(page: Int): MangasPage = throw Exception("Stub!")
 
+    @Deprecated("Use the listing API instead", ReplaceWith("getMangaList"))
     override suspend fun getLatestUpdates(page: Int): MangasPage = throw Exception("Stub!")
 
     override suspend fun getSearchManga(page: Int, query: String, filters: FilterList): MangasPage = throw Exception("Stub!")

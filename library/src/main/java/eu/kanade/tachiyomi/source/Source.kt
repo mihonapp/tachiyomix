@@ -1,6 +1,7 @@
 package eu.kanade.tachiyomi.source
 
 import eu.kanade.tachiyomi.source.model.FilterList
+import eu.kanade.tachiyomi.source.model.Listing
 import eu.kanade.tachiyomi.source.model.MangasPage
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
@@ -52,6 +53,7 @@ interface Source {
     /**
      * Whether the source has support for latest updates.
      */
+    @Deprecated("Use the listing API instead", ReplaceWith("getListings"))
     val supportsLatest: Boolean
 
     /**
@@ -60,12 +62,30 @@ interface Source {
     fun getFilterList(): FilterList = throw Exception("Stub!")
 
     /**
+     * Returns the listings offered by the source, in the order they should be displayed.
+     * The first listing is used as the default one.
+     *
+     * @since tachiyomix 1.7
+     */
+    fun getListings(): List<Listing>
+
+    /**
+     * Get a page with a list of manga for the given listing.
+     *
+     * @since tachiyomix 1.7
+     * @param page the page number to retrieve.
+     * @param listing the listing to retrieve the manga of.
+     */
+    suspend fun getMangaList(page: Int, listing: Listing): MangasPage
+
+    /**
      * Get a page with a list of manga.
      *
      * @since tachiyomix 1.6
      * @param page the page number to retrieve.
      */
-    suspend fun getPopularManga(page: Int): MangasPage
+    @Deprecated("Use the listing API instead", ReplaceWith("getMangaList"))
+    suspend fun getPopularManga(page: Int): MangasPage = throw Exception("Stub!")
 
     /**
      * Get a page with a list of latest manga updates.
@@ -73,7 +93,8 @@ interface Source {
      * @since tachiyomix 1.6
      * @param page the page number to retrieve.
      */
-    suspend fun getLatestUpdates(page: Int): MangasPage
+    @Deprecated("Use the listing API instead", ReplaceWith("getMangaList"))
+    suspend fun getLatestUpdates(page: Int): MangasPage = throw Exception("Stub!")
 
     /**
      * Get a page with a list of manga.

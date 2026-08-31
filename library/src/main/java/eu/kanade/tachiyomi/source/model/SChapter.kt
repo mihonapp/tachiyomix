@@ -34,9 +34,6 @@ interface SChapter {
      */
     var volume: String?
 
-    @Deprecated("Provide SChapter.number instead")
-    var chapter_number: Float
-
     /**
      * Chapter number in string format.
      *
@@ -60,9 +57,6 @@ interface SChapter {
      * @since tachiyomix 1.7
      */
     var number: String?
-
-    @Deprecated("Provide SChapter.scanlators instead")
-    var scanlator: String?
 
     var scanlators: List<String>
 

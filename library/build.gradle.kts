@@ -5,8 +5,6 @@ plugins {
 
 dependencies {
     implementation(libs.okhttp)
-    implementation(libs.rxjava)
-    implementation(libs.rxandroid)
     implementation(libs.jsoup)
     implementation(libs.injekt)
     implementation(libs.kotlinx.serialization.json)

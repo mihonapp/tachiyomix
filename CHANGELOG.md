@@ -14,7 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Breaking Changes
 - Bump Android `minSdk` to `26`.
-- `SMangaUpdate.manga` and `SMangaUpdate.chapters` are now suspend lambdas; The existing constructor still accepts an `SManga` and a `List<SChapter>`, so the change is source compatible but not binary compatible.
 
 ### Added
 - `Source.language`; Primary language of the source, represented as an IETF BCP 47 language tag.
@@ -30,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SChapter.note`; Optional note associated with the chapter (e.g., lock status or a short description).
 - `SChapter.language`; Language of the chapter content, represented as an IETF BCP 47 language tag.
 - `SChapter.locked`; Whether the chapter is currently locked or inaccessible.
-- `SMangaUpdate` constructor taking suspend lambdas; Lets sources defer fetching the details and the chapters, so the app doesn't wait for both when they come from separate endpoints.
+- `SMangaUpdate` constructors taking suspend lambdas; Lets sources defer fetching the details or the chapters, so the app doesn't wait for both when they come from separate endpoints.
 
 ### Deprecated
 - `CatalogueSource`; Deprecated in favor of `Source`.

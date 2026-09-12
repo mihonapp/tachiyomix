@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 }
 
 include(":library")
+include(":mihonx")

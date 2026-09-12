@@ -128,6 +128,16 @@ public final class eu/kanade/tachiyomi/network/RequestsKt {
 	public static synthetic fun POST$default (Ljava/lang/String;Lokhttp3/Headers;Lokhttp3/RequestBody;Lokhttp3/CacheControl;ILjava/lang/Object;)Lokhttp3/Request;
 }
 
+public abstract interface class eu/kanade/tachiyomi/source/CatalogueSource : eu/kanade/tachiyomi/source/Source {
+	public abstract fun getLang ()Ljava/lang/String;
+	public fun getLanguage ()Ljava/lang/String;
+}
+
+public final class eu/kanade/tachiyomi/source/CatalogueSource$DefaultImpls {
+	public static fun getFilterList (Leu/kanade/tachiyomi/source/CatalogueSource;)Leu/kanade/tachiyomi/source/model/FilterList;
+	public static fun getLanguage (Leu/kanade/tachiyomi/source/CatalogueSource;)Ljava/lang/String;
+}
+
 public abstract interface class eu/kanade/tachiyomi/source/ConfigurableSource {
 	public abstract fun setupPreferenceScreen (Landroidx/preference/PreferenceScreen;)V
 }
@@ -300,6 +310,7 @@ public final class eu/kanade/tachiyomi/source/model/Page {
 
 public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public static final field Companion Leu/kanade/tachiyomi/source/model/SChapter$Companion;
+	public abstract fun getChapter_number ()F
 	public abstract fun getDate_upload ()J
 	public abstract fun getLanguage ()Ljava/lang/String;
 	public abstract fun getLocked ()Z
@@ -307,9 +318,11 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public abstract fun getName ()Ljava/lang/String;
 	public abstract fun getNote ()Ljava/lang/String;
 	public abstract fun getNumber ()Ljava/lang/String;
+	public abstract fun getScanlator ()Ljava/lang/String;
 	public abstract fun getScanlators ()Ljava/util/List;
 	public abstract fun getUrl ()Ljava/lang/String;
 	public abstract fun getVolume ()Ljava/lang/String;
+	public abstract fun setChapter_number (F)V
 	public abstract fun setDate_upload (J)V
 	public abstract fun setLanguage (Ljava/lang/String;)V
 	public abstract fun setLocked (Z)V
@@ -317,6 +330,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SChapter {
 	public abstract fun setName (Ljava/lang/String;)V
 	public abstract fun setNote (Ljava/lang/String;)V
 	public abstract fun setNumber (Ljava/lang/String;)V
+	public abstract fun setScanlator (Ljava/lang/String;)V
 	public abstract fun setScanlators (Ljava/util/List;)V
 	public abstract fun setUrl (Ljava/lang/String;)V
 	public abstract fun setVolume (Ljava/lang/String;)V
@@ -341,6 +355,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun getBanner ()Ljava/lang/String;
 	public abstract fun getContentRating ()Leu/kanade/tachiyomi/source/model/SManga$ContentRating;
 	public abstract fun getDescription ()Ljava/lang/String;
+	public abstract fun getGenre ()Ljava/lang/String;
 	public abstract fun getGenres ()Ljava/util/List;
 	public abstract fun getInitialized ()Z
 	public abstract fun getLanguage ()Ljava/lang/String;
@@ -358,6 +373,7 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public abstract fun setBanner (Ljava/lang/String;)V
 	public abstract fun setContentRating (Leu/kanade/tachiyomi/source/model/SManga$ContentRating;)V
 	public abstract fun setDescription (Ljava/lang/String;)V
+	public abstract fun setGenre (Ljava/lang/String;)V
 	public abstract fun setGenres (Ljava/util/List;)V
 	public abstract fun setInitialized (Z)V
 	public abstract fun setLanguage (Ljava/lang/String;)V
@@ -414,7 +430,7 @@ public final class eu/kanade/tachiyomi/source/model/UpdateStrategy : java/lang/E
 	public static fun values ()[Leu/kanade/tachiyomi/source/model/UpdateStrategy;
 }
 
-public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/tachiyomi/source/Source {
+public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/tachiyomi/source/CatalogueSource {
 	public fun <init> ()V
 	public abstract fun getBaseUrl ()Ljava/lang/String;
 	public fun getChapterUrl (Leu/kanade/tachiyomi/source/model/SChapter;)Ljava/lang/String;
@@ -424,6 +440,7 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public fun getHomeUrl ()Ljava/lang/String;
 	public fun getId ()J
 	public fun getImageUrl (Leu/kanade/tachiyomi/source/model/Page;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getLanguage ()Ljava/lang/String;
 	public fun getMangaUrl (Leu/kanade/tachiyomi/source/model/SManga;)Ljava/lang/String;
 	protected final fun getNetwork ()Leu/kanade/tachiyomi/network/NetworkHelper;
 	public fun getVersionId ()I

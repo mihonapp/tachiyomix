@@ -38,6 +38,10 @@ interface Source {
      * Sources with language-independent content or content without readable text
      * should use the language tag `"und"`.
      *
+     * For backward compatibility, the default [CatalogueSource] implementation
+     * normalizes the legacy values `"all"` and `"other"` returned by
+     * [CatalogueSource.lang] to `"mul"` and `"und"`, respectively.
+     *
      * @see SManga.language
      * @see SChapter.language
      * @since tachiyomix 1.7

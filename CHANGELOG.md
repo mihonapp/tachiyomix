@@ -30,9 +30,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SChapter.language`; Language of the chapter content, represented as an IETF BCP 47 language tag.
 - `SChapter.locked`; Whether the chapter is currently locked or inaccessible.
 
+### Deprecated
+- `CatalogueSource`; Deprecated in favor of `Source`.
+- `CatalogueSource.lang`; Deprecated in favor of `Source.language`.
+- `SManga.genre`; Deprecated in favor of `SManga.genres`.
+- `SChapter.chapter_number`; Deprecated in favor of `SChapter.number`.
+- `SChapter.scanlator`; Deprecated in favor of `SChapter.scanlators`.
+
 ### Removed
-- `CatalogueSource`; Removed in favor of `Source`.
-- `CatalogueSource.lang`; Removed in favor of `Source.language`.
 - `CatalogueSource.fetchPopularManga`; Removed in favor of `Source.getPopularManga`.
 - `CatalogueSource.fetchLatestUpdates`; Removed in favor of `Source.getLatestUpdates`.
 - `CatalogueSource.fetchSearchManga`; Removed in favor of `Source.getSearchManga`.
@@ -43,9 +48,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `HttpSource.xxxRequest` and `HttpSource.xxxParse` except `HttpSource.imageRequest`; Removed with no replacement.
 - `HttpSource.prepareNewChapter`; Removed with no replacement.
 - `ParsedHttpSource`; Removed with no replacement.
-- `SManga.genre`; Removed in favor of `SManga.genres`.
-- `SChapter.chapter_number`; Removed in favor of `SChapter.number`.
-- `SChapter.scanlator`; Removed in favor of `SChapter.scanlators`.
 - `MangasPage.component1`, `MangasPage.component2` and `MangasPage.copy`; Removed with no replacement.
 - `rateLimit` and `rateLimitHost`; Removed with no replacement.
 - `NetworkHelper.cloudflareClient`; Removed in favor of `NetworkHelper.client`, which supports cloudflare bypass by default.

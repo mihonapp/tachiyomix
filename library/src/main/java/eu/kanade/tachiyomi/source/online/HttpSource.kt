@@ -1,7 +1,7 @@
 package eu.kanade.tachiyomi.source.online
 
 import eu.kanade.tachiyomi.network.NetworkHelper
-import eu.kanade.tachiyomi.source.Source
+import eu.kanade.tachiyomi.source.CatalogueSource
 import eu.kanade.tachiyomi.source.model.Page
 import eu.kanade.tachiyomi.source.model.SChapter
 import eu.kanade.tachiyomi.source.model.SManga
@@ -13,7 +13,7 @@ import okhttp3.Request
  * A simple implementation for sources from a website.
  */
 @Suppress("UNUSED", "UnusedReceiverParameter")
-abstract class HttpSource : Source {
+abstract class HttpSource : CatalogueSource {
 
     /**
      * Network service.

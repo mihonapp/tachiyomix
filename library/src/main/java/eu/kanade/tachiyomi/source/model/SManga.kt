@@ -81,6 +81,9 @@ interface SManga {
 
     var description: String?
 
+    @Deprecated("Provide SManga.genres instead")
+    var genre: String?
+
     var genres: List<String>
 
     /**

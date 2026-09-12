@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SChapter.note`; Optional note associated with the chapter (e.g., lock status or a short description).
 - `SChapter.language`; Language of the chapter content, represented as an IETF BCP 47 language tag.
 - `SChapter.locked`; Whether the chapter is currently locked or inaccessible.
+- `SMangaUpdate` constructors taking suspend lambdas; Lets sources defer fetching the details or the chapters, so the app doesn't wait for both when they come from separate endpoints.
 
 ### Deprecated
 - `CatalogueSource`; Deprecated in favor of `Source`.

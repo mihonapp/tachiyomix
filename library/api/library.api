@@ -418,8 +418,12 @@ public final class eu/kanade/tachiyomi/source/model/SManga$ReadingMode : java/la
 
 public final class eu/kanade/tachiyomi/source/model/SMangaUpdate {
 	public fun <init> (Leu/kanade/tachiyomi/source/model/SManga;Ljava/util/List;)V
-	public final fun getChapters ()Ljava/util/List;
-	public final fun getManga ()Leu/kanade/tachiyomi/source/model/SManga;
+	public fun <init> (Leu/kanade/tachiyomi/source/model/SManga;Lkotlin/jvm/functions/Function1;)V
+	public fun <init> (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
+	public final synthetic fun getChapters ()Ljava/util/List;
+	public final fun getChapters ()Lkotlin/jvm/functions/Function1;
+	public final synthetic fun getManga ()Leu/kanade/tachiyomi/source/model/SManga;
+	public final fun getManga ()Lkotlin/jvm/functions/Function1;
 }
 
 public final class eu/kanade/tachiyomi/source/model/UpdateStrategy : java/lang/Enum {

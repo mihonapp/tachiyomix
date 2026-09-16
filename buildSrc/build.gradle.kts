@@ -12,6 +12,7 @@ dependencies {
 
     implementation(plugin(libs.plugins.android.library))
     implementation(plugin(libs.plugins.kotlin.android))
+    implementation(plugin(libs.plugins.kotlin.multiplatform))
     implementation(plugin(libs.plugins.spotless))
     implementation(plugin(libs.plugins.tapmoc))
 }

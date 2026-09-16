@@ -1,0 +1,20 @@
+public abstract interface class mihonx/Context {
+	public abstract fun getJson ()Lkotlinx/serialization/json/Json;
+	public abstract fun getPlatformContext ()Landroid/content/Context;
+	public abstract fun getProtobuf ()Lkotlinx/serialization/protobuf/ProtoBuf;
+	public abstract fun jsEngine ()Lmihonx/js/JSEngine;
+}
+
+public abstract interface class mihonx/js/JSEngine : java/lang/AutoCloseable {
+	public abstract fun compile (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun execute (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun execute ([BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract class mihonx/js/JSEngineException : java/lang/RuntimeException {
+	public fun <init> ()V
+}
+
+public abstract interface annotation class mihonx/platform/DelicatePlatformApi : java/lang/annotation/Annotation {
+}
+

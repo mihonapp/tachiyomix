@@ -5,6 +5,7 @@ import android.content.Context
 /**
  * Util for evaluating JavaScript in sources.
  */
+@Deprecated("Use JSEngine from mihonx")
 @Suppress("Unused")
 class JavaScriptEngine(context: Context) {
 

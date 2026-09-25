@@ -132,6 +132,8 @@ interface SManga {
         const val PUBLISHING_FINISHED = 4
         const val CANCELLED = 5
         const val ON_HIATUS = 6
+        const val DROPPED = 7
+        const val UPCOMING = 8
 
         fun create(): SManga = throw Exception("Stub!")
     }

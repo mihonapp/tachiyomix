@@ -344,11 +344,13 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 	public static final field CANCELLED I
 	public static final field COMPLETED I
 	public static final field Companion Leu/kanade/tachiyomi/source/model/SManga$Companion;
+    public static final field DROPPED I
 	public static final field LICENSED I
 	public static final field ONGOING I
 	public static final field ON_HIATUS I
 	public static final field PUBLISHING_FINISHED I
 	public static final field UNKNOWN I
+    public static final field UPCOMING I
 	public abstract fun getAltTitles ()Ljava/util/List;
 	public abstract fun getArtist ()Ljava/lang/String;
 	public abstract fun getAuthor ()Ljava/lang/String;
@@ -390,11 +392,13 @@ public abstract interface class eu/kanade/tachiyomi/source/model/SManga {
 public final class eu/kanade/tachiyomi/source/model/SManga$Companion {
 	public static final field CANCELLED I
 	public static final field COMPLETED I
+    public static final field DROPPED I
 	public static final field LICENSED I
 	public static final field ONGOING I
 	public static final field ON_HIATUS I
 	public static final field PUBLISHING_FINISHED I
 	public static final field UNKNOWN I
+    public static final field UPCOMING I
 	public final fun create ()Leu/kanade/tachiyomi/source/model/SManga;
 }
 

@@ -121,6 +121,13 @@ interface SChapter {
      */
     var memo: JsonObject
 
+    /**
+     * Thumbnail for the chapter.
+     *
+     * @since tachiyomix 1.7
+     */
+    var thumbnail: ThumbnailInfo?
+
     companion object {
         fun create(): SChapter = throw Exception("Stub!")
     }

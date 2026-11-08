@@ -455,6 +455,11 @@ public abstract class eu/kanade/tachiyomi/source/online/HttpSource : eu/kanade/t
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class eu/kanade/tachiyomi/util/ImageDecoder {
+	public static final field INSTANCE Leu/kanade/tachiyomi/util/ImageDecoder;
+	public final fun decode (Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+}
+
 public final class eu/kanade/tachiyomi/util/JsoupExtensionsKt {
 	public static final fun asJsoup (Lokhttp3/Response;Ljava/lang/String;)Lorg/jsoup/nodes/Document;
 	public static synthetic fun asJsoup$default (Lokhttp3/Response;Ljava/lang/String;ILjava/lang/Object;)Lorg/jsoup/nodes/Document;

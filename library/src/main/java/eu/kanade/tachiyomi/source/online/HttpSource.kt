@@ -127,4 +127,13 @@ abstract class HttpSource : CatalogueSource {
      * @return url of the chapter
      */
     open fun getChapterUrl(chapter: SChapter): String = throw Exception("Stub!")
+
+    /**
+     * Opens a proxy for the app's WebView opened for this source, or returns null for the WebView to connect directly,
+     * e.g. so its requests go through the source's client. The app calls it before loading the WebView's first page
+     * and closes the proxy when the WebView is closed, see [LocalProxy].
+     *
+     * @since tachiyomix 1.7
+     */
+    open suspend fun openWebViewProxy(): LocalProxy? = throw Exception("Stub!")
 }
